@@ -1,0 +1,16 @@
+require("plugins.plugins-setup")
+
+require("core.options")
+require("core.keymaps")
+
+-- Plugins
+require("plugins.nvim-tree")
+require("plugins.lualine")
+require("plugins.coc")
+require("plugins.bufferline")
+require("plugins.vista")
+require("plugins.vim-easymotion")
+require("plugins.nerdcommenter")
+require("plugins.rainbow")
+require("plugins.vim-floaterm")
+
