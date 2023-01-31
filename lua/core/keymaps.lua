@@ -100,6 +100,44 @@ function Toggle_wrap()
   end
 end
 
+-- ===折叠函数
+keymap.set("n", "--", ":call MagicFold()<CR>", { noremap = true, silent = true })
+keymap.set("v", "-", "zf", { noremap = true, silent = true })
+vim.api.nvim_command([[
+    fun! MagicFold()
+        if foldclosed(line('.')) != -1
+            exe 'norm! za'
+            return
+        endif
+        let l:line = trim(getline('.'))
+        if l:line == '' | return | endif
+        let [l:up, l:down] = [0, 0]
+        if l:line[0] == '}'
+            exe 'norm! ^%'
+            let l:up = line('.')
+            exe 'norm! %'
+        endif
+        if l:line[len(l:line) - 1] == '{'
+            exe 'norm! $%'
+            let l:down = line('.')
+            exe 'norm! %'
+        endif
+        try
+            if l:up != 0 && l:down != 0
+                exe 'norm! ' . l:up . 'GV' . l:down . 'Gzf'
+            elseif l:up != 0
+                exe 'norm! V' . l:up . 'Gzf'
+            elseif l:down != 0
+                exe 'norm! V' . l:down . 'Gzf'
+            else
+                exe 'norm! za'
+            endif
+        catch
+            redraw!
+        endtry
+    endf
+]])
+
 -- ---------- 插件 ---------- ---
 -- nvim-tree
 local opts = {silent = true, nowait = true}
