@@ -55,6 +55,8 @@ return require('packer').startup(function(use)
   use "terrortylor/nvim-comment" -- 注释
   use "luochen1990/rainbow" -- 🌈彩虹括号
   use 'voldikss/vim-floaterm' -- 浮动终端
+  use "yianwillis/vimcdoc" -- vim中文文档
+  use "terryma/vim-expand-region" -- 快速选中内容
 
   if packer_bootstrap then
     require('packer').sync()

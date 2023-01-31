@@ -1,3 +1,25 @@
+vim.g.coc_global_extensions = { 
+    'coc-tsserver',
+    'coc-translator',
+    'coc-stylelintplus',
+    'coc-snippets',
+    'coc-sh',
+    'coc-pairs',
+    'coc-marketplace',
+    'coc-lua',
+    'coc-lists',
+    'coc-json',
+    'coc-java',
+    'coc-html-css-support',
+    'coc-html',
+    'coc-highlight',
+    'coc-git',
+    'coc-emmet',
+    'coc-cmake',
+    'coc-actions',
+    'coc-clangd',
+}
+
 ---@diagnostic disable: redefined-local, undefined-global
 -- 一些服务器有备份文件的问题，参见#649
 vim.opt.backup = false

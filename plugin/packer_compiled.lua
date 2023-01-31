@@ -130,6 +130,11 @@ _G.packer_plugins = {
     path = "/home/lxw/.local/share/nvim/site/pack/packer/start/vim-easymotion",
     url = "https://github.com/easymotion/vim-easymotion"
   },
+  ["vim-expand-region"] = {
+    loaded = true,
+    path = "/home/lxw/.local/share/nvim/site/pack/packer/start/vim-expand-region",
+    url = "https://github.com/terryma/vim-expand-region"
+  },
   ["vim-floaterm"] = {
     loaded = true,
     path = "/home/lxw/.local/share/nvim/site/pack/packer/start/vim-floaterm",
@@ -154,6 +159,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/lxw/.local/share/nvim/site/pack/packer/start/vim-tmux-navigator",
     url = "https://github.com/christoomey/vim-tmux-navigator"
+  },
+  vimcdoc = {
+    loaded = true,
+    path = "/home/lxw/.local/share/nvim/site/pack/packer/start/vimcdoc",
+    url = "https://github.com/yianwillis/vimcdoc"
   },
   ["vista.vim"] = {
     loaded = true,
