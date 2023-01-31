@@ -16,6 +16,8 @@ keymap.set("i", "<C-M-h>", "<HOME>")
 keymap.set("i", "<C-M-l>", "<END>")
 
 -- ---------- 视觉模式 ---------- ---
+-- keymap.set("v", "jk", "<ESC>")
+
 -- 单行或多行移动
 keymap.set("v", "M-j", "m '<-2<cr>gv")
 keymap.set("v", "M-k", "m '<-2<cr>gv")
@@ -34,6 +36,10 @@ keymap.set("n", "<leader>q", "<ESC>:q!<CR>")
 -- 单行或多行移动
 keymap.set("n", "<M-j>", ":m .+1<cr>")
 keymap.set("n", "<M-k>", ":m .-2<cr>")
+
+-- 折行移动
+keymap.set("n", "j", "gj", {silent=true})
+keymap.set("n", "k", "gk", {silent=true})
 
 -- 快速移动
 keymap.set("n", "<C-M-j>", "5j")
@@ -60,8 +66,39 @@ keymap.set("n", "<M-l>", ":bnext<CR>")
 keymap.set("n", "<M-h>", ":bprevious<CR>")
 keymap.set("n", "<M-w>", ":bw<CR>")
 
--- 换行wrap
--- keymap.set("n", "<M-z>", "set wrap", {  })
+-- ===Toggle Wrap
+local o = vim.opt
+local map = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
+map("n", "<M-z>", ":lua Toggle_wrap()<CR>", opts)
+local count = 0
+local max_count = 1
+function Enable_wrap()
+  count = count + 1
+  if count > max_count then
+    count = max_count
+  end
+  o.wrap = true
+  o.linebreak = true
+  print "Wrap enabled"
+end
+function Disable_wrap()
+  count = count - 1
+  if count < 0 then
+    count = 0
+  end
+  o.wrap = false
+  o.linebreak = false
+  print "Wrap disabled"
+end
+function Toggle_wrap()
+  -- When the count is 0, we're in the default mode
+  if count == 0 then
+    Enable_wrap()
+  else
+    Disable_wrap()
+  end
+end
 
 -- ---------- 插件 ---------- ---
 -- nvim-tree

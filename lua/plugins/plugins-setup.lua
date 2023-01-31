@@ -51,7 +51,8 @@ return require('packer').startup(function(use)
   use "easymotion/vim-easymotion" -- 光标快速跳转
   use "tpope/vim-surround" -- 包裹
   use "junegunn/vim-easy-align" -- 自动对齐
-  use "preservim/nerdcommenter" -- 自动注释
+  -- use "preservim/nerdcommenter" -- 自动注释
+  use "terrortylor/nvim-comment" -- 注释
   use "luochen1990/rainbow" -- 🌈彩虹括号
   use 'voldikss/vim-floaterm' -- 浮动终端
 

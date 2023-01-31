@@ -1,41 +1,41 @@
 {
-  "colors.enable": true,
-  "translator.toLang": "zh_CN",
-  "translator.engines": [
-    "bing",
-    "google",
-    "youdao",
-    "haici"
-  ],
-  "translator.proxy": "socks://127.0.0.1:7890",
-  "translator.enableHover": false,
-  "translator.window.enableBorder": true,
-  "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/15.0.6/clangd_15.0.6/bin/clangd",
-  "snippets.ultisnips.directories": [
-    "UltiSnips",
-    "$HOME/.local/share/nvim/site/pack/packer/start/vim-snippets/UltiSnips/"
-  ],
-  "suggest.noselect": true,
-  "rainbow_conf": [
-    "guifgs": [
-      "royalblue3",
-      "darkorange3",
-      "seagreen3",
-      "firebrick"
+    "colors.enable": true,
+    "translator.toLang": "zh_CN",
+    "translator.engines": [
+        "bing",
+        "google",
+        "youdao",
+        "haici"
     ],
-    "ctermfgs": [
-      "lightblue",
-      "lightyellow",
-      "lightcyan",
-      "lightmagenta"
+    "translator.proxy": "socks://127.0.0.1:7890",
+    "translator.enableHover": false,
+    "translator.window.enableBorder": true,
+    "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/15.0.6/clangd_15.0.6/bin/clangd",
+    "snippets.ultisnips.directories": [
+        "UltiSnips",
+        "$HOME/.local/share/nvim/site/pack/packer/start/vim-snippets/UltiSnips/"
     ],
-    "operators": "_,_",
-    "parentheses": [
-      "start=/(/ end=/)/ fold", "start=/\[/ end=/\]/ fold",
-      "start=/{/ end=/}/ fold"
-    ],
-      "css": 0,
-      "nerdtree": 0
+    "suggest.noselect": true,
+    "rainbow_conf": [
+        "guifgs": [
+            "royalblue3",
+            "darkorange3",
+            "seagreen3",
+            "firebrick"
+        ],
+        "ctermfgs": [
+            "lightblue",
+            "lightyellow",
+            "lightcyan",
+            "lightmagenta"
+        ],
+        "operators": "_,_",
+        "parentheses": [
+            "start=/(/ end=/)/ fold", "start=/\[/ end=/\]/ fold",
+            "start=/{/ end=/}/ fold"
+        ],
+        "css": 0,
+        "nerdtree": 0
     ]
-  ]
+]
 }
