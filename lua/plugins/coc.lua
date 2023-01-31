@@ -18,6 +18,7 @@ vim.g.coc_global_extensions = {
     'coc-cmake',
     'coc-actions',
     'coc-clangd',
+    'coc-word',
 }
 
 ---@diagnostic disable: redefined-local, undefined-global
