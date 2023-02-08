@@ -27,10 +27,11 @@ return require('packer').startup(function(use)
 
   -- 外观
   use 'folke/tokyonight.nvim' -- 主题
-  use {
-    'nvim-lualine/lualine.nvim', -- 状态栏
-    requires = { 'kyazdani42/nvim-web-devicons', opt = true } -- 状态栏图标
-  }
+  -- use {
+  --   'nvim-lualine/lualine.nvim', -- 状态栏
+  --   requires = { 'kyazdani42/nvim-web-devicons', opt = true } -- 状态栏图标
+  -- }
+  use "yaocccc/nvim-lines.lua" -- 状态栏
 
   use {
     'nvim-tree/nvim-tree.lua',

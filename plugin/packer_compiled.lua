@@ -84,15 +84,15 @@ _G.packer_plugins = {
     path = "/home/lxw/.local/share/nvim/site/pack/packer/start/coc.nvim",
     url = "https://github.com/neoclide/coc.nvim"
   },
-  ["lualine.nvim"] = {
-    loaded = true,
-    path = "/home/lxw/.local/share/nvim/site/pack/packer/start/lualine.nvim",
-    url = "https://github.com/nvim-lualine/lualine.nvim"
-  },
   ["nvim-comment"] = {
     loaded = true,
     path = "/home/lxw/.local/share/nvim/site/pack/packer/start/nvim-comment",
     url = "https://github.com/terrortylor/nvim-comment"
+  },
+  ["nvim-lines.lua"] = {
+    loaded = true,
+    path = "/home/lxw/.local/share/nvim/site/pack/packer/start/nvim-lines.lua",
+    url = "https://github.com/yaocccc/nvim-lines.lua"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -100,10 +100,9 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-tree/nvim-tree.lua"
   },
   ["nvim-web-devicons"] = {
-    loaded = false,
-    needs_bufread = false,
-    path = "/home/lxw/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
-    url = "https://github.com/kyazdani42/nvim-web-devicons"
+    loaded = true,
+    path = "/home/lxw/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
+    url = "https://github.com/nvim-tree/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,

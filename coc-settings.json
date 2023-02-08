@@ -1,4 +1,8 @@
 {
+    "coc.preferences.hoverTarget": "float",
+    "list.source.files.defaultOptions": [
+        "--number-select"
+    ],
     "colors.enable": true,
     "translator.toLang": "zh_CN",
     "translator.engines": [
@@ -7,7 +11,6 @@
         "youdao",
         "haici"
     ],
-    "translator.proxy": "socks://127.0.0.1:7890",
     "translator.enableHover": false,
     "translator.window.enableBorder": true,
     "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/15.0.6/clangd_15.0.6/bin/clangd",
@@ -37,5 +40,4 @@
         "css": 0,
         "nerdtree": 0
     ]
-]
 }

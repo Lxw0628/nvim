@@ -5,7 +5,8 @@ require("core.keymaps")
 
 -- Plugins
 require("plugins.nvim-tree")
-require("plugins.lualine")
+-- require("plugins.lualine")
+require("plugins.nvim-lines")
 require("plugins.coc")
 require("plugins.bufferline")
 require("plugins.vista")

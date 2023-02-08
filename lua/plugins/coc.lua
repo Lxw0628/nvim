@@ -1,4 +1,4 @@
-vim.g.coc_global_extensions = { 
+vim.g.coc_global_extensions = {
     'coc-tsserver',
     'coc-translator',
     'coc-stylelintplus',
@@ -19,6 +19,8 @@ vim.g.coc_global_extensions = {
     'coc-actions',
     'coc-clangd',
     'coc-word',
+    'coc-jedi',
+    'coc-actions',
 }
 
 ---@diagnostic disable: redefined-local, undefined-global
@@ -79,12 +81,14 @@ function _G.show_docs()
         vim.api.nvim_command('h ' .. cw)
     elseif vim.api.nvim_eval('coc#rpc#ready()') then
         vim.fn.CocActionAsync('doHover')
+        -- vim.fn.CocActionAsync('definitionHover')
     else
         vim.api.nvim_command('!' .. vim.o.keywordprg .. ' ' .. cw)
     end
 end
 keyset("n", "K", '<CMD>lua _G.show_docs()<CR>', {silent = true})
 
+-- keyset("n", "<leader>k", ":call CocAction('definitionHover')<CR>", {silent = true})
 
 -- 在 CursorHold 事件中高亮符号及其引用（光标空闲）
 -- Highlight the symbol and its references on a CursorHold event(cursor is idle)
