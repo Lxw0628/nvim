@@ -19,8 +19,8 @@ keymap.set("i", "<C-M-l>", "<END>")
 -- keymap.set("v", "jk", "<ESC>")
 
 -- 单行或多行移动
-keymap.set("v", "M-j", "m '<-2<cr>gv")
-keymap.set("v", "M-k", "m '<-2<cr>gv")
+keymap.set("v", "<M-j>", ":m '>+1<cr>gv", { noremap = true, silent = true })
+keymap.set("v", "<M-k>", ":m '<-2<cr>gv", { noremap = true, silent = true })
 
 -- 快速移动
 keymap.set("n", "<C-M-j>", "5j")
@@ -34,8 +34,8 @@ keymap.set("n", "<leader>w", "<ESC>:w<CR>")
 keymap.set("n", "<leader>q", "<ESC>:q!<CR>")
 
 -- 单行或多行移动
-keymap.set("n", "<M-j>", ":m .+1<cr>")
-keymap.set("n", "<M-k>", ":m .-2<cr>")
+keymap.set("n", "<M-j>", ":m .+1<cr>", { noremap = true, silent = true })
+keymap.set("n", "<M-k>", ":m .-2<cr>", { noremap = true, silent = true })
 
 -- 折行移动
 keymap.set("n", "j", "gj", {silent=true})
