@@ -49,3 +49,35 @@ vim.api.nvim_create_autocmd("BufReadPost", {
     end,
 })
 
+-- 折叠保存
+vim.api.nvim_command([[
+    au FileType * try | silent! loadview | catch | endtry
+    au BufLeave,BufWinLeave * silent! mkview 
+]])
+
+-- 折叠
+-- vim.opt.foldenable = true
+-- vim.opt.foldcolumn = '1'
+-- vim.opt.foldmethod = 'manual'
+-- vim.opt.viewdir = os.getenv('HOME') .. '/.config/nvim/cache/viewdir'
+-- vim.opt.foldtext = 'v:lua.MagicFoldText()'
+-- function MagicFoldText()
+--     local spacetext = ("        "):sub(0, vim.opt.shiftwidth:get())
+--     local line = vim.fn.getline(vim.v.foldstart):gsub("\t", spacetext)
+--     local folded = vim.v.foldend - vim.v.foldstart + 1
+--     local findresult = line:find('%S')
+--     if not findresult then return '+ folded ' .. folded .. ' lines ' end
+--     local empty = findresult - 1
+--     local funcs = {
+--         [0] = function(_) return '' .. line end,
+--         [1] = function(_) return '+' .. line:sub(2) end,
+--         [2] = function(_) return '+ ' .. line:sub(3) end,
+--         [-1] = function(c)
+--             local result = ' ' .. line:sub(c + 1)
+--             local foldednumlen = #tostring(folded)
+--             for _ = 1, c - 2 - foldednumlen do result = '-' .. result end
+--             return '+' .. folded .. result
+--         end,
+--     }
+--     return funcs[empty <= 2 and empty or -1](empty) .. ' folded ' .. folded .. ' lines '
+-- end

@@ -1,9 +1,16 @@
 vim.g.mapleader = " "
 
 local keymap = vim.keymap
+local opts = {silent = true}
 
--- ---------- 插入模式 ---------- ---
+-- ---------- 插入模式 -------------
 keymap.set("i", "jk", "<ESC>")
+
+-- 插入模式下移动光标
+keymap.set("i", "<C-h>", "<LEFT>")
+keymap.set("i", "<C-j>", "<DOWN>")
+keymap.set("i", "<C-k>", "<UP>")
+keymap.set("i", "<C-l>", "<RIGHT>")
 
 -- 单行或多行移动
 keymap.set("i", "<M-j>", "<ESC>:m .+1<CR>i<RIGHT>")
@@ -23,10 +30,10 @@ keymap.set("v", "<M-j>", ":m '>+1<cr>gv", { noremap = true, silent = true })
 keymap.set("v", "<M-k>", ":m '<-2<cr>gv", { noremap = true, silent = true })
 
 -- 快速移动
-keymap.set("n", "<C-M-j>", "5j")
-keymap.set("n", "<C-M-k>", "5k")
-keymap.set("n", "<C-M-h>", "0")
-keymap.set("n", "<C-M-l>", "$")
+keymap.set("v", "<C-M-j>", "5j")
+keymap.set("v", "<C-M-k>", "5k")
+keymap.set("v", "<C-M-h>", "0")
+keymap.set("v", "<C-M-l>", "$")
 
 -- ---------- 正常模式 ---------- ---
 -- 保存关闭
@@ -55,50 +62,26 @@ keymap.set("n", "<C-M-l>", "$")
 keymap.set("n", "<C-d>", "<C-d>zz")
 keymap.set("n", "<C-u>", "<C-u>zz")
 
--- 全选
+-- 全选/选择
 keymap.set("n", "<M-a>", "ggVG")
+keymap.set("n", "<M-f>", "vif")
+keymap.set("n", "<M-[>", "vi[")
+keymap.set("n", "<M-]>", "vi]")
+keymap.set("n", "<M-(>", "vi(")
+keymap.set("n", "<M-)>", "vi)")
+keymap.set("n", "<M-'>", "vi'")
+keymap.set("n", "<M-\">", "vi\"")
 
 -- 取消高亮
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 -- 切换buffer
-keymap.set("n", "<M-l>", ":bnext<CR>")
-keymap.set("n", "<M-h>", ":bprevious<CR>")
-keymap.set("n", "<M-w>", ":bw<CR>")
+keymap.set("n", "<M-l>", ":bnext<CR>", opts)
+keymap.set("n", "<M-h>", ":bprevious<CR>", opts)
+keymap.set("n", "<C-w>", ":bw<CR>", opts)
 
--- ===Toggle Wrap
-local o = vim.opt
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
-map("n", "<M-z>", ":lua Toggle_wrap()<CR>", opts)
-local count = 0
-local max_count = 1
-function Enable_wrap()
-  count = count + 1
-  if count > max_count then
-    count = max_count
-  end
-  o.wrap = true
-  o.linebreak = true
-  print "Wrap enabled"
-end
-function Disable_wrap()
-  count = count - 1
-  if count < 0 then
-    count = 0
-  end
-  o.wrap = false
-  o.linebreak = false
-  print "Wrap disabled"
-end
-function Toggle_wrap()
-  -- When the count is 0, we're in the default mode
-  if count == 0 then
-    Enable_wrap()
-  else
-    Disable_wrap()
-  end
-end
+-- 切换Wrap Alt+z
+keymap.set("n", "<M-z>", "&wrap == 1 ? ':set nowrap<cr>' : ':set wrap<cr>'", { noremap = true, expr = true, silent = true })
 
 -- ===折叠函数
 keymap.set("n", "--", ":call MagicFold()<CR>", { noremap = true, silent = true })
