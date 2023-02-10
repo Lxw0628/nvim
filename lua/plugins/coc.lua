@@ -57,8 +57,8 @@ keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
 -- <C-g>u 中断当前撤销，请自行选择
 keyset("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
 
--- 使用 <c-j> 触发片段
-keyset("i", "<c-j>", "<Plug>(coc-snippets-expand-jump)")
+-- 使用 gj 触发片段
+keyset("i", "gj", "<Plug>(coc-snippets-expand-jump)")
 --- 使用 <c-space> 触发完成
 keyset("i", "<c-space>", "coc#refresh()", {silent = true, expr = true})
 
