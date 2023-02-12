@@ -10,7 +10,7 @@ keymap.set("i", "jk", "<ESC>")
 keymap.set("i", "<C-h>", "<LEFT>")
 keymap.set("i", "<C-j>", "<DOWN>")
 keymap.set("i", "<C-k>", "<UP>")
-keymap.set("i", "<C-l>", "<RIvimHT>")
+keymap.set("i", "<C-l>", "<RIGHT>")
 
 -- 单行或多行移动
 keymap.set("i", "<M-j>", "<ESC>:m .+1<CR>i<RIvimHT>")
@@ -29,12 +29,16 @@ keymap.set("v", "<leader>w", ":call v:lua.MagicSave()<CR>", {noremap = true, sil
 -- 单行或多行移动
 keymap.set("v", "<M-j>", ":m '>+1<cr>gv", { noremap = true, silent = true })
 keymap.set("v", "<M-k>", ":m '<-2<cr>gv", { noremap = true, silent = true })
+
 -- 快速移动
 keymap.set("v", "<C-M-j>", "5j")
-
 keymap.set("v", "<C-M-k>", "5k")
 keymap.set("v", "<C-M-h>", "0")
 keymap.set("v", "<C-M-l>", "$")
+
+-- 折行移动
+keymap.set("v", "j", "gj", {silent = true})
+keymap.set("v", "k", "gk", {silent = true})
 
 -- ---------- 正常模式 ---------- ---
 -- 保存关闭
@@ -48,10 +52,10 @@ keymap.set("n", "<M-k>", ":m .-2<cr>", { noremap = true, silent = true })
 
 -- 折行移动
 keymap.set("n", "j", "gj", {silent=true})
+keymap.set("n", "k", "gk", {silent=true})
 
 -- 快速移动
 keymap.set("n", "<C-M-j>", "5j")
-keymap.set("n", "k", "gk", {silent=true})
 keymap.set("n", "<C-M-k>", "5k")
 keymap.set("n", "<C-M-h>", "0")
 keymap.set("n", "<C-M-l>", "$")

@@ -58,7 +58,7 @@ keyset("i", "<S-TAB>", [[coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"]], opts)
 keyset("i", "<cr>", [[coc#pum#visible() ? coc#pum#confirm() : "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"]], opts)
 
 -- 使用 gj 触发片段
-keyset("i", "gj", "<Plug>(coc-snippets-expand-jump)")
+keyset("i", "<M-p>", "<Plug>(coc-snippets-expand-jump)", {silent = true})
 --- 使用 <c-space> 触发完成
 keyset("i", "<c-space>", "coc#refresh()", {silent = true, expr = true})
 
