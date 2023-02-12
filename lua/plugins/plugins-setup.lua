@@ -58,6 +58,8 @@ return require('packer').startup(function(use)
   use 'voldikss/vim-floaterm' -- 浮动终端
   use "yianwillis/vimcdoc" -- vim中文文档
   use "terryma/vim-expand-region" -- 快速选中内容
+  -- use "iamcco/markdown-preview.nvim" -- markdowm预览
+  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
 
   if packer_bootstrap then
     require('packer').sync()

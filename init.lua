@@ -17,4 +17,5 @@ require("plugins.nvim-comment")
 require("plugins.rainbow")
 require("plugins.vim-floaterm")
 require("plugins.vim-expand-region")
+require("plugins.markdown")
 
