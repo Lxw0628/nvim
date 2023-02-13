@@ -27,11 +27,10 @@ return require('packer').startup(function(use)
 
   -- 外观
   use 'folke/tokyonight.nvim' -- 主题
-  -- use {
-  --   'nvim-lualine/lualine.nvim', -- 状态栏
-  --   requires = { 'kyazdani42/nvim-web-devicons', opt = true } -- 状态栏图标
-  -- }
-  use "yaocccc/nvim-lines.lua" -- 状态栏
+  use {
+    'nvim-lualine/lualine.nvim', -- 状态栏
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true } -- 状态栏图标
+  }
 
   use {
     'nvim-tree/nvim-tree.lua',
@@ -51,8 +50,6 @@ return require('packer').startup(function(use)
   use "liuchengxu/vista.vim" -- 右侧显示方法函数
   use "easymotion/vim-easymotion" -- 光标快速跳转
   use "tpope/vim-surround" -- 包裹
-  use "junegunn/vim-easy-align" -- 自动对齐
-  -- use "preservim/nerdcommenter" -- 自动注释
   use "terrortylor/nvim-comment" -- 注释
   use "luochen1990/rainbow" -- 🌈彩虹括号
   use 'voldikss/vim-floaterm' -- 浮动终端
@@ -60,6 +57,7 @@ return require('packer').startup(function(use)
   use "terryma/vim-expand-region" -- 快速选中内容
   -- use "iamcco/markdown-preview.nvim" -- markdowm预览
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+  use "echasnovski/mini.nvim" -- mini.nvim
 
   if packer_bootstrap then
     require('packer').sync()

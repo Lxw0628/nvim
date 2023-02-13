@@ -194,8 +194,8 @@ keyset("o", "ac", "<Plug>(coc-classobj-a)", opts)
 -- 需要语言服务器的 'textDocument/selectionRange' 支持
 -- Use CTRL-S for selections ranges
 -- Requires 'textDocument/selectionRange' support of language server
-keyset("n", "<C-s>", "<Plug>(coc-range-select)", {silent = true})
-keyset("x", "<C-s>", "<Plug>(coc-range-select)", {silent = true})
+-- keyset("n", "<C-s>", "<Plug>(coc-range-select)", {silent = true})
+-- keyset("x", "<C-s>", "<Plug>(coc-range-select)", {silent = true})
 
 
 -- 添加 `:Format` 命令来格式化当前缓冲区

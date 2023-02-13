@@ -27,4 +27,3 @@ vim.g.coc_global_extensions = {
 
 ## 插件键位说明
 
-

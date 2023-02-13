@@ -13,8 +13,8 @@ keymap.set("i", "<C-k>", "<UP>")
 keymap.set("i", "<C-l>", "<RIGHT>")
 
 -- 单行或多行移动
-keymap.set("i", "<M-j>", "<ESC>:m .+1<CR>i<RIvimHT>")
-keymap.set("i", "<M-k>", "<ESC>:m .-2<CR>i<RIvimHT>")
+-- keymap.set("i", "<M-j>", "<ESC>:m .+1<CR>i<RIvimHT>")
+-- keymap.set("i", "<M-k>", "<ESC>:m .-2<CR>i<RIvimHT>")
 
 -- 快速移动
 keymap.set("i", "<C-M-j>", "<DOWN><DOWN><DOWN><DOWN><DOWN>")
@@ -27,8 +27,8 @@ keymap.set("i", "<C-M-l>", "<END>")
 keymap.set("v", "<leader>w", ":call v:lua.MagicSave()<CR>", {noremap = true, silent = true})
 
 -- 单行或多行移动
-keymap.set("v", "<M-j>", ":m '>+1<cr>gv", { noremap = true, silent = true })
-keymap.set("v", "<M-k>", ":m '<-2<cr>gv", { noremap = true, silent = true })
+-- keymap.set("v", "<M-j>", ":m '>+1<cr>gv", { noremap = true, silent = true })
+-- keymap.set("v", "<M-k>", ":m '<-2<cr>gv", { noremap = true, silent = true })
 
 -- 快速移动
 keymap.set("v", "<C-M-j>", "5j")
@@ -43,7 +43,7 @@ keymap.set("v", "k", "gk", {silent = true})
 -- ---------- 正常模式 ---------- ---
 -- 保存关闭
 -- keymap.set("n", "<leader>w", "<ESC>:w<CR>")
-keymap.set("n", "<leader>w", ":call v:lua.MagicSave()<cr>", {noremap = true, silent = true})
+keymap.set("n", "<C-s>", ":call v:lua.MagicSave()<cr>", {noremap = true, silent = true})
 keymap.set("n", "<leader>q", "<ESC>:q!<CR>")
 
 -- 单行或多行移动
@@ -61,8 +61,8 @@ keymap.set("n", "<C-M-h>", "0")
 keymap.set("n", "<C-M-l>", "$")
 
 -- 窗口
-keymap.set("n", "<M-w>v", "<C-w>v", {silent = true, nowait = true}) -- 水平新增窗口
-keymap.set("n", "<M-w>h", "<C-w>s") -- 垂直新增窗口
+keymap.set("n", "<leader>wh", "<C-w>v", {silent = true, nowait = true}) -- 水平新增窗口
+keymap.set("n", "<leader>wv", "<C-w>s") -- 垂直新增窗口
 
 -- 快速滚动居中
 keymap.set("n", "<C-d>", "<C-d>zz")
@@ -82,8 +82,8 @@ keymap.set("n", "<M-\">", "vi\"")
 keymap.set("n", "<leader>nh", ":nohl<CR>")
 
 -- 切换buffer
-keymap.set("n", "<M-l>", ":bnext<CR>", opts)
-keymap.set("n", "<M-h>", ":bprevious<CR>", opts)
+keymap.set("n", "<S-l>", ":bnext<CR>", opts)
+keymap.set("n", "<S-h>", ":bprevious<CR>", opts)
 keymap.set("n", "<C-w>", ":bw<CR>", opts)
 
 -- 切换Wrap Alt+z

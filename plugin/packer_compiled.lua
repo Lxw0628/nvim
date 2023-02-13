@@ -84,6 +84,11 @@ _G.packer_plugins = {
     path = "/home/lxw/.local/share/nvim/site/pack/packer/start/coc.nvim",
     url = "https://github.com/neoclide/coc.nvim"
   },
+  ["lualine.nvim"] = {
+    loaded = true,
+    path = "/home/lxw/.local/share/nvim/site/pack/packer/start/lualine.nvim",
+    url = "https://github.com/nvim-lualine/lualine.nvim"
+  },
   ["markdown-preview.nvim"] = {
     loaded = false,
     needs_bufread = false,
@@ -91,15 +96,15 @@ _G.packer_plugins = {
     path = "/home/lxw/.local/share/nvim/site/pack/packer/opt/markdown-preview.nvim",
     url = "https://github.com/iamcco/markdown-preview.nvim"
   },
+  ["mini.nvim"] = {
+    loaded = true,
+    path = "/home/lxw/.local/share/nvim/site/pack/packer/start/mini.nvim",
+    url = "https://github.com/echasnovski/mini.nvim"
+  },
   ["nvim-comment"] = {
     loaded = true,
     path = "/home/lxw/.local/share/nvim/site/pack/packer/start/nvim-comment",
     url = "https://github.com/terrortylor/nvim-comment"
-  },
-  ["nvim-lines.lua"] = {
-    loaded = true,
-    path = "/home/lxw/.local/share/nvim/site/pack/packer/start/nvim-lines.lua",
-    url = "https://github.com/yaocccc/nvim-lines.lua"
   },
   ["nvim-tree.lua"] = {
     loaded = true,
@@ -107,9 +112,10 @@ _G.packer_plugins = {
     url = "https://github.com/nvim-tree/nvim-tree.lua"
   },
   ["nvim-web-devicons"] = {
-    loaded = true,
-    path = "/home/lxw/.local/share/nvim/site/pack/packer/start/nvim-web-devicons",
-    url = "https://github.com/nvim-tree/nvim-web-devicons"
+    loaded = false,
+    needs_bufread = false,
+    path = "/home/lxw/.local/share/nvim/site/pack/packer/opt/nvim-web-devicons",
+    url = "https://github.com/kyazdani42/nvim-web-devicons"
   },
   ["packer.nvim"] = {
     loaded = true,
@@ -125,11 +131,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/lxw/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
-  },
-  ["vim-easy-align"] = {
-    loaded = true,
-    path = "/home/lxw/.local/share/nvim/site/pack/packer/start/vim-easy-align",
-    url = "https://github.com/junegunn/vim-easy-align"
   },
   ["vim-easymotion"] = {
     loaded = true,
