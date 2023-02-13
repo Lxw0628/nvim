@@ -69,7 +69,7 @@ keymap.set("n", "<C-d>", "<C-d>zz")
 keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- 全选/选择
-keymap.set("n", "<M-a>", "ggVvim")
+keymap.set("n", "<M-a>", "ggVG")
 keymap.set("n", "<M-f>", "vif")
 keymap.set("n", "<M-]>", "vi]")
 keymap.set("n", "<M-(>", "vi(")
