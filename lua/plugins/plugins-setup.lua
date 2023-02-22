@@ -32,6 +32,7 @@ return require('packer').startup(function(use)
         requires = { 'kyazdani42/nvim-web-devicons', opt = true } -- 状态栏图标
     }
 
+    -- 文件树
     use {
         'nvim-tree/nvim-tree.lua',
         requires = {
@@ -48,6 +49,9 @@ return require('packer').startup(function(use)
         tag = "v<CurrentMajor>.*", -- install jsregexp (optional!:).
         run = "make install_jsregexp"
     })
+
+    -- 
+    use "kdheepak/lazygit.nvim" -- lazygit
 
     use "christoomey/vim-tmux-navigator" -- 用ctl-hjkl来定位窗口
     use "akinsho/bufferline.nvim" -- buffer分割线
