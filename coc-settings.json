@@ -11,8 +11,9 @@
         "youdao",
         "haici"
     ],
-    "translator.enableHover": false,
+    "translator.enableHover": true,
     "translator.window.enableBorder": true,
+    "translator.proxy": "socks://127.0.0.1:7890",
     "clangd.path": "~/.config/coc/extensions/coc-clangd-data/install/15.0.6/clangd_15.0.6/bin/clangd",
     "snippets.ultisnips.directories": [
         "UltiSnips",
@@ -38,6 +39,7 @@
             "start=/{/ end=/}/ fold"
         ],
         "css": 0,
-        "nerdtree": 0
+        "nerdtree": 0,
+        "snippets.ultisnips.pythonPrompt": false
     ]
 }

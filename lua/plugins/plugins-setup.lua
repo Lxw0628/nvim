@@ -45,8 +45,10 @@ return require('packer').startup(function(use)
     use "honza/vim-snippets" -- 代码片段
     use "rafamadriz/friendly-snippets" -- 代码片段
     use({
-        "L3MON4D3/LuaSnip", -- follow latest release.
-        tag = "v<CurrentMajor>.*", -- install jsregexp (optional!:).
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        tag = "v<CurrentMajor>.*",
+        -- install jsregexp (optional!:).
         run = "make install_jsregexp"
     })
 
