@@ -64,6 +64,9 @@ require("mini.jump").setup({
 
 -- === mini.map ===
 require("mini.map").setup()
+local keyset = vim.keymap.set
+local opts = {silent = true, nowait = true}
+keyset("n", "<leader>L", ":lua MiniMap.toggle()<CR>", opts)
 
 -- === mini.misc ===
 require("mini.misc").setup()
