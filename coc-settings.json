@@ -6,10 +6,8 @@
     "colors.enable": true,
     "translator.toLang": "zh_CN",
     "translator.engines": [
-        "bing",
         "google",
         "youdao",
-        "haici"
     ],
     "translator.enableHover": true,
     "translator.window.enableBorder": true,
