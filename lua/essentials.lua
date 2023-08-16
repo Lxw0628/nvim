@@ -56,7 +56,7 @@ opt.backup = false
 opt.updatetime = 50
 -- opt.mouse = "a"
 opt.undofile = true
-opt.undodir = vim.fn.expand('$HOME/.local/share/nvim/undo')
+opt.undodir = vim.fn.expand("$HOME/.local/share/nvim/undo")
 opt.exrc = true
 -- opt.wrap = false
 -- opt.splitright = true
@@ -69,7 +69,7 @@ global.mapleader = " "
 
 -- Key mappings --
 local keymap = vim.keymap
-local opts = {silent = true}
+local opts = { silent = true }
 
 -- ---------- 插入模式 -------------
 keymap.set("i", "jk", "<ESC>")
@@ -92,7 +92,7 @@ keymap.set("i", "<C-M-l>", "<END>")
 
 -- ---------- 视觉模式 ---------- ---
 -- keymap.set("v", "jk", "<ESC>")
-keymap.set("v", "<leader>w", ":call v:lua.MagicSave()<CR>", {noremap = true})
+keymap.set("v", "<leader>w", ":call v:lua.MagicSave()<CR>", { noremap = true })
 
 -- 单行或多行移动
 -- keymap.set("v", "<M-j>", ":m '>+1<cr>gv", { noremap = true, silent = true })
@@ -111,7 +111,7 @@ keymap.set("v", "<C-M-l>", "$")
 -- ---------- 正常模式 ---------- ---
 -- 保存关闭
 -- keymap.set("n", "<leader>w", "<ESC>:w<CR>")
-keymap.set("n", "<C-s>", ":call v:lua.MagicSave()<cr>", {noremap = true, silent = true})
+keymap.set("n", "<C-s>", ":call v:lua.MagicSave()<cr>", { noremap = true, silent = true })
 keymap.set("n", "<leader>q", "<ESC>:q!<CR>")
 
 -- 单行或多行移动
@@ -119,8 +119,8 @@ keymap.set("n", "<M-j>", ":m .+1<cr>", { noremap = true, silent = true })
 keymap.set("n", "<M-k>", ":m .-2<cr>", { noremap = true, silent = true })
 
 -- 折行移动
-keymap.set("n", "j", "gj", {silent=true})
-keymap.set("n", "k", "gk", {silent=true})
+keymap.set("n", "j", "gj", { silent = true })
+keymap.set("n", "k", "gk", { silent = true })
 
 -- 快速移动
 keymap.set("n", "<C-M-j>", "5j")
@@ -129,8 +129,8 @@ keymap.set("n", "<C-M-h>", "0")
 keymap.set("n", "<C-M-l>", "$")
 
 -- 窗口
-keymap.set("n", "<leader>wh", "<C-w>v", { desc = '水平分割窗口' }) -- 水平新增窗口
-keymap.set("n", "<leader>wv", "<C-w>s", { desc = '垂直分割窗口' }) -- 垂直新增窗口
+keymap.set("n", "<leader>wh", "<C-w>v", { desc = "水平分割窗口" }) -- 水平新增窗口
+keymap.set("n", "<leader>wv", "<C-w>s", { desc = "垂直分割窗口" }) -- 垂直新增窗口
 
 -- 快速滚动居中
 keymap.set("n", "<C-d>", "<C-d>zz")
@@ -144,7 +144,7 @@ keymap.set("n", "<M-[>", "vi[")
 keymap.set("n", "<M-(>", "vi(")
 keymap.set("n", "<M-)>", "vi)")
 keymap.set("n", "<M-'>", "vi'")
-keymap.set("n", "<M-\">", "vi\"")
+keymap.set("n", '<M-">', 'vi"')
 
 -- 取消高亮
 keymap.set("n", "<leader>nh", ":nohl<CR>")
@@ -156,28 +156,34 @@ keymap.set("n", "<C-w>", ":bw<CR>", opts)
 
 -- 切换光标居中（打字机模式) =================================================
 local typewriter_enable = false
-keymap.set("n", "<M-c>", "zz<Cmd>call v:lua.Toggle_typewriter()<CR>", {noremap = true, nowait = true})
+keymap.set("n", "<M-c>", "zz<Cmd>call v:lua.Toggle_typewriter()<CR>", { noremap = true, nowait = true })
 function _G.Toggle_typewriter()
-    typewriter_enable = not typewriter_enable
-    if typewriter_enable then
-        keymap.set("n", "j", "gjzz", {silent = true})
-        keymap.set("n", "k", "gkzz", {silent = true})
-        keymap.set('i', '<CR>', '<CR><Esc>zzi', { noremap = true })
-    else
-        keymap.set("n", "j", "gj", {silent = true})
-        keymap.set("n", "k", "gk", {silent = true})
-        keymap.set('i', '<CR>', '<CR>', { noremap = true })
-    end
+	typewriter_enable = not typewriter_enable
+	if typewriter_enable then
+		keymap.set("n", "j", "gjzz", { silent = true })
+		keymap.set("n", "k", "gkzz", { silent = true })
+		keymap.set("i", "<CR>", "<CR><Esc>zzi", { noremap = true })
+	else
+		keymap.set("n", "j", "gj", { silent = true })
+		keymap.set("n", "k", "gk", { silent = true })
+		keymap.set("i", "<CR>", "<CR>", { noremap = true })
+	end
 end
+
 -- ===========================================================================
 
 -- 切换Wrap Alt+z
-keymap.set("n", "<M-z>", "&wrap == 1 ? ':set nowrap<cr>' : ':set wrap<cr>'", { noremap = true, expr = true, silent = true })
+keymap.set(
+	"n",
+	"<M-z>",
+	"&wrap == 1 ? ':set nowrap<cr>' : ':set wrap<cr>'",
+	{ noremap = true, expr = true, silent = true }
+)
 
 -- 折叠保存
 vim.api.nvim_command([[
     au FileType * try | silent! loadview | catch | endtry
-    au BufLeave,BufWinLeave * silent! mkview 
+    au BufLeave,BufWinLeave * silent! mkview
 ]])
 
 -- ===折叠函数
@@ -219,10 +225,20 @@ vim.api.nvim_command([[
 ]])
 
 function MagicSave()
-    if vim.fn.empty(vim.fn.glob(vim.fn.expand('%:p:h'))) then vim.fn.system('mkdir -p ' .. vim.fn.expand('%:p:h')) end
-    if vim.o.buftype == 'acwrite' then
-        vim.fn.execute('w !sudo tee > /dev/null %')
-    else
-        vim.fn.execute('w')
-    end
+	if vim.fn.empty(vim.fn.glob(vim.fn.expand("%:p:h"))) then
+		vim.fn.system("mkdir -p " .. vim.fn.expand("%:p:h"))
+	end
+	if vim.o.buftype == "acwrite" then
+		vim.fn.execute("w !sudo tee > /dev/null %")
+	else
+		vim.fn.execute("w")
+	end
 end
+
+-- vim.cmd([[
+-- let fcitx5state=system("fcitx5-remote")
+-- " 退出插入模式时禁用输入法，并保存状态
+-- autocmd InsertLeave * :silent let fcitx5state=system("fcitx5-remote")[0] | silent !fcitx5-remote -c
+-- " 2 表示之前状态打开了输入法，则进入插入模式时启动输入法
+-- autocmd InsertEnter * :silent if fcitx5state == 2 | call system("fcitx5-remote -o") | endif
+-- ]])

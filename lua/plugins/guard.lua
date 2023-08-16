@@ -11,6 +11,7 @@ return {
         ft("html"):fmt("prettier")
         ft("css,sass,scss,less"):fmt("lsp"):append("prettier")
         ft("javascript,typescript"):fmt("prettier")
+        ft("markdown"):fmt("cbfmt")
 
         require("guard").setup({
             fmt_on_save = false,
