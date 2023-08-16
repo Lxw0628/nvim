@@ -7,10 +7,10 @@ return {
         ft("lua"):fmt("lsp"):append("stylua")
         ft("python"):fmt("black"):append("isort")
         ft("json"):fmt("jq")
-        ft("sh"):fmt("shfmt"):lint("shellcheck")
-        ft("html"):fmt("prettier"):lint("markuplint")
-        ft("css,sass,scss,less"):fmt("lsp"):append("prettier"):lint("stylelint")
-        ft("javascript,typescript"):fmt("prettier"):lint("eslint_d")
+        ft("sh"):fmt("shfmt")
+        ft("html"):fmt("prettier")
+        ft("css,sass,scss,less"):fmt("lsp"):append("prettier")
+        ft("javascript,typescript"):fmt("prettier")
 
         require("guard").setup({
             fmt_on_save = false,
