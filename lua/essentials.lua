@@ -163,10 +163,12 @@ function _G.Toggle_typewriter()
 		keymap.set("n", "j", "gjzz", { silent = true })
 		keymap.set("n", "k", "gkzz", { silent = true })
 		keymap.set("i", "<CR>", "<CR><Esc>zzi", { noremap = true })
+		print("TypeWriter is enable!")
 	else
 		keymap.set("n", "j", "gj", { silent = true })
 		keymap.set("n", "k", "gk", { silent = true })
 		keymap.set("i", "<CR>", "<CR>", { noremap = true })
+		print("TypeWriter is disable!")
 	end
 end
 
@@ -177,7 +179,7 @@ keymap.set(
 	"n",
 	"<M-z>",
 	"&wrap == 1 ? ':set nowrap<cr>' : ':set wrap<cr>'",
-	{ noremap = true, expr = true, silent = true }
+	{ noremap = true, expr = true}
 )
 
 -- 折叠保存
