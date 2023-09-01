@@ -65,7 +65,6 @@ return {
 			nmap("<leader>ca", "<cmd>Lspsaga code_action<CR>", "选择光标处可用的代码操作")
 			nmap("<leader>da", require("telescope.builtin").diagnostics, "错误列表")
 			nmap("gr", require("telescope.builtin").lsp_references, "跳转到引用")
-			-- nmap('gr', vim.lsp.buf.references, '[G]oto [R]eferences')
 			-- nmap("<space>fm", function()
 			--     vim.lsp.buf.format { async = true }
 			-- end, '格式化文件')
