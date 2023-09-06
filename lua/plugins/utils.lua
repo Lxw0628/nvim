@@ -155,7 +155,7 @@ return {
         },
         keys = {
             {
-                "<c-w>p",
+                "<leader>p",
                 function()
                     local window_number = require("window-picker").pick_window()
                     if window_number then

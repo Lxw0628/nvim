@@ -132,6 +132,9 @@ keymap.set("n", "<C-M-l>", "$")
 keymap.set("n", "<leader>wh", "<C-w>v", { desc = "水平分割窗口" }) -- 水平新增窗口
 keymap.set("n", "<leader>wv", "<C-w>s", { desc = "垂直分割窗口" }) -- 垂直新增窗口
 
+keymap.set("n", "<C-w>v", "<Nop>") -- 垂直新增窗口
+keymap.set("n", "<C-w>s", "<Nop>") -- 垂直新增窗口
+
 -- 快速滚动居中
 keymap.set("n", "<C-d>", "<C-d>zz")
 keymap.set("n", "<C-u>", "<C-u>zz")
@@ -152,7 +155,7 @@ keymap.set("n", "<leader>nh", ":nohl<CR>")
 -- 切换buffer
 keymap.set("n", "<S-l>", ":bnext<CR>", opts)
 keymap.set("n", "<S-h>", ":bprevious<CR>", opts)
-keymap.set("n", "<C-w>", ":bw<CR>", opts)
+keymap.set("n", "<C-w>", ":bw<CR>", { silent = true, nowait = true })
 
 -- 切换光标居中（打字机模式) =================================================
 local typewriter_enable = false
