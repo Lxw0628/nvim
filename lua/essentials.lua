@@ -131,6 +131,7 @@ keymap.set("n", "<C-M-l>", "$")
 -- 窗口
 keymap.set("n", "<leader>wh", "<C-w>v", { desc = "水平分割窗口" }) -- 水平新增窗口
 keymap.set("n", "<leader>wv", "<C-w>s", { desc = "垂直分割窗口" }) -- 垂直新增窗口
+keymap.set("n", "<leader>wc", "<C-w>c", { desc = "关闭窗口" }) -- 关闭窗口
 
 keymap.set("n", "<C-w>v", "<Nop>") -- 垂直新增窗口
 keymap.set("n", "<C-w>s", "<Nop>") -- 垂直新增窗口
@@ -242,8 +243,8 @@ end
 
 -- vim.cmd([[
 -- let fcitx5state=system("fcitx5-remote")
+-- " 2 表示之前状态打开了输入法，则进入插入模式时启动输入法
 -- " 退出插入模式时禁用输入法，并保存状态
 -- autocmd InsertLeave * :silent let fcitx5state=system("fcitx5-remote")[0] | silent !fcitx5-remote -c
--- " 2 表示之前状态打开了输入法，则进入插入模式时启动输入法
 -- autocmd InsertEnter * :silent if fcitx5state == 2 | call system("fcitx5-remote -o") | endif
 -- ]])
