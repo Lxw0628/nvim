@@ -4,7 +4,7 @@ local global = vim.g
 
 -- Globol Settings --
 -- 行号
-opt.relativenumber = true
+opt.relativenumber = false
 opt.number = true
 -- 缩进
 opt.tabstop = 4
@@ -32,34 +32,15 @@ opt.termguicolors = true
 opt.signcolumn = "yes"
 
 opt.showmode = false
--- opt.backspace = { "indent", "eol", "start" }
--- opt.tabstop = 4
--- opt.shiftwidth = 4
--- opt.expandtab = true
--- opt.shiftround = true
--- opt.autoindent = true
--- opt.smartindent = true
--- opt.number = true
--- opt.relativenumber = true
 opt.wildmenu = true
--- opt.hlsearch = true
--- opt.ignorecase = true
--- opt.smartcase = true
--- opt.cursorline = true
--- opt.termguicolors = true
--- opt.completeopt = { "menu", "menuone" }
--- opt.signcolumn = "yes"
 opt.autoread = true
 opt.title = true
 opt.swapfile = false
 opt.backup = false
 opt.updatetime = 50
--- opt.mouse = "a"
 opt.undofile = true
 opt.undodir = vim.fn.expand("$HOME/.local/share/nvim/undo")
 opt.exrc = true
--- opt.wrap = false
--- opt.splitright = true
 
 -- Buffer Settings --
 buffer.fileenconding = "utf-8"
