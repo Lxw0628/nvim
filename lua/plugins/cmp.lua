@@ -15,6 +15,7 @@ return {
             },
         },
         "uga-rosa/cmp-dictionary",
+        "lukas-reineke/cmp-under-comparator",
     },
     config = function()
         local has_words_before = function()
@@ -39,8 +40,20 @@ return {
                 { name = "nvim_lsp" },
                 { name = "luasnip" },
                 { name = "buffer" },
-                { name = "dictionary", keyword_length = 2, },
+                { name = "dictionary", keyword_length = 2 },
             }),
+            sorting = {
+                comparators = {
+                    cmp.config.compare.offset,
+                    cmp.config.compare.exact,
+                    cmp.config.compare.score,
+                    require "cmp-under-comparator".under,
+                    cmp.config.compare.kind,
+                    cmp.config.compare.sort_text,
+                    cmp.config.compare.length,
+                    cmp.config.compare.order,
+                },
+            },
             mapping = cmp.mapping.preset.insert({
                 ["<Tab>"] = cmp.mapping(function(fallback)
                     if cmp.visible() then
