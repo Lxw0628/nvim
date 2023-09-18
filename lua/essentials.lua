@@ -30,6 +30,8 @@ opt.smartcase = true
 -- 外观
 opt.termguicolors = true
 opt.signcolumn = "yes"
+-- 屏幕滚动时上下保留5行预览
+opt.scrolloff = 5
 
 opt.showmode = false
 opt.wildmenu = true
