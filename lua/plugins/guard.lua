@@ -14,7 +14,7 @@ return {
 			stdin = true,
 			fname = true,
 		})
-		ft("css,sass,scss,less"):fmt("lsp"):append({
+		ft("css,sass,scss,less"):fmt({
             cmd = "prettier",
 			args = { "--stdin-filepath", "--tab-width", "4" },
 			stdin = true,
