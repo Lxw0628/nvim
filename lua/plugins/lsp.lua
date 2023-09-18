@@ -46,7 +46,7 @@ return {
 			nmap("gd", require("telescope.builtin").lsp_definitions, "跳转到定义")
 			nmap("K", "<cmd>Lspsaga hover_doc<CR>", "悬停文档")
 			nmap("gi", require("telescope.builtin").lsp_implementations, "跳转到实现")
-			nmap("<C-k>", vim.lsp.buf.signature_help, "参数信息")
+			-- nmap("<C-k>", vim.lsp.buf.signature_help, "参数信息")
 			nmap(
 				"<leader>wa",
 				vim.lsp.buf.add_workspace_folder,
