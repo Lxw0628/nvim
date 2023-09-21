@@ -18,7 +18,7 @@ vim.opt.relativenumber = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 -- 命令行数
-vim.opt.cmdheight = 0
+vim.opt.cmdheight = 1
 
 vim.opt.swapfile = false
 vim.opt.backup = false
@@ -77,13 +77,20 @@ lvim.builtin.which_key.mappings["w"] = {
 
 -- 切换wrap
 -- lvim.keys.normal_mode["<M-z>"] = "&wrap == 1 ? ':set nowrap<cr>' : ':set wrap<cr>'"
+lvim.keys.normal_mode["<M-z>"] = function()
+    if vim.opt.wrap:get() then
+        vim.opt.wrap = false
+        print("自动换行已关闭！")
+    else
+        vim.opt.wrap = true
+        print("自动换行已开启！")
+    end
+end
 
 -- === Plugins ===
 -- 关闭插件
 -- lvim.builtin.comment.active = false
 -- 配置
--- 开启nvim-ts-rainbow
-lvim.builtin.treesitter.rainbow.enable = true
 -- trouble
 lvim.builtin.which_key.mappings["t"] = {
     name = "诊断",
@@ -94,6 +101,17 @@ lvim.builtin.which_key.mappings["t"] = {
     l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
     r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
 }
+
+-- autocmd
+
+-- command
+-- 折叠保存
+vim.api.nvim_command([[
+    au FileType * try | silent! loadview | catch | endtry
+    au BufLeave,BufWinLeave * silent! mkview
+]])
+lvim.keys.normal_mode["-"] = "zf"
+
 -- 安装
 lvim.plugins = {
     -- autoclose and autorename html tag
@@ -103,11 +121,6 @@ lvim.plugins = {
         config = function()
             require("nvim-ts-autotag").setup()
         end,
-    },
-    -- rainbow parentheses
-    {
-        "p00f/nvim-ts-rainbow",
-        event = "VeryLazy",
     },
     -- Show current function at the top of the screen when function does not fit in screen
     {
@@ -251,6 +264,7 @@ lvim.plugins = {
                     repeat_jump = "",
                 },
             })
+            require("mini.surround").setup()
         end,
     },
     {
@@ -268,5 +282,9 @@ formatters.setup({
         command = "prettier",
         args = { "--print-width", "100", "--tab-width", "4" },
         filetypes = { "html", "css", "javascript", "json", "markdown", "scss" },
+    },
+    {
+        command = "beautysh",
+        filetypes = { "sh" },
     },
 })
