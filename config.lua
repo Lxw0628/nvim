@@ -112,6 +112,7 @@ vim.api.nvim_command([[
 ]])
 lvim.keys.normal_mode["-"] = "zf"
 
+-- plugins
 -- 安装
 lvim.plugins = {
     -- autoclose and autorename html tag
