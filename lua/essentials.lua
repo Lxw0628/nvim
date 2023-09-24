@@ -145,28 +145,36 @@ keymap.set("n", "<C-w>", ":bw<CR>", { silent = true, nowait = true })
 local typewriter_enable = false
 keymap.set("n", "<M-c>", "zz<Cmd>call v:lua.Toggle_typewriter()<CR>", { noremap = true, nowait = true })
 function _G.Toggle_typewriter()
-	typewriter_enable = not typewriter_enable
-	if typewriter_enable then
-		keymap.set("n", "j", "gjzz", { silent = true })
-		keymap.set("n", "k", "gkzz", { silent = true })
-		keymap.set("i", "<CR>", "<CR><Esc>zzi", { noremap = true })
-		print("TypeWriter is enable!")
-	else
-		keymap.set("n", "j", "gj", { silent = true })
-		keymap.set("n", "k", "gk", { silent = true })
-		keymap.set("i", "<CR>", "<CR>", { noremap = true })
-		print("TypeWriter is disable!")
-	end
+    typewriter_enable = not typewriter_enable
+    if typewriter_enable then
+        keymap.set("n", "j", "gjzz", { silent = true })
+        keymap.set("n", "k", "gkzz", { silent = true })
+        keymap.set("i", "<CR>", "<CR><Esc>zzi", { noremap = true })
+        print("TypeWriter is enable!")
+    else
+        keymap.set("n", "j", "gj", { silent = true })
+        keymap.set("n", "k", "gk", { silent = true })
+        keymap.set("i", "<CR>", "<CR>", { noremap = true })
+        print("TypeWriter is disable!")
+    end
 end
 
 -- ===========================================================================
 
 -- 切换Wrap Alt+z
 keymap.set(
-	"n",
-	"<M-z>",
-	"&wrap == 1 ? ':set nowrap<cr>' : ':set wrap<cr>'",
-	{ noremap = true, expr = true}
+    "n",
+    "<M-z>",
+    function()
+        if vim.opt.wrap:get() then
+            vim.opt.wrap = false
+            print("自动换行已关闭！")
+        else
+            vim.opt.wrap = true
+            print("自动换行已开启！")
+        end
+    end,
+    { noremap = true, expr = true }
 )
 
 -- 折叠保存
@@ -214,14 +222,14 @@ vim.api.nvim_command([[
 ]])
 
 function MagicSave()
-	if vim.fn.empty(vim.fn.glob(vim.fn.expand("%:p:h"))) then
-		vim.fn.system("mkdir -p " .. vim.fn.expand("%:p:h"))
-	end
-	if vim.o.buftype == "acwrite" then
-		vim.fn.execute("w !sudo tee > /dev/null %")
-	else
-		vim.fn.execute("w")
-	end
+    if vim.fn.empty(vim.fn.glob(vim.fn.expand("%:p:h"))) then
+        vim.fn.system("mkdir -p " .. vim.fn.expand("%:p:h"))
+    end
+    if vim.o.buftype == "acwrite" then
+        vim.fn.execute("w !sudo tee > /dev/null %")
+    else
+        vim.fn.execute("w")
+    end
 end
 
 -- vim.cmd([[
