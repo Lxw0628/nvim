@@ -3,23 +3,21 @@
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
 
--- lvim.transparent_window = true
-
--- === opt ===
+-- TODO: opts ==================================================
 -- 缩进
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.autoindent = true
 -- 行号
-vim.opt.number = true
-vim.opt.relativenumber = true
+-- <leader>ul 切换显示
+-- vim.opt.number = true
+-- vim.opt.relativenumber = true
 -- 搜索
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 -- 命令行数
-vim.opt.cmdheight = 1
-
+-- vim.opt.cmdheight = 1
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.updatetime = 50
@@ -27,46 +25,40 @@ vim.opt.undofile = true
 vim.opt.undodir = vim.fn.expand("$HOME/.local/share/nvim/undo")
 vim.opt.exrc = true
 
+-- TODO: keymaps ==================================================
 -- === 键盘映射 ===
+--
 -- 插入模式快捷esc
 lvim.keys.insert_mode["jk"] = "<ESC>"
-
 -- 删除<Space>w 保存，修改为<C-s>
-lvim.builtin.which_key.mappings['w'] = {}
+lvim.builtin.which_key.mappings["w"] = {}
 lvim.keys.normal_mode["<C-s>"] = "<cmd>w<CR>"
-
 -- 删除<Space>c 关闭buffer，修改为<C-w>
 lvim.builtin.which_key.mappings["c"] = {}
 lvim.keys.normal_mode["<C-w>"] = "<cmd>bd<CR>"
-
 -- 快速移动
 lvim.keys.normal_mode["<C-M-h>"] = "0"
 lvim.keys.normal_mode["<C-M-j>"] = "5j"
 lvim.keys.normal_mode["<C-M-k>"] = "5k"
 lvim.keys.normal_mode["<C-M-l>"] = "$"
-
 -- 快速移动
 lvim.keys.insert_mode["<C-M-h>"] = "<HOME>"
 lvim.keys.insert_mode["<C-M-j>"] = "<DOWN><DOWN><DOWN><DOWN><DOWN>"
 lvim.keys.insert_mode["<C-M-k>"] = "<UP><UP><UP><UP><UP>"
 lvim.keys.insert_mode["<C-M-l>"] = "<END>"
-
 -- 快速移动
 lvim.keys.visual_mode["<C-M-h>"] = "0"
 lvim.keys.visual_mode["<C-M-j>"] = "5j"
 lvim.keys.visual_mode["<C-M-k>"] = "5k"
 lvim.keys.visual_mode["<C-M-l>"] = "$"
-
--- 插入模式下移动光标
 lvim.keys.insert_mode["<C-h>"] = "<LEFT>"
+-- 插入模式下移动光标
 lvim.keys.insert_mode["<C-j>"] = "<DOWN>"
 lvim.keys.insert_mode["<C-k>"] = "<UP>"
 lvim.keys.insert_mode["<C-l>"] = "<RIGHT>"
-
 -- 切换buffer
 lvim.keys.normal_mode["H"] = "<cmd>bprevious<CR>"
 lvim.keys.normal_mode["L"] = "<cmd>bnext<CR>"
-
 -- 分割窗口
 lvim.builtin.which_key.mappings["w"] = {
     name = "分割窗口",
@@ -74,22 +66,85 @@ lvim.builtin.which_key.mappings["w"] = {
     v = { "<C-w>s", "垂直分割窗口" },
     c = { "<C-w>c", "关闭选中分割窗口" },
 }
+lvim.builtin.which_key.mappings["u"] = {
+    name = "UI相关",
+    l = { function()
+        if vim.opt.number:get() or vim.opt.relativenumber:get() then
+            vim.opt.number = false
+            vim.opt.relativenumber = false
+        else
+            vim.opt.number = true
+            vim.opt.relativenumber = true
+        end
+    end, "切换显示行数" },
+    h = { function()
+        if vim.lsp.inlay_hint then
+            vim.keymap.set("n", "<leader>uh", function() vim.lsp.inlay_hint(0, nil) end, { desc = "切换显示参数类型" })
+        end
+    end, "切换显示参数类型" },
+    i = { function()
+        if vim.fn.has("nvim-0.9.0") == 1 then
+            vim.keymap.set("n", "<leader>ui", vim.show_pos, { desc = "高亮光标下" })
+        end
+    end, "高亮光标下" },
+    n = { function()
+        require("notify").dismiss({ silent = true, pending = true })
+    end, "清除所有通知"
+    },
+    d = { function()
+        if vim.diagnostic.is_disabled() then
+            vim.diagnostic.enable()
+            print("诊断已启动！")
+        else
+            vim.diagnostic.disable()
+            print("诊断已关闭！")
+        end
+    end, "切换开关诊断"
+    },
+    f = { function()
+        if lvim.format_on_save.enabled then
+            lvim.format_on_save.enabled = false
+            print("自动格式化已关闭!")
+        else
+            lvim.format_on_save.enabled = true
+            print("自动格式化已启动!")
+        end
+    end, "切换保存格式化"
+    },
+}
 
 -- 切换wrap
--- lvim.keys.normal_mode["<M-z>"] = "&wrap == 1 ? ':set nowrap<cr>' : ':set wrap<cr>'"
 lvim.keys.normal_mode["<M-z>"] = function()
     if vim.opt.wrap:get() then
         vim.opt.wrap = false
-        print("自动换行已关闭！")
+        print("自动换行已关闭!")
     else
         vim.opt.wrap = true
-        print("自动换行已开启！")
+        print("自动换行已开启!")
+    end
+end
+-- 折叠
+-- vim.keymap.set("n", "--", "zf")
+-- TypeWriter mode
+local typewriter_enable = false
+vim.keymap.set("n", "<M-c>", "zz<Cmd>call v:lua.Toggle_typewriter()<CR>", { noremap = true, nowait = true })
+function _G.Toggle_typewriter()
+    typewriter_enable = not typewriter_enable
+    if typewriter_enable then
+        vim.keymap.set("n", "j", "gjzz", { silent = true })
+        vim.keymap.set("n", "k", "gkzz", { silent = true })
+        vim.keymap.set("i", "<CR>", "<CR><Esc>zzi", { noremap = true })
+        print("TypeWriter is enable!")
+    else
+        vim.keymap.set("n", "j", "gj", { silent = true })
+        vim.keymap.set("n", "k", "gk", { silent = true })
+        vim.keymap.set("i", "<CR>", "<CR>", { noremap = true })
+        print("TypeWriter is disable!")
     end
 end
 
--- === Plugins ===
--- 关闭插件
--- lvim.builtin.comment.active = false
+-- TODO: 修改plugins ==================================================
+-- 插件开关
 -- 配置
 -- trouble
 lvim.builtin.which_key.mappings["t"] = {
@@ -102,16 +157,56 @@ lvim.builtin.which_key.mappings["t"] = {
     r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
 }
 
--- autocmd
-
--- command
+-- TODO: autocmd ==================================================
 -- 折叠保存
 vim.api.nvim_command([[
     au FileType * try | silent! loadview | catch | endtry
     au BufLeave,BufWinLeave * silent! mkview
 ]])
 lvim.keys.normal_mode["-"] = "zf"
+lvim.autocommands = {
+    {
+        { "ColorScheme" },
+        {
+            pattern = "*",
+            callback = function()
+                vim.api.nvim_set_hl(0, "TreesitterContextBottom", { underline = true, bold = true })
+            end,
+        },
+    },
+    {
+        {"BufEnter"},
+        {
+            pattern = "*",
+            callback = function ()
+                vim.opt.number = true
+                vim.opt.relativenumber = true
+                vim.opt.cmdheight = 0
+            end
+        },
+    },
+    {
+        { "CmdlineEnter" },
+        {
+            pattern = "*",
+            callback = function ()
+                vim.opt.cmdheight = 1
+            end
+        },
+    },
+    {
+        { "CmdlineLeave" },
+        {
+            pattern = "*",
+            callback = function ()
+                vim.opt.cmdheight = 0
+            end
+        },
+    },
+}
 
+
+-- TODO: 安装plugins ==================================================
 -- plugins
 -- 安装
 lvim.plugins = {
@@ -125,10 +220,10 @@ lvim.plugins = {
     },
     -- Show current function at the top of the screen when function does not fit in screen
     {
-        "romgrk/nvim-treesitter-context",
+        "nvim-treesitter/nvim-treesitter-context",
         event = "VeryLazy",
         config = function()
-            require("treesitter-context").setup {
+            require("treesitter-context").setup({
                 enable = true,   -- Enable this plugin (Can be enabled/disabled later via commands)
                 throttle = true, -- Throttles plugin updates (may improve performance)
                 max_lines = 0,   -- How many lines the window should span. Values <= 0 mean no limit.
@@ -138,13 +233,13 @@ lvim.plugins = {
                     -- By setting the 'default' entry below, you can control which nodes you want to
                     -- appear in the context window.
                     default = {
-                        'class',
-                        'function',
-                        'method',
+                        "class",
+                        "function",
+                        "method",
                     },
                 },
-            }
-        end
+            })
+        end,
     },
     -- ranger file explorer window
     {
@@ -170,14 +265,16 @@ lvim.plugins = {
     {
         "ray-x/lsp_signature.nvim",
         event = "BufRead",
-        config = function() require "lsp_signature".on_attach() end,
+        config = function()
+            require("lsp_signature").on_attach()
+        end,
     },
     {
         "simrat39/symbols-outline.nvim",
         event = "VeryLazy",
         config = function()
-            require('symbols-outline').setup()
-        end
+            require("symbols-outline").setup()
+        end,
     },
     {
         "folke/trouble.nvim",
@@ -189,7 +286,7 @@ lvim.plugins = {
     {
         "npxbr/glow.nvim",
         event = "VeryLazy",
-        ft = { "markdown" }
+        ft = { "markdown" },
         -- build = "yay -S glow"
     },
     {
@@ -213,10 +310,19 @@ lvim.plugins = {
         "karb94/neoscroll.nvim",
         event = "WinScrolled",
         config = function()
-            require('neoscroll').setup({
+            require("neoscroll").setup({
                 -- All these keys will be mapped to their corresponding default scrolling animation
-                mappings = { '<C-u>', '<C-d>', '<C-b>', '<C-f>',
-                    '<C-y>', '<C-e>', 'zt', 'zz', 'zb' },
+                mappings = {
+                    "<C-u>",
+                    "<C-d>",
+                    "<C-b>",
+                    "<C-f>",
+                    "<C-y>",
+                    "<C-e>",
+                    "zt",
+                    "zz",
+                    "zb",
+                },
                 hide_cursor = true,          -- Hide cursor while scrolling
                 stop_eof = true,             -- Stop at <EOF> when scrolling downwards
                 use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
@@ -226,11 +332,12 @@ lvim.plugins = {
                 pre_hook = nil,              -- Function to run before the scrolling animation starts
                 post_hook = nil,             -- Function to run after the scrolling animation ends
             })
-        end
+        end,
     },
     {
         "folke/todo-comments.nvim",
-        event = "BufRead",
+        cmd = { "TodoTrouble", "TodoTelescope" },
+        event = { "BufReadPost", "BufNewFile" },
         config = function()
             require("todo-comments").setup()
         end,
@@ -256,7 +363,7 @@ lvim.plugins = {
                 mappings = {
                     comment = "<leader>/",
                     comment_line = "<leader>/",
-                    textobject = "",
+                    textobject = "<leader>/",
                 },
             })
             require("mini.cursorword").setup()
@@ -274,9 +381,50 @@ lvim.plugins = {
         cmd = { "Bracey", "BracyStop", "BraceyReload", "BraceyEval" },
         build = "npm install --prefix server",
     },
+    {
+        "folke/noice.nvim",
+        enabled = false,
+        opts = {
+            event = "VeryLazy",
+            -- add any options here
+        },
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            -- "rcarriga/nvim-notify",
+        },
+        config = function()
+            require("noice").setup({
+                lsp = {
+                    progress = {
+                        enabled = false,
+                    },
+                    -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+                    override = {
+                        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+                        ["vim.lsp.util.stylize_markdown"] = true,
+                        ["cmp.entry.get_documentation"] = true,
+                    },
+                    hover = {
+                        enabled = false,
+                    },
+                    signature = {
+                        enabled = false,
+                    },
+                },
+                -- you can enable a preset for easier configuration
+                presets = {
+                    bottom_search = true,         -- use a classic bottom cmdline for search
+                    command_palette = true,       -- position the cmdline and popupmenu together
+                    long_message_to_split = true, -- long messages will be sent to a split
+                    inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+                    lsp_doc_border = false,       -- add a border to hover docs and signature help
+                },
+            })
+        end
+    },
 }
 
--- lspSettings
+-- TODO: lspSettings ==================================================
 local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup({
     {
