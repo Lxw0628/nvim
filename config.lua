@@ -170,15 +170,15 @@ lvim.autocommands = {
         {
             pattern = "*",
             callback = function()
-                vim.api.nvim_set_hl(0, "TreesitterContextBottom", { underline = true, bold = true })
+                vim.api.nvim_set_hl(0, "TreesitterContextBottom", { bg = "#292e42", bold = true })
             end,
         },
     },
     {
-        {"BufEnter"},
+        { "BufEnter" },
         {
             pattern = "*",
-            callback = function ()
+            callback = function()
                 vim.opt.number = true
                 vim.opt.relativenumber = true
                 vim.opt.cmdheight = 0
@@ -189,7 +189,7 @@ lvim.autocommands = {
         { "CmdlineEnter" },
         {
             pattern = "*",
-            callback = function ()
+            callback = function()
                 vim.opt.cmdheight = 1
             end
         },
@@ -198,7 +198,7 @@ lvim.autocommands = {
         { "CmdlineLeave" },
         {
             pattern = "*",
-            callback = function ()
+            callback = function()
                 vim.opt.cmdheight = 0
             end
         },
