@@ -27,11 +27,14 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
-    init = function()
-      local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      keys[#keys + 1] = { "<c-k>", false }
-    end,
     opts = {
+      diagnostics = {
+        update_in_insert = false,
+
+      },
+      servers = {
+
+      },
       setup = {
         clangd = function(_, opts)
           opts.capabilities.offsetEncoding = { "utf-16" }
@@ -195,5 +198,16 @@ return {
       },
     },
   },
-  {},
+  {
+    "folke/edgy.nvim",
+    opts = {
+        right = {
+          {
+            ft = "Outline",
+            pinned = true,
+            open = "SymbolsOutlineOpen",
+          },
+        },
+      },
+    },
 }

@@ -118,7 +118,7 @@ map("n", "<leader>ud", Util.toggle_diagnostics, { desc = "切换诊断" })
 local conceallevel = vim.o.conceallevel > 0 and vim.o.conceallevel or 3
 map("n", "<leader>uc", function() Util.toggle("conceallevel", false, {0, conceallevel}) end, { desc = "切换隐藏字符" })
 if vim.lsp.inlay_hint then
-  map("n", "<leader>uh", function() vim.lsp.inlay_hint(0, nil) end, { desc = "切换显示参数类型" })
+map("n", "<leader>uh", function() vim.lsp.inlay_hint(0, nil) end, { desc = "切换显示参数类型" })
 end
 
 -- lazygit
@@ -201,8 +201,8 @@ vim.keymap.set("v", "<C-M-k>", "5k")
 vim.keymap.set("v", "<C-M-l>", "$")
 -- move cursor in insert mode
 vim.keymap.set("i", "<C-h>", "<LEFT>")
-vim.keymap.set("i", "<C-j>", "<DOWN>")
 vim.keymap.set("i", "<C-k>", "<UP>")
+vim.keymap.set("i", "<C-j>", "<DOWN>")
 vim.keymap.set("i", "<C-l>", "<RIGHT>")
 -- 折叠
 -- vim.keymap.set("n", "--", "zf")

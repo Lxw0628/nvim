@@ -12,4 +12,5 @@ return {
       table.insert(opts.sources, nls.builtins.formatting.prettierd)
     end,
   },
+
 }
