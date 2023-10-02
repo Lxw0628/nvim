@@ -1,3 +1,5 @@
 vim.loader.enable()
-require("essentials")
-require("lazy_nvim")
+require("basic.options")
+require("basic.keymaps")
+require("basic.autocmd")
+require("basic.lazy_nvim")
