@@ -94,20 +94,20 @@ lvim.builtin.which_key.mappings["u"] = {
     d = { function()
         if vim.diagnostic.is_disabled() then
             vim.diagnostic.enable()
-            print("诊断已启动！")
+            -- print("诊断已启动！")
         else
             vim.diagnostic.disable()
-            print("诊断已关闭！")
+            -- print("诊断已关闭！")
         end
     end, "切换开关诊断"
     },
     f = { function()
         if lvim.format_on_save.enabled then
             lvim.format_on_save.enabled = false
-            print("自动格式化已关闭!")
+            -- print("自动格式化已关闭!")
         else
             lvim.format_on_save.enabled = true
-            print("自动格式化已启动!")
+            -- print("自动格式化已启动!")
         end
     end, "切换保存格式化"
     },
@@ -117,10 +117,10 @@ lvim.builtin.which_key.mappings["u"] = {
 lvim.keys.normal_mode["<M-z>"] = function()
     if vim.opt.wrap:get() then
         vim.opt.wrap = false
-        print("自动换行已关闭!")
+        -- print("自动换行已关闭!")
     else
         vim.opt.wrap = true
-        print("自动换行已开启!")
+        -- print("自动换行已开启!")
     end
 end
 -- 折叠
@@ -134,12 +134,12 @@ function _G.Toggle_typewriter()
         vim.keymap.set("n", "j", "gjzz", { silent = true })
         vim.keymap.set("n", "k", "gkzz", { silent = true })
         vim.keymap.set("i", "<CR>", "<CR><Esc>zzi", { noremap = true })
-        print("TypeWriter is enable!")
+        -- print("TypeWriter is enable!")
     else
         vim.keymap.set("n", "j", "gj", { silent = true })
         vim.keymap.set("n", "k", "gk", { silent = true })
         vim.keymap.set("i", "<CR>", "<CR>", { noremap = true })
-        print("TypeWriter is disable!")
+        -- print("TypeWriter is disable!")
     end
 end
 
@@ -422,6 +422,10 @@ lvim.plugins = {
             })
         end
     },
+    -- {
+    --     "neoclide/coc.nvim",
+    --     build = "npm ci",
+    -- },
 }
 
 -- TODO: lspSettings ==================================================
