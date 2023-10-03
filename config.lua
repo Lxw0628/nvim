@@ -111,7 +111,6 @@ lvim.builtin.which_key.mappings["u"] = {
     end, "切换保存格式化"
     },
 }
-
 -- 切换wrap
 lvim.keys.normal_mode["<M-z>"] = function()
     if vim.opt.wrap:get() then
@@ -204,7 +203,6 @@ lvim.autocommands = {
     },
 }
 
-
 -- TODO: 安装plugins ==================================================
 -- plugins
 -- 安装
@@ -212,6 +210,7 @@ lvim.plugins = {
     -- autoclose and autorename html tag
     {
         "windwp/nvim-ts-autotag",
+        -- enabled = false,
         event = "VeryLazy",
         config = function()
             require("nvim-ts-autotag").setup()
@@ -341,7 +340,10 @@ lvim.plugins = {
             require("todo-comments").setup()
         end,
     },
-    { "tpope/vim-repeat" },
+    {
+        "tpope/vim-repeat",
+        enabled = false,
+    },
     {
         "echasnovski/mini.nvim",
         event = "VeryLazy",
@@ -424,26 +426,6 @@ lvim.plugins = {
             })
         end
     },
-    {   -- for not lsp plugins
-        "neoclide/coc.nvim",
-        enabled = false,
-        event = { "InsertEnter", "CmdLineEnter", "CursorHold" },
-        branch = "release",
-        init = function() -- before loaded.
-            vim.g.coc_global_extensions = {
-                "coc-marketplace",
-                "coc-emmet",
-                "coc-highlight",
-                "coc-pairs",
-                "coc-snippets",
-                "coc-yank",
-                -- "coc-git",
-            }
-        end,
-        config = function() -- after loaded.
-
-        end
-    },
 }
 
 -- TODO: lspSettings ==================================================
@@ -463,13 +445,14 @@ formatters.setup({
 require("lspconfig")["emmet_ls"].setup({
     -- on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
+    filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug",
+        "typescriptreact", "vue" },
     init_options = {
-      html = {
-        options = {
-          -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
-          ["bem.enabled"] = true,
+        html = {
+            options = {
+                -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+                ["bem.enabled"] = true,
+            },
         },
-      },
     }
 })
