@@ -1,5 +1,5 @@
-vim.loader.enable()
-require("basic.options")
-require("basic.keymaps")
-require("basic.autocmd")
-require("basic.lazy_nvim")
+require("opts")
+require("keymaps")
+require("autocmds")
+require("Lazy")
+
