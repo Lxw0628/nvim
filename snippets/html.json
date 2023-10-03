@@ -1,7 +1,0 @@
-{
-  "!": {
-    "prefix": "!",
-    "body": [""],
-    "description": "生成html模板"
-  }
-}

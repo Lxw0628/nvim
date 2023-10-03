@@ -9,8 +9,7 @@ vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 vim.opt.autoindent = true
--- 行号
--- <leader>ul 切换显示
+-- 行号 <leader>ul 切换显示
 -- vim.opt.number = true
 -- vim.opt.relativenumber = true
 -- 搜索
@@ -380,6 +379,9 @@ lvim.plugins = {
         event = "VeryLazy",
         cmd = { "Bracey", "BracyStop", "BraceyReload", "BraceyEval" },
         build = "npm install --prefix server",
+        config = function()
+            vim.g.bracey_refresh_on_save = 1
+        end
     },
     {
         "folke/noice.nvim",
@@ -422,10 +424,26 @@ lvim.plugins = {
             })
         end
     },
-    -- {
-    --     "neoclide/coc.nvim",
-    --     build = "npm ci",
-    -- },
+    {   -- for not lsp plugins
+        "neoclide/coc.nvim",
+        enabled = false,
+        event = { "InsertEnter", "CmdLineEnter", "CursorHold" },
+        branch = "release",
+        init = function() -- before loaded.
+            vim.g.coc_global_extensions = {
+                "coc-marketplace",
+                "coc-emmet",
+                "coc-highlight",
+                "coc-pairs",
+                "coc-snippets",
+                "coc-yank",
+                -- "coc-git",
+            }
+        end,
+        config = function() -- after loaded.
+
+        end
+    },
 }
 
 -- TODO: lspSettings ==================================================
@@ -440,4 +458,18 @@ formatters.setup({
         command = "beautysh",
         filetypes = { "sh" },
     },
+})
+-- 增加 emmet lsp
+require("lspconfig")["emmet_ls"].setup({
+    -- on_attach = on_attach,
+    capabilities = capabilities,
+    filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
+    init_options = {
+      html = {
+        options = {
+          -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
+          ["bem.enabled"] = true,
+        },
+      },
+    }
 })
