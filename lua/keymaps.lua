@@ -38,7 +38,7 @@ vim.keymap.set("n", "<C-w>s", "<Nop>", opts)
 -- buffer操作
 vim.keymap.set("n", "<S-l>", ":bnext<CR>", opts)
 vim.keymap.set("n", "<S-h>", ":bprevious<CR>", opts)
-vim.keymap.set("n", "<C-w>", ":bw<CR>", opts)
+vim.keymap.set("n", "<C-w>", ":bd<CR>", opts)
 -- 保存关闭
 vim.keymap.set("n", "<C-s>", ":w<cr>", opts)
 vim.keymap.set("n", "<leader>q", "<ESC>:q!<CR>", opts)
