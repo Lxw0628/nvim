@@ -23,6 +23,7 @@ vim.opt.updatetime = 50
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.expand("$HOME/.local/share/nvim/undo")
 vim.opt.exrc = true
+vim.opt.whichwrap = {}
 
 -- TODO: keymaps ==================================================
 -- === 键盘映射 ===
@@ -445,8 +446,9 @@ formatters.setup({
 require("lspconfig")["emmet_ls"].setup({
     -- on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug",
-        "typescriptreact", "vue" },
+    -- filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
+    filetypes = { "css", "eruby", "html", "less", "sass", "scss", "svelte", "pug",
+        "vue" },
     init_options = {
         html = {
             options = {
