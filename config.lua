@@ -111,6 +111,10 @@ lvim.builtin.which_key.mappings["u"] = {
         end
     end, "切换保存格式化"
     },
+    p = { function()
+        require("peepsight").toggle()
+    end, "切换专注函数"
+    },
 }
 -- 切换wrap
 lvim.keys.normal_mode["<M-z>"] = function()
@@ -457,6 +461,23 @@ lvim.plugins = {
             vim.keymap.set("v", "m", "<Plug>TranslateWV")
         end
     },
+    {
+        "koenverburg/peepsight.nvim",
+        config = function()
+            require('peepsight').setup({
+                -- go
+                "function_declaration",
+                "method_declaration",
+                "func_literal",
+                -- typescript
+                "class_declaration",
+                "method_definition",
+                "arrow_function",
+                "function_declaration",
+                "generator_function_declaration"
+            })
+        end
+    }
 }
 
 -- TODO: lspSettings ==================================================
@@ -465,27 +486,27 @@ formatters.setup({
     {
         command = "prettier",
         args = { "--print-width", "100", "--tab-width", "4" },
-        filetypes = { "html", "css", "json", "markdown", "scss" },
+        -- filetypes = { "html", "css", "javascript", "json", "markdown", "scss" },
     },
     {
         command = "beautysh",
         filetypes = { "sh" },
     },
-    {
-        command = "eslint",
-        filetypes = { "javascript", "vue" }
-    }
+    -- {
+    --     command = "eslint",
+    --     filetypes = { "javascript" }
+    -- }
 })
 local linters = require("lvim.lsp.null-ls.linters")
 linters.setup({
-    {
-        command = "eslint",
-        filetypes = { "javascript", "vue" }
-    },
+    -- {
+    --     command = "eslint",
+    --     filetypes = { "javascript", "vue" }
+    -- },
 })
 local code_actions = require("lvim.lsp.null-ls.code_actions")
 code_actions.setup({
-    { command = "eslint" }
+    -- { command = "eslint" }
 })
 -- 增加 emmet lsp
 require("lspconfig")["emmet_ls"].setup({
