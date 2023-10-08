@@ -1,0 +1,22 @@
+{
+    "default Vue": {
+        "prefix": "vue",
+        "body": [
+"<template>
+  $1
+</template>
+
+<script>
+  export default {
+    $2
+  }
+</script>
+
+<style>
+  $3
+</style>"
+        ],
+        "description": "default Vue",
+        "scope": "vue"
+    }
+}

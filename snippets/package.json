@@ -7,8 +7,8 @@
   "contributes": {
     "snippets": [
       {
-        "language": "html",
-        "path": "./html.json"
+        "language": "vue",
+        "path": "./vue.json"
       }
     ]
   }

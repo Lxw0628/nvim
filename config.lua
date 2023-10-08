@@ -457,12 +457,16 @@ formatters.setup({
     {
         command = "prettier",
         args = { "--print-width", "100", "--tab-width", "4" },
-        filetypes = { "html", "css", "javascript", "json", "markdown", "scss" },
+        filetypes = { "html", "css", "json", "markdown", "scss" },
     },
     {
         command = "beautysh",
         filetypes = { "sh" },
     },
+    {
+        command = "standardjs",
+        filetypes = { "javascript" }
+    }
 })
 -- 增加 emmet lsp
 require("lspconfig")["emmet_ls"].setup({
