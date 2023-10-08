@@ -174,7 +174,7 @@ lvim.autocommands = {
         },
     },
     {
-        { "BufEnter" },
+        { "BufAdd" },
         {
             pattern = "*",
             callback = function()
