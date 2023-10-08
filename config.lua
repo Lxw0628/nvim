@@ -23,7 +23,7 @@ vim.opt.updatetime = 50
 vim.opt.undofile = true
 vim.opt.undodir = vim.fn.expand("$HOME/.local/share/nvim/undo")
 vim.opt.exrc = true
-vim.opt.whichwrap = {}
+-- vim.opt.whichwrap = {}
 
 -- TODO: keymaps ==================================================
 -- === 键盘映射 ===
@@ -51,8 +51,8 @@ lvim.keys.visual_mode["<C-M-h>"] = "0"
 lvim.keys.visual_mode["<C-M-j>"] = "5j"
 lvim.keys.visual_mode["<C-M-k>"] = "5k"
 lvim.keys.visual_mode["<C-M-l>"] = "$"
-lvim.keys.insert_mode["<C-h>"] = "<LEFT>"
 -- 插入模式下移动光标
+lvim.keys.insert_mode["<C-h>"] = "<LEFT>"
 lvim.keys.insert_mode["<C-j>"] = "<DOWN>"
 lvim.keys.insert_mode["<C-k>"] = "<UP>"
 lvim.keys.insert_mode["<C-l>"] = "<RIGHT>"
@@ -154,20 +154,6 @@ lvim.builtin.which_key.mappings["l"]["f"] = {
     "Format",
 }
 
--- TODO: 修改plugins ==================================================
--- 插件开关
--- 配置
--- trouble
-lvim.builtin.which_key.mappings["t"] = {
-    name = "诊断",
-    t = { "<cmd>TroubleToggle<cr>", "trouble" },
-    w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "workspace" },
-    d = { "<cmd>TroubleToggle document_diagnostics<cr>", "document" },
-    q = { "<cmd>TroubleToggle quickfix<cr>", "quickfix" },
-    l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
-    r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
-}
-
 -- TODO: autocmd ==================================================
 -- 折叠保存
 vim.api.nvim_command([[
@@ -181,12 +167,13 @@ lvim.autocommands = {
         {
             pattern = "*",
             callback = function()
+                vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#292e42", bold = true })
                 vim.api.nvim_set_hl(0, "TreesitterContextBottom", { bg = "#292e42", bold = true })
             end,
         },
     },
     {
-        { "BufAdd" },
+        { "BufRead" },
         {
             pattern = "*",
             callback = function()
@@ -214,6 +201,20 @@ lvim.autocommands = {
             end
         },
     },
+}
+
+-- TODO: 修改plugins ==================================================
+-- 插件开关
+-- 配置
+-- trouble
+lvim.builtin.which_key.mappings["t"] = {
+    name = "诊断",
+    t = { "<cmd>TroubleToggle<cr>", "trouble" },
+    w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "workspace" },
+    d = { "<cmd>TroubleToggle document_diagnostics<cr>", "document" },
+    q = { "<cmd>TroubleToggle quickfix<cr>", "quickfix" },
+    l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
+    r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
 }
 
 -- TODO: 安装plugins ==================================================
@@ -318,34 +319,6 @@ lvim.plugins = {
         end,
     },
     {
-        "karb94/neoscroll.nvim",
-        event = "WinScrolled",
-        config = function()
-            require("neoscroll").setup({
-                -- All these keys will be mapped to their corresponding default scrolling animation
-                mappings = {
-                    "<C-u>",
-                    "<C-d>",
-                    "<C-b>",
-                    "<C-f>",
-                    "<C-y>",
-                    "<C-e>",
-                    "zt",
-                    "zz",
-                    "zb",
-                },
-                hide_cursor = true,          -- Hide cursor while scrolling
-                stop_eof = true,             -- Stop at <EOF> when scrolling downwards
-                use_local_scrolloff = false, -- Use the local scope of scrolloff instead of the global scope
-                respect_scrolloff = false,   -- Stop scrolling when the cursor reaches the scrolloff margin of the file
-                cursor_scrolls_alone = true, -- The cursor will keep on scrolling even if the window cannot scroll further
-                easing_function = nil,       -- Default easing function
-                pre_hook = nil,              -- Function to run before the scrolling animation starts
-                post_hook = nil,             -- Function to run after the scrolling animation ends
-            })
-        end,
-    },
-    {
         "folke/todo-comments.nvim",
         cmd = { "TodoTrouble", "TodoTelescope" },
         event = { "BufReadPost", "BufNewFile" },
@@ -372,20 +345,9 @@ lvim.plugins = {
                     windows = true,
                 },
             })
-            require("mini.bufremove").setup()
-            -- require("mini.comment").setup({
-            --     mappings = {
-            --         comment = "<leader>/",
-            --         comment_line = "<leader>/",
-            --         textobject = "<leader>/",
-            --     },
-            -- })
             require("mini.cursorword").setup()
-            -- require("mini.jump").setup({
-            --     mappings = {
-            --         repeat_jump = "",
-            --     },
-            -- })
+            require("mini.misc").setup()
+            require("mini.move").setup()
             require("mini.surround").setup()
         end,
     },
@@ -439,20 +401,52 @@ lvim.plugins = {
             })
         end
     },
+    -- {
+    --     "norcalli/nvim-colorizer.lua",
+    --     enabled = false,
+    --     config = function()
+    --         -- require("colorizer").setup({ "css", "scss", "html", "javascript", "vue" }, {
+    --         require("colorizer").setup({ "*" }, {
+    --             RGB = true,      -- #RGB hex codes
+    --             RRGGBB = true,   -- #RRGGBB hex codes
+    --             RRGGBBAA = true, -- #RRGGBBAA hex codes
+    --             rgb_fn = true,   -- CSS rgb() and rgba() functions
+    --             hsl_fn = true,   -- CSS hsl() and hsla() functions
+    --             css = true,      -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+    --             css_fn = true,   -- Enable all CSS *functions*: rgb_fn, hsl_fn
+    --         })
+    --     end,
+    -- },
     {
-        "norcalli/nvim-colorizer.lua",
+        "NvChad/nvim-colorizer.lua",
         config = function()
-            -- require("colorizer").setup({ "css", "scss", "html", "javascript", "vue" }, {
-            require("colorizer").setup({ "*" }, {
-                RGB = true,      -- #RGB hex codes
-                RRGGBB = true,   -- #RRGGBB hex codes
-                RRGGBBAA = true, -- #RRGGBBAA hex codes
-                rgb_fn = true,   -- CSS rgb() and rgba() functions
-                hsl_fn = true,   -- CSS hsl() and hsla() functions
-                css = true,      -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-                css_fn = true,   -- Enable all CSS *functions*: rgb_fn, hsl_fn
-            })
-        end,
+            require("colorizer").setup {
+                filetypes = { "*" },
+                user_default_options = {
+                    RGB = true,          -- #RGB hex codes
+                    RRGGBB = true,       -- #RRGGBB hex codes
+                    names = true,        -- "Name" codes like Blue or blue
+                    RRGGBBAA = false,    -- #RRGGBBAA hex codes
+                    AARRGGBB = false,    -- 0xAARRGGBB hex codes
+                    rgb_fn = false,      -- CSS rgb() and rgba() functions
+                    hsl_fn = false,      -- CSS hsl() and hsla() functions
+                    css = false,         -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+                    css_fn = false,      -- Enable all CSS *functions*: rgb_fn, hsl_fn
+                    -- Available modes for `mode`: foreground, background,  virtualtext
+                    mode = "background", -- Set the display mode.
+                    -- Available methods are false / true / "normal" / "lsp" / "both"
+                    -- True is same as normal
+                    tailwind = false,                                -- Enable tailwind colors
+                    -- parsers can contain values used in |user_default_options|
+                    sass = { enable = false, parsers = { "css" }, }, -- Enable sass colors
+                    virtualtext = "■",
+                    -- update color values even if buffer is not focused
+                    -- example use: cmp_menu, cmp_docs
+                    always_update = false
+                },
+                -- all the sub-options of filetypes apply to buftypes
+                buftypes = {}, }
+        end
     },
     {
         "voldikss/vim-translator",
@@ -512,7 +506,8 @@ code_actions.setup({
 require("lspconfig")["emmet_language_server"].setup({
     -- on_attach = on_attach,
     capabilities = capabilities,
-    filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue" },
+    filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug",
+        "typescriptreact", "vue" },
     -- filetypes = { "css", "eruby", "html", "less", "sass", "scss", "svelte", "pug",
     --     "vue" },
     init_options = {
