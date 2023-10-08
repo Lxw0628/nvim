@@ -142,6 +142,14 @@ function _G.Toggle_typewriter()
     end
 end
 
+-- 为了解决eslint超时，延迟超时时长
+lvim.builtin.which_key.mappings["l"]["f"] = {
+    function()
+        require("lvim.lsp.utils").format { timeout_ms = 2000 }
+    end,
+    "Format",
+}
+
 -- TODO: 修改plugins ==================================================
 -- 插件开关
 -- 配置
@@ -464,9 +472,20 @@ formatters.setup({
         filetypes = { "sh" },
     },
     {
-        command = "standardjs",
-        filetypes = { "javascript" }
+        command = "eslint",
+        filetypes = { "javascript", "vue" }
     }
+})
+local linters = require("lvim.lsp.null-ls.linters")
+linters.setup({
+    {
+        command = "eslint",
+        filetypes = { "javascript", "vue" }
+    },
+})
+local code_actions = require("lvim.lsp.null-ls.code_actions")
+code_actions.setup({
+    { command = "eslint" }
 })
 -- 增加 emmet lsp
 require("lspconfig")["emmet_ls"].setup({
