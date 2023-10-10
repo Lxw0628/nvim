@@ -24,6 +24,8 @@ vim.opt.undofile = true
 vim.opt.undodir = vim.fn.expand("$HOME/.local/share/nvim/undo")
 vim.opt.exrc = true
 -- vim.opt.whichwrap = {}
+-- 自动将编辑文件目录设为工作目录
+vim.opt.autochdir = true
 
 -- TODO: keymaps ==================================================
 -- === 键盘映射 ===
@@ -352,12 +354,23 @@ lvim.plugins = {
         end,
     },
     {
-        "turbio/bracey.vim",
-        event = "VeryLazy",
-        cmd = { "Bracey", "BracyStop", "BraceyReload", "BraceyEval" },
-        build = "npm install --prefix server",
+        "aurum77/live-server.nvim",
+        build = function()
+            require "live_server.util".install()
+        end,
+        cmd = { "LiveServer", "LiveServerStart", "LiveServerStop", "LiveServerInstall" },
         config = function()
-            vim.g.bracey_refresh_on_save = 1
+            local status_ok, live_server = pcall(require, "live_server")
+            if not status_ok then
+                return
+            end
+            live_server.setup({
+                port = 5600,
+                browser_command = "microsoft-edge-stable", -- Command or executable path
+                quiet = false,
+                no_css_inject = true,
+                install_path = vim.fn.stdpath "config" .. "/live-server/",
+            })
         end
     },
     {
@@ -475,41 +488,15 @@ lvim.plugins = {
 }
 
 -- TODO: lspSettings ==================================================
-local formatters = require("lvim.lsp.null-ls.formatters")
-formatters.setup({
-    {
-        command = "prettier",
-        args = { "--print-width", "100", "--tab-width", "4" },
-        -- filetypes = { "html", "css", "javascript", "json", "markdown", "scss" },
-    },
-    {
-        command = "beautysh",
-        filetypes = { "sh" },
-    },
-    -- {
-    --     command = "eslint",
-    --     filetypes = { "javascript" }
-    -- }
-})
-local linters = require("lvim.lsp.null-ls.linters")
-linters.setup({
-    -- {
-    --     command = "eslint",
-    --     filetypes = { "javascript", "vue" }
-    -- },
-})
-local code_actions = require("lvim.lsp.null-ls.code_actions")
-code_actions.setup({
-    -- { command = "eslint" }
-})
+--
+-- 为 markdown 增加 marksman lsp
+require("lvim.lsp.manager").setup("marksman")
 -- 增加 emmet lsp
 require("lspconfig")["emmet_language_server"].setup({
     -- on_attach = on_attach,
     capabilities = capabilities,
     filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug",
         "typescriptreact", "vue" },
-    -- filetypes = { "css", "eruby", "html", "less", "sass", "scss", "svelte", "pug",
-    --     "vue" },
     init_options = {
         html = {
             options = {
@@ -518,4 +505,28 @@ require("lspconfig")["emmet_language_server"].setup({
             },
         },
     }
+})
+local formatters = require("lvim.lsp.null-ls.formatters")
+formatters.setup({
+    {
+        command = "prettier",
+        -- args = { "--print-width", "100", "--tab-width", "4" },
+        args = { "--print-width", "100" },
+        -- filetypes = { "html", "css", "javascript", "json", "markdown", "scss" },
+    },
+    {
+        command = "prettier",
+        args = { "--print-width", "100", "--tab-width", "4" },
+        filetypes = { "javascript" },
+    },
+    {
+        command = "beautysh",
+        filetypes = { "sh" },
+    },
+})
+local linters = require("lvim.lsp.null-ls.linters")
+linters.setup({
+})
+local code_actions = require("lvim.lsp.null-ls.code_actions")
+code_actions.setup({
 })
