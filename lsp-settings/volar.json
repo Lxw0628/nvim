@@ -2,4 +2,5 @@
     "vue.inlayHints.inlineHandlerLeading": true,
     "vue.inlayHints.missingProps": true,
     "vue.inlayHints.optionsWrapper": true,
+    "vue.autoInsert.dotValue": true
 }

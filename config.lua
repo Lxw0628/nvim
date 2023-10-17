@@ -26,6 +26,7 @@ vim.opt.exrc = true
 vim.opt.whichwrap = {}
 -- 自动将编辑文件目录设为工作目录
 vim.opt.autochdir = true
+vim.opt.scrolloff = 4
 
 -- TODO: keymaps ==================================================
 -- === 键盘映射 ===
