@@ -3,7 +3,9 @@
 -- Forum: https://www.reddit.com/r/lunarvim/
 -- Discord: https://discord.com/invite/Xb9B4Ny
 
--- TODO: opts ================================================== 缩进 
+-- TODO: opts ==================================================
+--
+-- 缩进
 vim.opt.tabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
@@ -171,7 +173,6 @@ lvim.autocommands = {
             callback = function()
                 vim.api.nvim_set_hl(0, "TreesitterContext", { bg = "#292e42", bold = true })
                 vim.api.nvim_set_hl(0, "TreesitterContextBottom", { bg = "#292e42", bold = true })
-                -- vim.api.nvim_set_hl(0, "Folded", { bg = "#8470FF", bold = true })
             end,
         },
     },
@@ -298,12 +299,12 @@ lvim.plugins = {
     -- You must install glow globally
     -- https://github.com/charmbracelet/glow
     -- yay -S glow
-    {
-        "npxbr/glow.nvim",
-        event = "VeryLazy",
-        ft = { "markdown" },
-        -- build = "yay -S glow"
-    },
+    -- {
+    --     "npxbr/glow.nvim",
+    --     event = "VeryLazy",
+    --     ft = { "markdown" },
+    --     -- build = "yay -S glow"
+    -- },
     {
         "iamcco/markdown-preview.nvim",
         event = "VeryLazy",
@@ -563,22 +564,12 @@ lvim.plugins = {
 
 -- TODO: lspSettings ==================================================
 --
+-- lvim.lsp.automatic_servers_installation = false
 -- 为 markdown 增加 marksman lsp
 require("lvim.lsp.manager").setup("marksman")
--- 增加 emmet lsp
-require("lspconfig")["emmet_language_server"].setup({
-    -- on_attach = on_attach,
-    capabilities = capabilities,
+require("lspconfig")["emmet_ls"].setup({
     filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug",
-        "typescriptreact", "vue" },
-    init_options = {
-        html = {
-            options = {
-                -- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267
-                ["bem.enabled"] = true,
-            },
-        },
-    }
+        "typescriptreact" },
 })
 local formatters = require("lvim.lsp.null-ls.formatters")
 formatters.setup({
@@ -590,7 +581,7 @@ formatters.setup({
     },
     {
         command = "prettier",
-        args = { "--print-width", "100", "--tab-width", "4" },
+        -- args = { "--print-width", "100", "--tab-width", "4" },
         filetypes = { "javascript" },
     },
     {
@@ -600,6 +591,7 @@ formatters.setup({
 })
 local linters = require("lvim.lsp.null-ls.linters")
 linters.setup({
+    -- { command = "eslint_d", },
 })
 local code_actions = require("lvim.lsp.null-ls.code_actions")
 code_actions.setup({
