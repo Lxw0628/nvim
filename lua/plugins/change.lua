@@ -13,6 +13,24 @@ return {
     end,
   },
   {
+    "iamcco/markdown-preview.nvim",
+    -- event = "VeryLazy",
+    -- build = "cd app && npm install",
+    -- ft = "markdown",
+    opts = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+      vim.g.mkdp_browser = "microsoft-edge-stable --new-window"
+      -- vim.g.mkdp_markdown_css = "~/.config/nvim/github-markdown-dark.css"
+      vim.g.mkdp_markdown_css = "~/.config/nvim/github-markdown-light.css"
+      vim.g.mkdp_page_title = "${name}"
+      vim.g.mkdp_preview_options = { hide_yaml_meta = 1, disable_filename = 1 }
+      -- vim.g.mkdp_theme = "dark"
+      vim.g.vmt_fence_text = "markdown-toc"
+      -- vim.keymap.set("n", "<F5>", "<Plug>MarkdownPreviewToggle")
+      vim.g.mkdp_auto_start = 1
+    end,
+  },
+  {
     "echasnovski/mini.surround",
     opts = {
       mappings = {
@@ -23,6 +41,22 @@ return {
         highlight = "sh",
         replace = "sr",
         update_n_lines = "sn",
+      },
+    },
+  },
+  {
+    "echasnovski/mini.comment",
+    opts = {
+      mappings = {
+        -- Toggle comment (like `gcip` - comment inner paragraph) for both
+        -- Normal and Visual modes
+        -- comment = "<leader>/",
+
+        -- Toggle comment on current line
+        comment_line = "<leader>/",
+
+        -- Define 'comment' textobject (like `dgc` - delete whole comment block)
+        -- textobject = "<leader>/",
       },
     },
   },

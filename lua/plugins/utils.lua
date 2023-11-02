@@ -11,23 +11,6 @@ return {
     end,
   },
   {
-    "iamcco/markdown-preview.nvim",
-    event = "VeryLazy",
-    build = "cd app && npm install",
-    ft = "markdown",
-    config = function()
-      vim.g.mkdp_filetypes = { "markdown" }
-      vim.g.mkdp_browser = "wyeb"
-      vim.g.mkdp_markdown_css = "~/.config/nvim/markdown.css"
-      vim.g.mkdp_page_title = "${name}"
-      vim.g.mkdp_preview_options = { hide_yaml_meta = 1, disable_filename = 1 }
-      vim.g.mkdp_theme = "dark"
-      vim.g.vmt_fence_text = "markdown-toc"
-      vim.keymap.set("n", "<F5>", "<Plug>MarkdownPreviewToggle")
-      vim.g.mkdp_auto_start = 1
-    end,
-  },
-  {
     "simrat39/symbols-outline.nvim",
     cmd = "SymbolsOutline",
     keys = { { "<leader>cs", "<cmd>SymbolsOutline<cr>", desc = "Symbols Outline" } },
@@ -46,7 +29,7 @@ return {
       end
       live_server.setup({
         port = 5600,
-        browser_command = "microsoft-edge-stable", -- Command or executable path
+        browser_command = "microsoft-edge-stable --new-window", -- Command or executable path
         quiet = false,
         no_css_inject = true,
         install_path = vim.fn.stdpath("config") .. "/live-server/",
