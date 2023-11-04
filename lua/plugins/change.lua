@@ -19,11 +19,12 @@ return {
     -- ft = "markdown",
     opts = function()
       vim.g.mkdp_filetypes = { "markdown" }
-      vim.g.mkdp_browser = "microsoft-edge-stable --new-window"
+      vim.g.mkdp_browser = "wyeb"
       -- vim.g.mkdp_markdown_css = "~/.config/nvim/github-markdown-dark.css"
       vim.g.mkdp_markdown_css = "~/.config/nvim/github-markdown-light.css"
       vim.g.mkdp_page_title = "${name}"
       vim.g.mkdp_preview_options = { hide_yaml_meta = 1, disable_filename = 1 }
+      vim.g.mkdp_theme = "light"
       -- vim.g.mkdp_theme = "dark"
       vim.g.vmt_fence_text = "markdown-toc"
       -- vim.keymap.set("n", "<F5>", "<Plug>MarkdownPreviewToggle")

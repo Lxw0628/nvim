@@ -29,9 +29,9 @@ return {
       end
       live_server.setup({
         port = 5600,
-        browser_command = "microsoft-edge-stable --new-window", -- Command or executable path
+        browser_command = "microsoft-edge-stable", -- Command or executable path
         quiet = false,
-        no_css_inject = true,
+        no_css_inject = false,
         install_path = vim.fn.stdpath("config") .. "/live-server/",
       })
     end,
