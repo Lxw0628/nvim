@@ -9,6 +9,7 @@ return {
   -- lsp inlay_hint
   {
     "neovim/nvim-lspconfig",
+    dependencies = { "jose-elias-alvarez/typescript.nvim" },
     opts = {
       inlay_hints = {
         enabled = true,
@@ -28,18 +29,38 @@ return {
         },
         tsserver = {
           settings = {
+            typescript = {
+              inlayHints = {
+                includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all'
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
             javascript = {
               inlayHints = {
-                enumMemberValues = { enabled = true },
-                functionLikeReturnTypes = { enabled = true },
-                parameterNames = { enabled = "all", suppressWhenArgumentMatchesName = true },
-                parameterTypes = { enabled = true },
-                propertyDeclarationTypes = { enabled = true },
-                variableTypes = { enabled = true, suppressWhenTypeMatchesName = true },
+                includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all'
+                includeInlayParameterNameHintsWhenArgumentMatchesName = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHintsWhenTypeMatchesName = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
               },
             },
           },
         },
+      },
+      setup = {
+        tsserver = function(_, opts)
+          require("typescript").setup({ server = opts })
+          return true
+        end,
       },
     },
   },
