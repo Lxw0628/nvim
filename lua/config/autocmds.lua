@@ -15,3 +15,10 @@
 --     vim.opt_local.spell = false
 --   end,
 -- })
+
+-- 保存fold
+vim.api.nvim_command([[
+    au FileType * try | silent! loadview | catch | endtry
+    au BufLeave,BufWinLeave * silent! mkview
+]])
+

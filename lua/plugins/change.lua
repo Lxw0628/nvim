@@ -55,6 +55,20 @@ return {
             },
           },
         },
+        volar = {
+          settings = {
+            vue = {
+              inlayHints = {
+                inlineHandlerLeading = true,
+                missingProps = true,
+                optionsWrapper = true,
+              },
+              autoInsert = {
+                dotValue = true,
+              },
+            },
+          },
+        },
       },
       setup = {
         tsserver = function(_, opts)
