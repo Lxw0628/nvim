@@ -77,8 +77,9 @@ return {
     end,
   },
   {
+    -- 导致inlay_hint无法正常显示
     "kevinhwang91/nvim-ufo",
-    -- enabled = false,
+    enabled = false,
     dependencies = {
       "kevinhwang91/promise-async",
       {

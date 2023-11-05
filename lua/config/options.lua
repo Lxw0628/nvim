@@ -3,4 +3,4 @@
 -- Add any additional options here
 
 vim.g.autoformat = false
-vim.opt.spelllang = {"en_us", "cjk"}
+vim.opt.spelllang = { "en_us", "cjk" }

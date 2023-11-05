@@ -3,14 +3,45 @@ return {
     "neovim/nvim-lspconfig",
     init = function()
       local keys = require("lazyvim.plugins.lsp.keymaps").get()
-      -- change a keymap
-      -- keys[#keys + 1] = { "K", "<cmd>echo 'hello'<cr>" }
-      -- disable a keymap
-      -- keys[#keys + 1] = { "K", false }
-      -- add a keymap
-      -- keys[#keys + 1] = { "H", "<cmd>echo 'hello'<cr>" }
-      keys[#keys + 1] = { "<C-k>", false }
+      keys[#keys + 1] = { "<c-k>", false, mode = "i" }
     end,
+  },
+  -- lsp inlay_hint
+  {
+    "neovim/nvim-lspconfig",
+    opts = {
+      inlay_hints = {
+        enabled = true,
+      },
+      servers = {
+        lua_ls = {
+          settings = {
+            Lua = {
+              hint = {
+                await = true,
+                enable = true,
+                arrayIndex = "Enable",
+                setType = true,
+              },
+            },
+          },
+        },
+        tsserver = {
+          settings = {
+            javascript = {
+              inlayHints = {
+                enumMemberValues = { enabled = true },
+                functionLikeReturnTypes = { enabled = true },
+                parameterNames = { enabled = "all", suppressWhenArgumentMatchesName = true },
+                parameterTypes = { enabled = true },
+                propertyDeclarationTypes = { enabled = true },
+                variableTypes = { enabled = true, suppressWhenTypeMatchesName = true },
+              },
+            },
+          },
+        },
+      },
+    },
   },
   {
     "iamcco/markdown-preview.nvim",
@@ -20,8 +51,7 @@ return {
     opts = function()
       vim.g.mkdp_filetypes = { "markdown" }
       vim.g.mkdp_browser = "wyeb"
-      -- vim.g.mkdp_markdown_css = "~/.config/nvim/github-markdown-dark.css"
-      vim.g.mkdp_markdown_css = "~/.config/nvim/github-markdown-light.css"
+      vim.g.mkdp_markdown_css = "~/.config/nvim/markdown-css/github-markdown-light.css"
       vim.g.mkdp_page_title = "${name}"
       vim.g.mkdp_preview_options = { hide_yaml_meta = 1, disable_filename = 1 }
       vim.g.mkdp_theme = "light"
