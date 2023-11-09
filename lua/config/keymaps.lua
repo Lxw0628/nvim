@@ -28,23 +28,23 @@ vim.keymap.set("n", "<leader>uu", function()
   local cmp = require("cmp")
   local sources = cmp.get_config().sources
   local function isCodeiumEnabled()
-    for _, source in ipairs(sources) do
-      if source.name == "codeium" then
+    for _, v in ipairs(sources) do
+      if v.name == "codeium" then
         return true
       end
     end
     return false
   end
-  for i = #sources, 1, -1 do
-    if isCodeiumEnabled() then
+  if isCodeiumEnabled() then
+    for i = #sources, 1, -1 do
       if sources[i].name == "codeium" then
         table.remove(sources, i)
         vim.notify("Disabled codeium")
       end
-    else
-      sources[#sources + 1] = { name = "codeium", group_index = 1, priority = 100 }
-        vim.notify("Enabled codeium")
     end
+  else
+    table.insert(sources, { name = "codeium", group_index = 1, priority = 100 })
+    vim.notify("Enabled codeium")
   end
   cmp.setup.buffer({ sources = sources })
-end, { desc = "Toggle codeium" })
+end, { desc = "Toggle Codeium" })
