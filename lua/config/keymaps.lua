@@ -24,6 +24,7 @@ vim.keymap.set("i", "<C-k>", "<UP>")
 vim.keymap.set("i", "<C-j>", "<DOWN>")
 vim.keymap.set("i", "<C-l>", "<RIGHT>")
 
+-- TODO 状态栏codeium的图标显隐切换
 vim.keymap.set("n", "<leader>uu", function()
   local cmp = require("cmp")
   local sources = cmp.get_config().sources
@@ -48,3 +49,27 @@ vim.keymap.set("n", "<leader>uu", function()
   end
   cmp.setup.buffer({ sources = sources })
 end, { desc = "Toggle Codeium" })
+
+-- 反向打断
+vim.keymap.set("n", "<S-M-j>", function()
+  local pos = vim.api.nvim_win_get_cursor(0)
+  local current_line = vim.fn.getline(".")
+  local cursor_col = vim.fn.col(".")
+  local before_cursor = string.sub(current_line, 1, cursor_col)
+  local after_cursor = string.sub(current_line, cursor_col + 1)
+  -- 删除当前行内容
+  vim.api.nvim_set_current_line("")
+  -- 插入两行
+  vim.api.nvim_put({ before_cursor, after_cursor }, "", true, false)
+  -- vim.api.nvim_put({ "", "" }, "b", true, false)
+  -- 设置初始光标位置
+  vim.api.nvim_win_set_cursor(0, pos)
+end, { desc = "打断" })
+
+-- vim.keymap.set("v", "zz", function()
+--   local select_start = vim.fn.line("'<")
+--   local select_end = vim.fn.line("'>")
+--   local select_center = math.floor((select_start + select_end) / 2)
+--   -- 屏幕中间行
+--   local line_center = vim.fn.line('winnrcenter(0)')
+-- end, { desc = "Visual Center" })
