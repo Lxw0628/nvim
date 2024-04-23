@@ -229,4 +229,11 @@ return {
       })
     end,
   },
+  {
+    "L3MON4D3/LuaSnip",
+    dependencies = {
+      "kmarius/jsregexp",
+      build = "make install_jsregexp",
+    },
+  }
 }
