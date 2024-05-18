@@ -12,7 +12,7 @@ return {
     dependencies = { "jose-elias-alvarez/typescript.nvim" },
     opts = {
       inlay_hints = {
-        enabled = true,
+        enabled = false,
       },
       servers = {
         lua_ls = {
@@ -235,5 +235,5 @@ return {
       "kmarius/jsregexp",
       build = "make install_jsregexp",
     },
-  }
+  },
 }

@@ -24,7 +24,16 @@ vim.keymap.set("i", "<C-k>", "<UP>")
 vim.keymap.set("i", "<C-j>", "<DOWN>")
 vim.keymap.set("i", "<C-l>", "<RIGHT>")
 
--- TODO 状态栏codeium的图标显隐切换
+-- floating terminal
+-- local lazyterm = function()
+--   LazyVim.terminal(nil, { cwd = LazyVim.root() })
+-- end
+-- vim.keymap.del("n", "<c-/>")
+-- vim.keymap.del("t", "<C-/>")
+-- vim.keymap.set("n", "<c-`>", lazyterm, { desc = "Terminal (root)" })
+-- vim.keymap.set("t", "<C-`>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+
+-- TODO:状态栏codeium的图标显隐切换
 vim.keymap.set("n", "<leader>uu", function()
   local cmp = require("cmp")
   local sources = cmp.get_config().sources
