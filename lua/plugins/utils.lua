@@ -39,7 +39,7 @@ return {
   },
   {
     "NvChad/nvim-colorizer.lua",
-    enabled = false,
+    enabled = true,
     config = function()
       require("colorizer").setup({
         filetypes = { "*" },
