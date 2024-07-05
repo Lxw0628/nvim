@@ -10,5 +10,20 @@ return {
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.colorscheme.catppuccin" },
   { import = "astrocommunity.recipes.telescope-lsp-mappings" },
-  -- import/override with your plugins folder
+
+  { import = "astrocommunity.recipes.astrolsp-no-insert-inlay-hints" },
+  { import = "astrocommunity.lsp.nvim-lsp-file-operations" },
+  { import = "astrocommunity.recipes.auto-session-restore" },
+  { import = "astrocommunity.keybinding.nvcheatsheet-nvim" },
+  {
+    "AstroNvim/astrocore",
+    opts = {
+      mappings = {
+        n = {
+          ["<F1>"] = false,
+          ["<F2>"] = { function() require("nvcheatsheet").toggle() end, desc = "Cheatsheet" },
+        },
+      },
+    },
+  },
 }

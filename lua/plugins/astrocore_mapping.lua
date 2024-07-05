@@ -1,18 +1,3 @@
-function MagicToggleHump(upperCase)
-  G.fn.execute 'normal! gv"tx'
-  local w = G.fn.getreg "t"
-  local toHump = w:find "_" ~= nil
-  if toHump then
-    w = w:gsub("_(%w)", function(c) return c:upper() end)
-  else
-    w = w:gsub("(%u)", function(c) return "_" .. c:lower() end)
-  end
-  if w:sub(1, 1) == "_" then w = w:sub(2) end
-  if upperCase then w = w:sub(1, 1):upper() .. w:sub(2) end
-  G.fn.setreg("t", w)
-  G.fn.execute 'normal! "tP'
-end
-
 return {
   "AstroNvim/astrocore",
   ---@type AstroCoreOpts
@@ -45,8 +30,6 @@ return {
         ["<C-M-j>"] = { "5j" },
         ["<C-M-k>"] = { "5k" },
         ["<C-M-l>"] = { "$" },
-        ["T"] = { ":call v:lua.MagicToggleHump(v:true)<Cr>" },
-        ["t"] = { ":call v:lua.MagicToggleHump(v:false)<Cr>" },
       },
       t = {},
     },

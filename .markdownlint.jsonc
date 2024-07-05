@@ -1,0 +1,12 @@
+// https://github.com/DavidAnson/markdownlint/blob/main/schema/.markdownlint.jsonc
+{
+  "default": false,
+  "MD003": false,
+  "MD022": false,
+  "MD007": {
+    "indent": 4,
+  },
+  "MD013": false,
+  "no-hard-tabs": false,
+  "whitespace": false,
+}
