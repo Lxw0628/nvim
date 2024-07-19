@@ -1,3 +1,5 @@
+if true then return {} end
+
 local prefix_git_blame = "<Leader>g"
 ---@type LazySpec
 return {

@@ -1,3 +1,5 @@
+if true then return {} end
+
 local prefix = "<Leader>j"
 local function get_filename_from_path(path) return path:match "([^/\\]+)$" end
 
