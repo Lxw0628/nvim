@@ -1,11 +1,17 @@
 return {
-
+  -- Configure LazyVim to load catppuccin
+  {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "catppuccin",
+    },
+  },
   {
     "catppuccin/nvim",
+    lazy = true,
     name = "catppuccin",
-    priority = 1000,
     opts = {
-      flavour = "mocha", -- latte, frappe, macchiato, mocha
+      flavour = "auto", -- latte, frappe, macchiato, mocha
       background = { -- :h background
         light = "latte",
         dark = "mocha",
@@ -38,55 +44,42 @@ return {
       },
       color_overrides = {},
       custom_highlights = {},
-      highlight_overrides = {
-        all = function(colors)
-          return {
-            NvimTreeNormal = { fg = colors.none },
-            CmpBorder = { fg = "#3e4145" },
-          }
-        end,
-        latte = function(latte)
-          return {
-            Normal = { fg = latte.base },
-          }
-        end,
-        frappe = function(frappe)
-          return {
-            ["@comment"] = { fg = frappe.surface2, style = { "italic" } },
-          }
-        end,
-        macchiato = function(macchiato)
-          return {
-            LineNr = { fg = macchiato.overlay1 },
-          }
-        end,
-        mocha = function(mocha)
-          return {
-            -- Comment = { fg = mocha.flamingo },
-          }
-        end,
-      },
       default_integrations = true,
       integrations = {
+        aerial = true,
+        alpha = true,
         cmp = true,
+        dashboard = true,
+        flash = true,
         gitsigns = true,
-        nvimtree = true,
-        treesitter = true,
-        notify = false,
-        mini = {
+        headlines = true,
+        illuminate = true,
+        indent_blankline = { enabled = true },
+        leap = true,
+        lsp_trouble = true,
+        mason = true,
+        markdown = true,
+        mini = true,
+        native_lsp = {
           enabled = true,
-          indentscope_color = "",
+          underlines = {
+            errors = { "undercurl" },
+            hints = { "undercurl" },
+            warnings = { "undercurl" },
+            information = { "undercurl" },
+          },
         },
-        -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
+        navic = { enabled = true, custom_bg = "lualine" },
+        neotest = true,
+        neotree = true,
+        noice = true,
+        notify = true,
+        semantic_tokens = true,
+        telescope = true,
+        treesitter = true,
+        treesitter_context = true,
+        which_key = true,
       },
-    },
-  },
-
-  -- apply colorscheme in Lazyvim
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "catppuccin-mocha",
     },
   },
 }
