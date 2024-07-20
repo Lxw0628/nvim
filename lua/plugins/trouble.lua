@@ -15,7 +15,7 @@ return {
             { "<Cmd>Trouble diagnostics toggle filter.buf=0<CR>", desc = "Document Diagnostics (Trouble)" }
           maps.n[prefix .. "l"] = { "<Cmd>Trouble loclist toggle<CR>", desc = "Location List (Trouble)" }
           maps.n[prefix .. "q"] = { "<Cmd>Trouble quickfix toggle<CR>", desc = "Quickfix List (Trouble)" }
-          if require("astrocore").is_available "todo-comments.nvim" then
+          if require("astrocore").is_available ".nvim" then
             maps.n[prefix .. "t"] = {
               "<cmd>Trouble todo<cr>",
               desc = "Todo (Trouble)",

@@ -1,3 +1,5 @@
+-- if true then return {} end
+
 -- TODO:https://github.com/AstroNvim/AstroNvim/issues/2593
 return {
   { "NvChad/nvim-colorizer.lua", enabled = false },

@@ -1,3 +1,5 @@
+if true then return {} end
+
 local utils = require "astrocore"
 
 ---@type LazySpec

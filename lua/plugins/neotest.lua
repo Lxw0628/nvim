@@ -1,3 +1,5 @@
+-- if true then return {} end
+
 local prefix = "<Leader>T"
 ---@type LazySpec
 return {
@@ -5,6 +7,8 @@ return {
     "nvim-neotest/neotest",
     lazy = true,
     dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-neotest/nvim-nio",
       {
         "AstroNvim/astrocore",
         opts = {
@@ -40,6 +44,14 @@ return {
           end
           opts.library.types = true
         end,
+      },
+      specs = {
+        {
+          "catppuccin",
+          optional = true,
+          ---@type CatppuccinOptions
+          opts = { integrations = { neotest = true } },
+        },
       },
     },
     config = function(_, opts)

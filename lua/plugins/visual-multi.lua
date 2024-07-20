@@ -1,3 +1,5 @@
+-- if true then return {} end
+
 ---@type LazySpec
 return {
   {
@@ -47,11 +49,11 @@ return {
               ["Find Under"] = "<M-n>",
               ["Find Subword Under"] = "<M-n>",
               ["Select All"] = "<M-a>",
-              ["Select h"] = "<M-h>",
-              ["Select l"] = "<M-l>",
+              ["Select h"] = "<M-Left>",
+              ["Select l"] = "<M-Right>",
               ["Start Regex Search"] = "",
-              ["Add Cursor Down"] = "<M-j>",
-              ["Add Cursor Up"] = "<M-k>",
+              ["Add Cursor Down"] = "<M-Down>",
+              ["Add Cursor Up"] = "<M-Up>",
               -- ["Add Cursor At Pos"] = "<M-p>",
               ["Skip Region"] = "q",
               ["Remove Region"] = "Q",
@@ -60,9 +62,5 @@ return {
         },
       })
     end,
-  },
-  {
-    "mg979/vim-visual-multi",
-    event = "BufEnter",
   },
 }

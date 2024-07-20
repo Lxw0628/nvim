@@ -18,7 +18,8 @@ return {
           splitkeep = "screen",
           swapfile = false,
           thesaurus = vim.fn.expand "~/.config/nvim/spell/mthesaur.txt",
-          -- scrolloff = 5,
+          scrolloff = 5,
+          clipboard = "unnamedplus"
         },
         g = {
           -- configure global vim variables (vim.g)

@@ -13,6 +13,18 @@ return {
         ["<C-M-l>"] = { "$" },
         ["<S-l>"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
         ["<S-h>"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
+        ["<Leader>c"] = {
+          function()
+            local bufs = vim.fn.getbufinfo({ buflisted = 1 })
+            require("astrocore.buffer").close(0)
+            if
+              require("astrocore").is_available("alpha-nvim") and not bufs[2]
+            then
+              require("alpha").start()
+            end
+          end,
+          desc = "Close buffer",
+        },
       },
       i = {
         ["jk"] = { "<Esc>", desc = "quick exit insert mode" },
