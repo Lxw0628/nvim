@@ -27,8 +27,8 @@ vim.g.lazygit_config = true
 
 -- Options for the LazyVim statuscolumn
 vim.g.lazyvim_statuscolumn = {
-  folds_open = false, -- show fold sign when fold is open
-  folds_githl = false, -- highlight fold sign with git sign color
+  folds_open = true, -- show fold sign when fold is open
+  folds_githl = true, -- highlight fold sign with git sign color
 }
 
 -- Optionally setup the terminal to use
@@ -40,11 +40,11 @@ vim.g.lazyvim_statuscolumn = {
 -- Hide deprecation warnings
 vim.g.deprecation_warnings = false
 
--- Set filetype to `bigfile` for files larger than 1.5 MB
+-- Set filetype to `bigfile` for files larger than 15 MB
 -- Only vim syntax will be enabled (with the correct filetype)
 -- LSP, treesitter and other ft plugins will be disabled.
 -- mini.animate will also be disabled.
-vim.g.bigfile_size = 1024 * 1024 * 1.5 -- 1.5 MB
+vim.g.bigfile_size = 1024 * 1024 * 15 -- 15 MB
 
 -- Show the current document symbols location from Trouble in lualine
 -- You can disable this for a buffer by setting `vim.b.trouble_lualine = false`
