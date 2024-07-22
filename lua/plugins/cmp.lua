@@ -10,75 +10,6 @@ end
 return {
   {
     "hrsh7th/nvim-cmp",
-    version = false, -- last release is way too old
-    event = "InsertEnter",
-    -- Not all LSP servers add brackets when completing a function.
-    -- To better deal with this, LazyVim adds a custom option to cmp,
-    -- that you can configure. For example:
-    --
-    -- ```lua
-    -- opts = {
-    --   auto_brackets = { "python" }
-    -- }
-    -- ```
-    opts = function(_, opts)
-      vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
-      local cmp = require("cmp")
-      local luasnip = require("luasnip")
-      local function has_words_before()
-        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-      end
-      opts.mapping = cmp.mapping.preset.insert({
-        ["<C-b>"] = cmp.mapping.scroll_docs(-1),
-        ["<C-f>"] = cmp.mapping.scroll_docs(1),
-        ["<C-Space>"] = cmp.mapping.complete(),
-        -- ["<CR>"] = LazyVim.cmp.confirm({ select = auto_select }),
-        ["<CR>"] = cmp.config.disable,
-        ["<C-N>"] = cmp.mapping(function(fallback)
-          if luasnip.jumpable(1) then
-            luasnip.jump(1)
-          else
-            fallback()
-          end
-        end, { "i", "c" }),
-        ["<C-P>"] = cmp.mapping(function(fallback)
-          if luasnip.jumpable(-1) then
-            luasnip.jump(-1)
-          else
-            fallback()
-          end
-        end, { "i", "c" }),
-        -- ["<C-y>"] = LazyVim.cmp.confirm({ select = true }),
-        -- ["<S-CR>"] = LazyVim.cmp.confirm({ behavior = cmp.ConfirmBehavior.Replace }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-        -- ["<C-CR>"] = function(fallback)
-        --   cmp.abort()
-        --   fallback()
-        -- end,
-        ["<C-j>"] = cmp.mapping.select_next_item(),
-        ["<C-k>"] = cmp.mapping.select_prev_item(),
-        ["<Tab>"] = cmp.mapping(function(fallback)
-          if true then
-            if cmp.visible() then
-              cmp.confirm()
-            else
-              fallback()
-            end
-          else
-            if cmp.visible() and has_words_before() then
-              cmp.confirm({ select = true })
-            else
-              fallback()
-            end
-          end
-        end, { "i", "c" }),
-      })
-    end,
-    main = "lazyvim.util.cmp",
-  },
-
-  {
-    "hrsh7th/nvim-cmp",
     optional = true,
     dependencies = { "hrsh7th/cmp-calc", lazy = true },
     opts = function(_, opts)
@@ -217,6 +148,38 @@ return {
         pos = 3
       end
       table.insert(opts.sorting.comparators, pos + 1, require("cmp-under-comparator").under)
+    end,
+  },
+  {
+    "hrsh7th/nvim-cmp",
+    enevt = { "InsertEnter", "CmdlineEnter" },
+    ---@param opts cmp.ConfigSchema
+    opts = function(_, opts)
+      local has_words_before = function()
+        unpack = unpack or table.unpack
+        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+      end
+
+      local cmp = require("cmp")
+
+      opts.mapping = vim.tbl_extend("force", opts.mapping, {
+        ["<CR>"] = cmp.config.disable,
+        ["<Tab>"] = cmp.mapping(function(fallback)
+          -- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
+          if cmp.visible() then
+            local entry = cmp.get_selected_entry()
+            if not entry then
+              cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+            end
+            cmp.confirm()
+          else
+            fallback()
+          end
+        end, { "i", "s", "c" }),
+        ["<C-j>"] = cmp.mapping.select_next_item(),
+        ["<C-k>"] = cmp.mapping.select_prev_item(),
+      })
     end,
   },
 }
