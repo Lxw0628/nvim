@@ -95,6 +95,7 @@
   "project.nvim": { "branch": "main", "commit": "8c6bad7d22eef1b71144b401c9f74ed01526a4fb" },
   "refactoring.nvim": { "branch": "master", "commit": "00e5f20f65efb49343445cc99f3cf0015f086991" },
   "rustaceanvim": { "branch": "master", "commit": "047f9c9d8cd2861745eb9de6c1570ee0875aa795" },
+  "sniprun": { "branch": "master", "commit": "f2302d4081914c3312456c91dc6965dfeec266b1" },
   "tailwindcss-colorizer-cmp.nvim": { "branch": "main", "commit": "3d3cd95e4a4135c250faf83dd5ed61b8e5502b86" },
   "telescope-terraform-doc.nvim": { "branch": "main", "commit": "7ac642765615e6ff164ecfc82eb278aa68d06840" },
   "telescope-terraform.nvim": { "branch": "main", "commit": "072c97023797ca1a874668aaa6ae0b74425335df" },
