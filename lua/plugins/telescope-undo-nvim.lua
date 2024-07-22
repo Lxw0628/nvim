@@ -6,7 +6,7 @@ return {
       "nvim-telescope/telescope.nvim",
       dependencies = {
         "debugloop/telescope-undo.nvim",
-        config = function()
+        init = function()
           vim.keymap.set("n", "<Leader>fu", "<Cmd>Telescope undo<CR>", { desc = "Find undos" })
         end,
       },
