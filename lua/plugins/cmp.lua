@@ -183,6 +183,7 @@ return {
     end,
   },
   {
+    -- https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#how-to-add-visual-studio-code-dark-theme-colors-to-the-menu
     "hrsh7th/nvim-cmp",
     optional = true,
     opts = function()
