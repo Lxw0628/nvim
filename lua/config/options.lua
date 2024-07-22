@@ -127,4 +127,4 @@ vim.g.markdown_recommended_style = 0
 
 
 -- ## Personal Options ##
-
+vim.g.codeium_enabled = true
