@@ -8,7 +8,7 @@ local function list_index(t, value)
 end
 
 return {
-  {
+  { -- mapping
     "hrsh7th/nvim-cmp",
     enevt = { "InsertEnter", "CmdlineEnter" },
     ---@param opts cmp.ConfigSchema
@@ -18,11 +18,15 @@ return {
       --   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
       --   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
       -- end
-
       local cmp = require("cmp")
-
       opts.mapping = vim.tbl_extend("force", opts.mapping, {
+        ["<C-b>"] = cmp.mapping.scroll_docs(-1),
+        ["<C-f>"] = cmp.mapping.scroll_docs(1),
+        ["<C-Space>"] = cmp.mapping.complete(),
         ["<CR>"] = cmp.config.disable,
+        ["<C-y>"] = cmp.config.disable,
+        ["<S-CR>"] = cmp.config.disable,
+        ["<C-CR>"] = cmp.config.disable,
         ["<Tab>"] = cmp.mapping(function(fallback)
           -- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
           if cmp.visible() then
@@ -97,27 +101,6 @@ return {
       table.insert(opts.sources, { name = "emoji", priority = 700 })
     end,
   },
-  -- {
-  --   "petertriho/cmp-git",
-  --   ft = { "gitcommit", "octo", "NeogitCommitMessage" },
-  --   dependencies = { "hrsh7th/nvim-cmp" },
-  --   opts = function(_, opts)
-  --     opts.filetypes = require("lazy.core.plugin").values(assert(require("astrocore").get_plugin("cmp-git")), "ft")
-  --   end,
-  --   config = function(_, opts)
-  --     if opts.filetypes then
-  --       local cmp = require("cmp")
-  --       cmp.setup.filetype(opts.filetypes, {
-  --         sources = cmp.config.sources({
-  --           { name = "git" },
-  --         }, {
-  --           { name = "buffer" },
-  --         }),
-  --       })
-  --     end
-  --     require("cmp_git").setup(opts)
-  --   end,
-  -- },
   {
     "hrsh7th/nvim-cmp",
     optional = true,
