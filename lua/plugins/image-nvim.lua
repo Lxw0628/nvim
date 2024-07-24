@@ -7,16 +7,12 @@ return {
     {
       "nvim-treesitter/nvim-treesitter",
       optional = true,
-      config = function()
-        local config = require("nvim-treesitter.configs")
-        config.setup({
-          ensure_installed = { "markdown", "markdown_inline" },
+      opts = function(_, opts)
+        vim.list_extend(opts.ensure_installed, {
+          "markdown",
+          "markdown_inline",
         })
       end,
-      -- opts = {
-      --   ensure_installed = { "markdown", "markdown_inline" },
-      --   auto_install = true,
-      -- },
     },
     "https://github.com/leafo/magick",
   },
@@ -24,17 +20,17 @@ return {
     backend = "kitty",
     integrations = {
       markdown = {
-        enabled = true,
+        enabled = false,
         clear_in_insert_mode = false,
         download_remote_images = true,
-        only_render_image_at_cursor = false,
+        only_render_image_at_cursor = true,
         filetypes = { "markdown", "vimwiki" }, -- markdown extensions (ie. quarto) can go here
       },
       neorg = {
         enabled = true,
         clear_in_insert_mode = false,
         download_remote_images = true,
-        only_render_image_at_cursor = false,
+        only_render_image_at_cursor = true,
         filetypes = { "norg" },
       },
     },
