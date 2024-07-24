@@ -1,3 +1,5 @@
+if true then return {} end
+
 return {
   "nvim-pack/nvim-spectre",
   cmd = "Spectre",
