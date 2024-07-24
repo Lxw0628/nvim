@@ -14,3 +14,12 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
     require("leetcode").start(true)
   end,
 })
+
+-- 关闭markdown的spell和diagnostic
+vim.api.nvim_create_autocmd({"FileType"}, {
+  pattern = { "markdown" },
+  callback = function ()
+    vim.opt_local.spell = false
+    vim.diagnostic.enable(false)
+  end
+})
