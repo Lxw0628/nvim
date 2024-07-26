@@ -15,7 +15,7 @@ vim.api.nvim_create_autocmd({ "VimEnter" }, {
   end,
 })
 
--- 关闭markdown的spell和diagnostic
+-- disabled spell and diagnostic to markdown
 vim.api.nvim_create_autocmd({"FileType"}, {
   pattern = { "markdown" },
   callback = function ()
