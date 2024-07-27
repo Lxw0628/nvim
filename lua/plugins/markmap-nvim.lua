@@ -1,3 +1,5 @@
+if true then return {} end
+
 --  [markdown markmap]
 --  https://github.com/Zeioth/markmap.nvim
 return {
