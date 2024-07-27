@@ -1,5 +1,2 @@
-require("opts")
-require("keymaps")
-require("autocmds")
-require("Lazy")
+require("config.lazy")
 

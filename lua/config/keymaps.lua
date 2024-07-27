@@ -29,16 +29,16 @@ vim.keymap.set("n", "k", "gk", opts)
 vim.keymap.set("n", "<M-j>", ":m .+1<cr>", opts)
 vim.keymap.set("n", "<M-k>", ":m .-2<cr>", opts)
 -- 分割屏幕
-vim.keymap.set("n", "<leader>wh", "<C-w>v", opts)
-vim.keymap.set("n", "<leader>wv", "<C-w>s", opts)
-vim.keymap.set("n", "<leader>wc", "<C-w>c", opts)
+vim.keymap.set("n", "<leader>wv", "<C-w>v", opts)
+vim.keymap.set("n", "<leader>ws", "<C-w>s", opts)
+vim.keymap.set("n", "<leader>wd", "<C-w>c", opts)
 -- 取消c-w分屏操作
 vim.keymap.set("n", "<C-w>v", "<Nop>", opts)
 vim.keymap.set("n", "<C-w>s", "<Nop>", opts)
 -- buffer操作
 vim.keymap.set("n", "<S-l>", ":bnext<CR>", opts)
 vim.keymap.set("n", "<S-h>", ":bprevious<CR>", opts)
-vim.keymap.set("n", "<C-w>", ":bd<CR>", opts)
+-- vim.keymap.set("n", "<C-w>", ":bd<CR>", opts)
 -- 保存关闭
 vim.keymap.set("n", "<C-s>", ":w<cr>", opts)
 vim.keymap.set("n", "<leader>q", "<ESC>:q!<CR>", opts)
