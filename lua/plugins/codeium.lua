@@ -1,28 +1,9 @@
 return {
   "Exafunction/codeium.nvim",
-  cmd = "Codeium",
-  build = ":Codeium Auth",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    {
-      "hrsh7th/nvim-cmp",
-      optional = true,
-      opts = function(_, opts)
-        -- Inject codeium into cmp sources, with high priority
-        table.insert(opts.sources, 1, {
-          name = "codeium",
-          group_index = 1,
-          priority = 10000,
-        })
-      end,
-    },
-  },
-  opts = {
-    enable_chat = true,
-  },
   config = function()
-    -- https://github.com/Exafunction/codeium.nvim/issues/136
-    local Source = require("codeium.source")
+    require("codeium").setup({
+      enable_chat = true,
+    })
 
     local function is_codeium_enabled()
       local enabled = vim.b["codeium_enabled"]
@@ -35,26 +16,32 @@ return {
       return enabled
     end
 
-    ---@diagnostic disable-next-line: duplicate-set-field
-    function Source:is_available()
-      local enabled = is_codeium_enabled()
-      ---@diagnostic disable-next-line: undefined-field
-      return enabled and self.server.is_healthy()
-    end
-
-    vim.api.nvim_set_keymap("n", "<leader>;", "", { desc = "Codeium" })
-    vim.api.nvim_set_keymap("n", "<leader>;;", "", {
-      callback = function()
-        local new_enabled = not is_codeium_enabled()
-        vim.b["codeium_enabled"] = new_enabled
-        if new_enabled then
-          vim.notify("Codeium enabled in buffer")
+    local toggle = require("lazyvim.util.toggle")
+    -- vim.api.nvim_set_keymap("n", "<Leader>;", "", { desc = "Codeium" })
+    vim.keymap.set("n", "<Leader>;", "", { desc = "Codeium" })
+    vim.keymap.set("n", "<Leader>;o", "<Cmd>Codeium Chat", { desc = "Codeium Chat" })
+    toggle.map("<Leader>;;", {
+      name = "Codeium",
+      get = function()
+        return is_codeium_enabled()
+      end,
+      set = function(state)
+        if state then
+          vim.b["codeium_enabled"] = true
         else
-          vim.notify("Codeium disabled in buffer")
+          vim.b["codeium_enabled"] = false
         end
       end,
-      noremap = true,
-      desc = "Toggle Codeium",
     })
+
+    local Source = require("codeium.source")
+    --- save reference to library available function
+    local superclass_is_available = Source.is_available
+    --- overwrite the library built-in is_available function
+    --- so that I can disable when I want to
+    ---@diagnostic disable-next-line: duplicate-set-field
+    function Source:is_available()
+      return is_codeium_enabled() and superclass_is_available(self)
+    end
   end,
 }
