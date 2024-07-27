@@ -19,10 +19,10 @@ return {
   { import = "astrocommunity.code-runner.sniprun" }, -- A neovim plugin to run lines/blocs of code (independently of the rest of the file), supporting multiples languages
 
   { import = "astrocommunity.color.ccc-nvim" }, -- Color picker and highlighter plugin for Neovim.
-  { import = "astrocommunity.color.headlines-nvim" }, -- This plugin adds horizontal highlights for text filetypes, like markdown, orgmode, and neorg.
+  -- { import = "astrocommunity.color.headlines-nvim" }, -- This plugin adds horizontal highlights for text filetypes, like markdown, orgmode, and neorg.
   { import = "astrocommunity.color.huez-nvim" }, -- All things color related. All Lua.
   -- { import = "astrocommunity.color.mini-hipatterns" }, -- Neovim Lua plugin to highlight patterns in text. Part of 'mini.nvim' library.
-  { import = "astrocommunity.color.nvim-highlight-colors" }, -- Highlight colors for neovim
+  -- { import = "astrocommunity.color.nvim-highlight-colors" }, -- Highlight colors for neovim
   -- { import = "astrocommunity.color.transparent-nvim" }, -- Remove all background colors to make nvim transparent
   { import = "astrocommunity.color.twilight-nvim" }, -- 🌅 Twilight is a Lua plugin for Neovim 0.5 that dims inactive portions of the code you're editing using TreeSitter.
 
@@ -55,7 +55,7 @@ return {
   { import = "astrocommunity.diagnostics.trouble-nvim" }, -- 🚦 A pretty diagnostics, references, telescope results, quickfix and location list to help you solve all the trouble your code is causing.
 
   { import = "astrocommunity.editing-support.bigfile-nvim" }, -- Make editing big files faster 🚀
-  { import = "astrocommunity.editing-support.comment-box-nvim" }, -- ✨ Clarify and beautify your comments using boxes and lines.
+  -- { import = "astrocommunity.editing-support.comment-box-nvim" }, -- ✨ Clarify and beautify your comments using boxes and lines.
   { import = "astrocommunity.editing-support.dial-nvim" }, -- enhanced increment/decrement plugin for Neovim.
   -- { import = "astrocommunity.editing-support.mini-operators" }, -- Text edit operators. Part of 'mini.nvim' library.
   { import = "astrocommunity.editing-support.mini-splitjoin" }, -- Neovim Lua plugin to split and join arguments. Part of 'mini.nvim' library.
@@ -67,17 +67,17 @@ return {
   { import = "astrocommunity.editing-support.nvim-treesitter-endwise" }, -- This is a simple plugin that helps to end certain structures automatically. In Ruby, this means adding end after if, do, def, etc. This even works for languages nested inside other, such as Markdown with a Lua code block!
   { import = "astrocommunity.editing-support.rainbow-delimiters-nvim" }, -- Rainbow delimiters for Neovim with Tree-sitter
   { import = "astrocommunity.editing-support.refactoring-nvim" }, -- The Refactoring library based off the Refactoring book by Martin Fowler
-  { import = "astrocommunity.editing-support.stickybuf-nvim" }, -- Neovim plugin for locking a buffer to a window; Have you ever accidentally opened a file into your file explorer or quickfix window?
+  -- { import = "astrocommunity.editing-support.stickybuf-nvim" }, -- Neovim plugin for locking a buffer to a window; Have you ever accidentally opened a file into your file explorer or quickfix window?
   { import = "astrocommunity.editing-support.suda-vim" }, -- suda is a plugin to read or write files with sudo command.
   { import = "astrocommunity.editing-support.telescope-undo-nvim" }, -- A telescope extension to view and search your undo tree 🌴
   { import = "astrocommunity.editing-support.treesj" }, -- Neovim plugin for splitting/joining blocks of code
   -- { import = "astrocommunity.editing-support.true-zen-nvim" }, -- 🦝 Clean and elegant distraction-free writing for NeoVim
   { import = "astrocommunity.editing-support.ultimate-autopair-nvim" }, -- https://github.com/AstroNvim/astrocommunity/tree/main/lua/astrocommunity/editing-support/ultimate-autopair-nvim
-  { import = "astrocommunity.editing-support.undotree" }, -- The undo history visualizer for VIM
-  { import = "astrocommunity.editing-support.vim-doge" }, -- (Do)cumentation (Ge)nerator for nearly 20 languages 📚 Generate proper code documentation with a single keypress. ⚡️🔥
+  -- { import = "astrocommunity.editing-support.undotree" }, -- The undo history visualizer for VIM
+  -- { import = "astrocommunity.editing-support.vim-doge" }, -- (Do)cumentation (Ge)nerator for nearly 20 languages 📚 Generate proper code documentation with a single keypress. ⚡️🔥
   { import = "astrocommunity.editing-support.vim-move" }, -- Moves lines and selections in a more visual manner
   { import = "astrocommunity.editing-support.vim-visual-multi" }, -- Multiple cursors plugin for vim/neovim.
-  { import = "astrocommunity.editing-support.wildfire-nvim" }, -- Smart selection of the closest text object. A modern successor to wildfire.vim, empowered with the superpower of treesitter.
+  -- { import = "astrocommunity.editing-support.wildfire-nvim" }, -- Smart selection of the closest text object. A modern successor to wildfire.vim, empowered with the superpower of treesitter.
   { import = "astrocommunity.editing-support.yanky-nvim" }, -- Improved Yank and Put functionalities for Neovim.
   { import = "astrocommunity.editing-support.zen-mode-nvim" }, -- Disables diagnostics, indentation, and winbar when entering Zen Mode.
 
@@ -98,7 +98,7 @@ return {
   -- { import = "astrocommunity.keybinding.mini-clue" }, -- Show next key clues. Part of the mini.nvim library.
   -- { import = "astrocommunity.keybinding.nvcheatsheet-nvim" }, -- NvChad cheatsheet as a standalone neovim plugin
 
-  { import = "astrocommunity.lsp.actions-preview-nvim" }, -- Fully customizable previewer for LSP code actions.
+  -- { import = "astrocommunity.lsp.actions-preview-nvim" }, -- Fully customizable previewer for LSP code actions.
   -- { import = "astrocommunity.lsp.coc-nvim" }, -- Nodejs extension host for vim & neovim, load extensions like VSCode and host language servers.
   { import = "astrocommunity.lsp.garbage-day-nvim" }, -- Garbage collector that stops inactive LSP clients to free RAM.
   { import = "astrocommunity.lsp.inc-rename-nvim" }, -- Incremental LSP renaming based on Neovim's command-preview feature.
@@ -119,21 +119,21 @@ return {
 
   { import = "astrocommunity.media.codesnap-nvim" }, -- 📸 Snapshot plugin with rich features that can make pretty code snapshots for Neovim
   { import = "astrocommunity.media.drop-nvim" }, -- 🍁 Fun little plugin that can be used as a screensaver and on your dashboard
-  -- { import = "astrocommunity.media.pets-nvim" }, -- Display pets in your editor 🐱. NEED KITTY TERMINAL!
+  { import = "astrocommunity.media.pets-nvim" }, -- Display pets in your editor 🐱. NEED KITTY TERMINAL!
   -- { import = "astrocommunity.media.vim-wakatime" }, -- Vim plugin for automatic time tracking and metrics generated from your programming activity.
 
-  { import = "astrocommunity.motion.before-nvim" }, -- Plugin for Neovim which tracks edit locations
+  -- { import = "astrocommunity.motion.before-nvim" }, -- Plugin for Neovim which tracks edit locations
   -- { import = "astrocommunity.motion.flash-nvim" }, -- flash.nvim lets you navigate your code with search labels, enhanced character motions, and Treesitter integration.
   -- { import = "astrocommunity.motion.hop-nvim" }, -- disabled to use personal config in hop.lua, because of hop doesn't set any keybindings.
   { import = "astrocommunity.motion.mini-ai" }, -- Neovim Lua plugin to extend and create a/i textobjects. Part of 'mini.nvim' library.
   { import = "astrocommunity.motion.nvim-surround" }, -- Add/change/delete surrounding delimiter pairs with ease. Written with ❤️ in Lua.
   -- { import = "astrocommunity.motion.nvim-tree-pairs" }, -- NeoVim plugin for jumping to the other end of the current Tree-sitter node
-  { import = "astrocommunity.motion.tabout-nvim" }, -- tabout plugin for neovim
+  -- { import = "astrocommunity.motion.tabout-nvim" }, -- tabout plugin for neovim
   { import = "astrocommunity.motion.vim-matchup" }, -- vim match-up: even better % 👊 navigate and highlight matching words 👊 modern matchit and matchparen. Supports both vim and neovim + tree-sitter.
 
   { import = "astrocommunity.neovim-lua-development.lazydev-nvim" }, -- Faster LuaLS setup for Neovim
 
-  { import = "astrocommunity.note-taking.obsidian-nvim" }, -- A Neovim plugin for writing and navigating an Obsidian vault, written in Lua.
+  -- { import = "astrocommunity.note-taking.obsidian-nvim" }, -- A Neovim plugin for writing and navigating an Obsidian vault, written in Lua.
   { import = "astrocommunity.note-taking.venn-nvim" }, -- Draw ASCII diagrams in Neovim with ease.https://github.com/AstroNvim/astrocommunity/tree/main/lua/astrocommunity/note-taking/venn-nvim
 
   { import = "astrocommunity.pack.bash" },
@@ -177,15 +177,15 @@ return {
   -- { import = "astrocommunity.register.nvim-neoclip-lua" },
 
   -- { import = "astrocommunity.scrolling.mini-animate" },
-  { import = "astrocommunity.scrolling.neoscroll-nvim" },
-  { import = "astrocommunity.scrolling.nvim-scrollbar" },
+  -- { import = "astrocommunity.scrolling.neoscroll-nvim" },
+  -- { import = "astrocommunity.scrolling.nvim-scrollbar" },
 
   { import = "astrocommunity.search.nvim-spectre" },
 
   -- { import = "astrocommunity.snippet.nvim-snippets" },
 
   -- { import = "astrocommunity.split-and-window.edgy-nvim" },
-  { import = "astrocommunity.split-and-window.minimap-vim" },
+  -- { import = "astrocommunity.split-and-window.minimap-vim" },
   { import = "astrocommunity.split-and-window.windows-nvim" },
 
   { import = "astrocommunity.syntax.hlargs-nvim" },
