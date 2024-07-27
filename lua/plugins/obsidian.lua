@@ -5,15 +5,15 @@ return {
   "epwalsh/obsidian.nvim",
   version = "*", -- recommended, use latest release instead of latest commit
   lazy = true,
-  -- ft = "markdown",
+  ft = "markdown",
   -- Replace the above line with this if you only want to load obsidian.nvim for markdown files in your vault:
-  event = {
-    -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
-    -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
-    -- "BufReadPre path/to/my-vault/**.md",
-    -- "BufNewFile path/to/my-vault/**.md",
-    "BufReadPre  */obsidian-vault/*.md",
-  },
+  -- event = {
+  --   -- If you want to use the home shortcut '~' here you need to call 'vim.fn.expand'.
+  --   -- E.g. "BufReadPre " .. vim.fn.expand "~" .. "/my-vault/**.md"
+  --   -- "BufReadPre path/to/my-vault/**.md",
+  --   -- "BufNewFile path/to/my-vault/**.md",
+  --   -- "BufReadPre  */Lxw0628/**.md",
+  -- },
   dependencies = {
     -- Required.
     "nvim-lua/plenary.nvim",
@@ -71,7 +71,7 @@ return {
 
     -- Alternatively - and for backwards compatibility - you can set 'dir' to a single path instead of
     -- 'workspaces'. For example:
-    dir = "~/Documents/Obsidian/Lxw0628",
+    -- dir = "~/Documents/Obsidian/Lxw0628",
 
     -- Optional, if you keep notes in a specific subdirectory of your vault.
     -- notes_subdir = "notes",
@@ -218,12 +218,12 @@ return {
     -- Optional, by default when you use `:ObsidianFollowLink` on a link to an external
     -- URL it will be ignored but you can customize this behavior here.
     ---@param url string
-    -- follow_url_func = function(url)
-    --   -- Open the URL in the default web browser.
-    --   -- vim.fn.jobstart { "open", url } -- Mac OS
-    --   vim.fn.jobstart { "xdg-open", url } -- linux
-    -- end,
-    follow_url_func = vim.ui.open or function(url) require("astrocore").system_open(url) end,
+    follow_url_func = function(url)
+      -- Open the URL in the default web browser.
+      -- vim.fn.jobstart { "open", url } -- Mac OS
+      vim.fn.jobstart { "xdg-open", url } -- linux
+    end,
+    -- follow_url_func = vim.ui.open or function(url) require("astrocore").system_open(url) end,
 
     -- Optional, set to true if you use the Obsidian Advanced URI plugin.
     -- https://github.com/Vinzent03/obsidian-advanced-uri
