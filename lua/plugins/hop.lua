@@ -11,9 +11,9 @@ return {
         multi_windows = true,
       })
       vim.api.nvim_set_keymap("n", "s", "<Cmd>HopChar1<CR>", { silent = true })
-      vim.api.nvim_set_keymap("n", "<M-s>", "<Cmd>HopAnwhere<CR>", { silent = true })
+      vim.api.nvim_set_keymap("n", "<M-s>", "<Cmd>HopAnywhere<CR>", { silent = true })
       vim.api.nvim_set_keymap("v", "s", "<Cmd>HopChar1<CR>", { silent = true })
-      vim.api.nvim_set_keymap("v", "<M-s>", "<Cmd>HopAnwhere<CR>", { silent = true })
+      vim.api.nvim_set_keymap("v", "<M-s>", "<Cmd>HopAnywhere<CR>", { silent = true })
     end,
     specs = {
       {
