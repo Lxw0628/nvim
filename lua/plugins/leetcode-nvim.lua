@@ -101,4 +101,23 @@ return {
       image_support = false,
     },
   },
+  {
+    "nvimdev/dashboard-nvim",
+    optional = true,
+    opts = function(_, opts)
+      local leetcode = {
+        action = function()
+          vim.api.nvim_input("<Cmd>Leet<CR>")
+        end,
+        desc = " LeetCode",
+        icon = " ",
+        key = "e",
+      }
+
+      leetcode.desc = leetcode.desc .. string.rep(" ", 43 - #leetcode.desc)
+      leetcode.key_format = "  %s"
+
+      table.insert(opts.config.center, 1, leetcode)
+    end,
+  },
 }
