@@ -1,0 +1,20 @@
+{
+  "html": {
+    "prefix": "!",
+    "body": [
+      "<!DOCTYPE html>",
+      "<html lang=\"$1zh-CN\">",
+      "\t<head>",
+      "\t\t<meta charset=\"UTF-8\">",
+      "\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">",
+      "\t\t<title>$2</title>",
+      "\t\t<link href=\"$3css/style.css\" rel=\"stylesheet\">",
+      "\t</head>",
+      "\t<body>",
+      "\t\t$0",
+      "\t</body>",
+      "</html>"
+    ],
+    "description": "HTML - Defines a template for a html document from vscode"
+  }
+}
