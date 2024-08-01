@@ -182,31 +182,6 @@ return {
     end,
   },
   {
-    "nvim-cmp",
-    dependencies = {
-      "Jezda1337/nvim-html-css",
-      dependencies = {
-        "nvim-treesitter/nvim-treesitter",
-        "nvim-lua/plenary.nvim",
-      },
-      config = function()
-        require("html-css"):setup()
-      end,
-    },
-    opts = function(_, opts)
-      opts.sources = opts.sources or {}
-      table.insert(opts.sources, {
-        name = "html-css",
-        option = {
-          enable_on = {
-            "html",
-          },
-          file_extensions = { "css", "sass", "less" },
-        },
-      })
-    end,
-  },
-  {
     -- https://github.com/hrsh7th/nvim-cmp/wiki/Menu-Appearance#how-to-add-visual-studio-code-dark-theme-colors-to-the-menu
     "hrsh7th/nvim-cmp",
     optional = true,
