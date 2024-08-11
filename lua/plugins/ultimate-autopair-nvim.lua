@@ -1,3 +1,5 @@
+if true then return {} end
+
 return {
   "altermo/ultimate-autopair.nvim",
   event = "InsertEnter",
