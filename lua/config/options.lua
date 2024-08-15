@@ -9,7 +9,7 @@ vim.g.autoformat = false
 -- Can be one of: telescope, fzf
 -- Leave it to "auto" to automatically use the picker
 -- enabled with `:LazyExtras`
-vim.g.lazyvim_picker = "auto"
+vim.g.lazyvim_picker = "telescope"
 
 -- LazyVim root dir detection
 -- Each entry can be:
@@ -138,3 +138,4 @@ vim.g.markdown_recommended_style = 0
 
 -- ## Personal Options ##
 vim.g.codeium_enabled = false
+vim.opt.foldmethod = "manual"
