@@ -14,8 +14,6 @@ map({ "i", "n", "x" }, "<C-M-j>", "<Down><Down><Down><Down><Down>")
 map({ "i", "n", "x" }, "<C-M-k>", "<Up><Up><Up><Up><Up>")
 map({ "i", "n", "x" }, "<C-M-l>", "<End>")
 
-map("n", "x", "_x")
-
 -- Increment/decrement
 map("n", "+", "<C-a>")
 map("n", "-", "<C-x>")
