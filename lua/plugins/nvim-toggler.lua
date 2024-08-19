@@ -16,6 +16,10 @@ return {
       ["对"] = "错",
       ["是"] = "否",
       ["- [ ]"] = "- [x]",
+      ["horizontal"] = "vertical",
+      ["width"] = "height",
+      ["big"] = "small",
+      ["0"] = "1",
     },
   },
 }
