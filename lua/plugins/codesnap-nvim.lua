@@ -14,8 +14,8 @@ return {
   opts = {
     mac_window_bar = true,
     title = "CodeSnap.nvim",
-    code_font_family = "Maple Mono SC NF",
-    watermark_font_family = "Maple Mono SC NF",
+    code_font_family = "Maple Mono NF CN",
+    watermark_font_family = "Maple Mono NF CN",
     watermark = "",
     bg_theme = "bamboo",
     has_breadcrumbs = false,
