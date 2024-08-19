@@ -12,14 +12,20 @@ return {
   opts = {
     remove_default_keybinds = true,
     inverses = {
-      ["男"] = "女",
-      ["对"] = "错",
-      ["是"] = "否",
       ["- [ ]"] = "- [x]",
       ["horizontal"] = "vertical",
       ["width"] = "height",
       ["big"] = "small",
+      ["TRUE"] = "FALSE",
       ["0"] = "1",
+      ["!=="] = "===",
+
+      -- 中文
+      ["男"] = "女",
+      ["对"] = "错",
+      ["是"] = "否",
+      ["上"] = "下",
+      ["左"] = "右",
     },
   },
 }
