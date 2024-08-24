@@ -14,6 +14,7 @@ return {
     inverses = {
       ["- [ ]"] = "- [x]",
       ["horizontal"] = "vertical",
+      ["top"] = "bottom",
       ["width"] = "height",
       ["big"] = "small",
       ["TRUE"] = "FALSE",
