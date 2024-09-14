@@ -14,7 +14,7 @@ return {
       live_server.setup({
         port = 5500,
         browser_command = "firefox-developer-edition", -- Command or executable path
-        quiet = false,
+        quiet = true,
         no_css_inject = false,
         install_path = vim.fn.stdpath("config") .. "/live-server/",
       })
