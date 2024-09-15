@@ -19,7 +19,7 @@ local enabled = {
   "yanky.nvim",
   -- "LazyVim",
   "nvim-toggler",
-  "treesj"
+  "treesj",
 }
 
 local Config = require("lazy.core.config")
@@ -29,13 +29,32 @@ Config.options.defaults.cond = function(plugin)
   return vim.tbl_contains(enabled, plugin.name) or plugin.vscode
 end
 
+local vscode = require("vscode")
+vim.notify = vscode.notify
+
+local function findKeymap()
+  vim.keymap.set("n", "<leader><space>", "<cmd>Find<cr>")
+end
+
+-- Code
+local function codeKeymap()
+  vim.keymap.set("n", "<leader>cs", function()
+    vscode.call("workbench.action.gotoSymbol")
+  end)
+end
+
+function keymaps()
+  -- Find
+  findKeymap()
+  -- Code
+  codeKeymap()
+end
+
 -- Add some vscode specific keymaps
 vim.api.nvim_create_autocmd("User", {
   pattern = "LazyVimKeymapsDefaults",
   callback = function()
-    vim.keymap.set("n", "<leader><space>", "<cmd>Find<cr>")
-    -- vim.keymap.set("n", "<leader>/", [[<cmd>call VSCodeNotify('workbench.action.findInFiles')<cr>]])
-    vim.keymap.set("n", "<leader>cs", [[<cmd>call VSCodeNotify('workbench.action.gotoSymbol')<cr>]])
+    keymaps()
   end,
 })
 
