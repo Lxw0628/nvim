@@ -15,7 +15,7 @@ return {
         port = 5500,
         browser_command = "firefox-developer-edition", -- Command or executable path
         quiet = true,
-        no_css_inject = false,
+        no_css_inject = true,
         install_path = vim.fn.stdpath("config") .. "/live-server/",
       })
     end,
