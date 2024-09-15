@@ -51,6 +51,10 @@
       {
         "language": "html",
         "path": "./html.json"
+      },
+      {
+        "language": "javascript",
+        "path": "./javascript.json"
       }
     ]
   }
