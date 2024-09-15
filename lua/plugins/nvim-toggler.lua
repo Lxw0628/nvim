@@ -14,6 +14,7 @@ return {
     inverses = {
       ["- [ ]"] = "- [x]",
       ["horizontal"] = "vertical",
+      ["Top"] = "bottom",
       ["top"] = "bottom",
       ["width"] = "height",
       ["start"] = "end",
@@ -22,6 +23,8 @@ return {
       ["TRUE"] = "FALSE",
       ["0"] = "1",
       ["!=="] = "===",
+      ["Left"] = "Right",
+      ["Up"] = "Down",
 
       -- 中文
       ["男"] = "女",
