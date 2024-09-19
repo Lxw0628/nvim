@@ -1,5 +1,6 @@
 return {
   "nguyenvukhang/nvim-toggler",
+  vscode = true,
   event = { "User AstroFile", "InsertEnter" },
   init = function()
     vim.keymap.set("n", "<Leader>i", function()
