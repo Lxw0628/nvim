@@ -1,3 +1,5 @@
+-- if true then return {} end
+
 local function list_index(t, value)
   for i, v in ipairs(t) do
     if v == value then
@@ -39,8 +41,8 @@ return {
             fallback()
           end
         end, { "i", "s", "c" }),
-        ["<C-j>"] = cmp.mapping.select_next_item(),
-        ["<C-k>"] = cmp.mapping.select_prev_item(),
+        ["<C-n>"] = cmp.mapping.select_next_item(),
+        ["<C-p>"] = cmp.mapping.select_prev_item(),
       })
     end,
   },
