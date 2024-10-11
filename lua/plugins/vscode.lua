@@ -36,6 +36,12 @@ local map = vim.keymap.set
 vim.api.nvim_create_autocmd("User", {
   pattern = "LazyVimKeymapsDefaults",
   callback = function()
+    -- Ctrl + / 切换行注释
+    map("n", "<C-/>", "<Nop>")
+    map("n", "<C-/>", function ()
+      vscode.action("editor.action.commentLine")
+    end)
+
     map("n", "za", function()
       vscode.action("editor.toggleFold")
     end)
