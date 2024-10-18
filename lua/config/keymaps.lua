@@ -21,7 +21,7 @@ map("n", "-", "<C-x>")
 -- Select all
 map("n", "<C-a>", "gg<S-v>G")
 
-map({ "i", "n", "x" }, "<C-d>", "<C-d>zz", opts)
-map({ "i", "n", "x" }, "<C-u>", "<C-u>zz", opts)
-map({ "i", "n", "x" }, "<C-i>", "<C-i>zz", opts)
-map({ "i", "n", "x" }, "<C-o>", "<C-o>zz", opts)
+-- map({ "i", "n", "x" }, "<C-d>", "<C-d>zz", opts)
+-- map({ "i", "n", "x" }, "<C-u>", "<C-u>zz", opts)
+-- map({ "i", "n", "x" }, "<C-i>", "<C-i>zz", opts)
+-- map({ "i", "n", "x" }, "<C-o>", "<C-o>zz", opts)
