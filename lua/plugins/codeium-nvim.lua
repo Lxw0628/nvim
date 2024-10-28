@@ -1,4 +1,4 @@
--- if true then return {} end
+if true then return {} end
 
 return {
     "Exafunction/codeium.nvim",
@@ -14,8 +14,7 @@ return {
                 -- A mapping of filetype to true or false, to enable virtual text.
                 filetypes = {},
                 -- Whether to enable virtual text of not for filetypes not specifically listed above.
-                default_filetype_enabled = true,
-                -- How long to wait (in ms) before requesting completions after typing stops.
+                default_filetype_enabled = true, -- How long to wait (in ms) before requesting completions after typing stops.
                 idle_delay = 75,
                 -- Priority of the virtual text. This usually ensures that the completions appear on top of
                 -- other plugins that also add virtual text, such as LSP inlay hints, but can be modified if
@@ -82,5 +81,9 @@ return {
         function Source:is_available()
             return is_codeium_enabled() and superclass_is_available(self)
         end
+
+        require("codeium.virtual_text").set_statusbar_refresh(function()
+            require("lualine").refresh()
+        end)
     end,
 }
