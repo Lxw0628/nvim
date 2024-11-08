@@ -131,6 +131,10 @@ vim.api.nvim_create_autocmd("User", {
             vscode.action("workbench.action.toggleZenMode")
         end)
 
+        map("n", "<leader>us", function()
+            vscode.action("workbench.action.toggleSidebarPosition")
+        end)
+
         -- Windows
 
         -- Diagnostics/Quickfix
