@@ -98,6 +98,9 @@ vim.api.nvim_create_autocmd("User", {
         map("n", "<leader>cA", function()
             vscode.action("editor.action.sourceAction")
         end)
+        map("n", "<leader>cs", function()
+            vscode.action("workbench.action.gotoSymbol")
+        end)
 
         -- Debug
         map("n", "<leader>db", function()
@@ -113,9 +116,6 @@ vim.api.nvim_create_autocmd("User", {
         -- Refactor
 
         -- Search
-        map("n", "<leader>ss", function()
-            vscode.action("workbench.action.gotoSymbol")
-        end)
 
         -- Test
 
