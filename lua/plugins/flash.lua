@@ -12,6 +12,18 @@ return {
             end,
             desc = "Flash",
         },
+        {
+            "<M-s>",
+            mode = { "n", "x", "o" },
+            function()
+                require("flash").jump({
+                    search = { mode = "search", max_length = 0 },
+                    label = { after = { 0, 0 } },
+                    pattern = "^",
+                })
+            end,
+            desc = "Flash, jump to a line"
+        },
         -- disable the default flash keymap
         { "S", mode = { "n", "x", "o" }, false },
         { "r", mode = "o", false },
