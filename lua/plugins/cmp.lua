@@ -63,10 +63,29 @@ return {
     {
         "hrsh7th/nvim-cmp",
         optional = true,
-        dependencies = { "hrsh7th/cmp-calc", lazy = true },
+        dependencies = {
+            { "hrsh7th/cmp-calc", lazy = true },
+            "hrsh7th/cmp-emoji",
+            "hrsh7th/cmp-latex-symbols",
+            "chrisgrieser/cmp-nerdfont",
+            { "hrsh7th/cmp-nvim-lua", lazy = true },
+            { "f3fora/cmp-spell", lazy = true },
+            "saadparwaiz1/cmp_luasnip",
+        },
         opts = function(_, opts)
             opts.sources = opts.sources or {}
             table.insert(opts.sources, { name = "calc" })
+            table.insert(opts.sources, { name = "emoji" })
+            table.insert(opts.sources, { name = "latex_symbols" })
+            table.insert(opts.sources, { name = "nerdfont" })
+            table.insert(opts.sources, { name = "nvim_lua" })
+            table.insert(opts.sources, { name = "spell" })
+            opts.snippet = {
+                expand = function(args)
+                    require("luasnip").lsp_expand(args.body)
+                end,
+            }
+            table.insert(opts.sources, { name = "luasnip" })
         end,
     },
     {
@@ -104,34 +123,6 @@ return {
             vim.tbl_map(function(val)
                 cmp.setup.cmdline(val.type, val)
             end, opts)
-        end,
-    },
-    {
-        "hrsh7th/nvim-cmp",
-        optional = true,
-        dependencies = {
-            "hrsh7th/cmp-emoji",
-            "hrsh7th/cmp-latex-symbols",
-            "chrisgrieser/cmp-nerdfont",
-            { "hrsh7th/cmp-nvim-lua", lazy = true },
-            { "f3fora/cmp-spell", lazy = true },
-            "saadparwaiz1/cmp_luasnip",
-        },
-        opts = function(_, opts)
-            if not opts.sources then
-                opts.sources = {}
-            end
-            table.insert(opts.sources, { name = "emoji" })
-            table.insert(opts.sources, { name = "latex_symbols" })
-            table.insert(opts.sources, { name = "nerdfont" })
-            table.insert(opts.sources, { name = "nvim_lua" })
-            table.insert(opts.sources, { name = "spell" })
-            opts.snippet = {
-                expand = function(args)
-                    require("luasnip").lsp_expand(args.body)
-                end,
-            }
-            table.insert(opts.sources, { name = "luasnip" })
         end,
     },
     {
