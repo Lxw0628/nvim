@@ -10,56 +10,56 @@ local function list_index(t, value)
 end
 
 return {
-    { -- mapping
-        "hrsh7th/nvim-cmp",
-        enevt = { "InsertEnter", "CmdlineEnter" },
-        ---@param opts cmp.ConfigSchema
-        opts = function(_, opts)
-            local luasnip = require("luasnip")
-            local cmp = require("cmp")
-            opts.mapping = vim.tbl_extend("force", opts.mapping, {
-                ["<C-b>"] = cmp.mapping.scroll_docs(-1),
-                ["<C-f>"] = cmp.mapping.scroll_docs(1),
-                ["<C-Space>"] = cmp.mapping.complete(),
-                ["<C-y>"] = cmp.config.disable,
-                ["<S-CR>"] = cmp.config.disable,
-                ["<C-CR>"] = cmp.config.disable,
-                ["<CR>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        if luasnip.expandable() then
-                            luasnip.expand()
-                        else
-                            cmp.confirm({
-                                select = true,
-                            })
-                        end
-                    else
-                        fallback()
-                    end
-                end),
-                ["<Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_next_item()
-                    elseif luasnip.locally_jumpable(1) then
-                        luasnip.jump(1)
-                    else
-                        fallback()
-                    end
-                end, { "i", "s" }),
-                ["<S-Tab>"] = cmp.mapping(function(fallback)
-                    if cmp.visible() then
-                        cmp.select_prev_item()
-                    elseif luasnip.locally_jumpable(-1) then
-                        luasnip.jump(-1)
-                    else
-                        fallback()
-                    end
-                end, { "i", "s" }),
-                ["<C-n>"] = cmp.mapping.select_next_item(),
-                ["<C-p>"] = cmp.mapping.select_prev_item(),
-            })
-        end,
-    },
+    -- { -- mapping
+    --     "hrsh7th/nvim-cmp",
+    --     enevt = { "InsertEnter", "CmdlineEnter" },
+    --     ---@param opts cmp.ConfigSchema
+    --     opts = function(_, opts)
+    --         local luasnip = require("luasnip")
+    --         local cmp = require("cmp")
+    --         opts.mapping = vim.tbl_extend("force", opts.mapping, {
+    --             ["<C-b>"] = cmp.mapping.scroll_docs(-1),
+    --             ["<C-f>"] = cmp.mapping.scroll_docs(1),
+    --             ["<C-Space>"] = cmp.mapping.complete(),
+    --             ["<C-y>"] = cmp.config.disable,
+    --             ["<S-CR>"] = cmp.config.disable,
+    --             ["<C-CR>"] = cmp.config.disable,
+    --             ["<CR>"] = cmp.mapping(function(fallback)
+    --                 if cmp.visible() then
+    --                     if luasnip.expandable() then
+    --                         luasnip.expand()
+    --                     else
+    --                         cmp.confirm({
+    --                             select = true,
+    --                         })
+    --                     end
+    --                 else
+    --                     fallback()
+    --                 end
+    --             end),
+    --             ["<Tab>"] = cmp.mapping(function(fallback)
+    --                 if cmp.visible() then
+    --                     cmp.select_next_item()
+    --                 elseif luasnip.locally_jumpable(1) then
+    --                     luasnip.jump(1)
+    --                 else
+    --                     fallback()
+    --                 end
+    --             end, { "i", "s" }),
+    --             ["<S-Tab>"] = cmp.mapping(function(fallback)
+    --                 if cmp.visible() then
+    --                     cmp.select_prev_item()
+    --                 elseif luasnip.locally_jumpable(-1) then
+    --                     luasnip.jump(-1)
+    --                 else
+    --                     fallback()
+    --                 end
+    --             end, { "i", "s" }),
+    --             ["<C-n>"] = cmp.mapping.select_next_item(),
+    --             ["<C-p>"] = cmp.mapping.select_prev_item(),
+    --         })
+    --     end,
+    -- },
     {
         "hrsh7th/nvim-cmp",
         optional = true,
@@ -109,54 +109,29 @@ return {
     {
         "hrsh7th/nvim-cmp",
         optional = true,
-        dependencies = { "hrsh7th/cmp-emoji" },
+        dependencies = {
+            "hrsh7th/cmp-emoji",
+            "hrsh7th/cmp-latex-symbols",
+            "chrisgrieser/cmp-nerdfont",
+            { "hrsh7th/cmp-nvim-lua", lazy = true },
+            { "f3fora/cmp-spell", lazy = true },
+            "saadparwaiz1/cmp_luasnip",
+        },
         opts = function(_, opts)
             if not opts.sources then
                 opts.sources = {}
             end
             table.insert(opts.sources, { name = "emoji" })
-        end,
-    },
-    {
-        "hrsh7th/nvim-cmp",
-        optional = true,
-        dependencies = { "hrsh7th/cmp-latex-symbols" },
-        opts = function(_, opts)
-            if not opts.sources then
-                opts.sources = {}
-            end
             table.insert(opts.sources, { name = "latex_symbols" })
-        end,
-    },
-    {
-        "hrsh7th/nvim-cmp",
-        optional = true,
-        dependencies = { "chrisgrieser/cmp-nerdfont" },
-        opts = function(_, opts)
-            if not opts.sources then
-                opts.sources = {}
-            end
             table.insert(opts.sources, { name = "nerdfont" })
-        end,
-    },
-    {
-        "hrsh7th/nvim-cmp",
-        optional = true,
-        dependencies = { "hrsh7th/cmp-nvim-lua", lazy = true },
-        opts = function(_, opts)
-            if not opts.sources then
-                opts.sources = {}
-            end
             table.insert(opts.sources, { name = "nvim_lua" })
-        end,
-    },
-    {
-        "hrsh7th/nvim-cmp",
-        optional = true,
-        dependencies = { "f3fora/cmp-spell", lazy = true },
-        opts = function(_, opts)
-            opts.sources = opts.sources or {}
             table.insert(opts.sources, { name = "spell" })
+            opts.snippet = {
+                expand = function(args)
+                    require("luasnip").lsp_expand(args.body)
+                end,
+            }
+            table.insert(opts.sources, { name = "luasnip" })
         end,
     },
     {
@@ -179,22 +154,6 @@ return {
                 pos = 3
             end
             table.insert(opts.sorting.comparators, pos + 1, require("cmp-under-comparator").under)
-        end,
-    },
-    {
-        -- TODO:
-        -- 提高snippet的优先级
-        "nvim-cmp",
-        dependencies = {
-            "saadparwaiz1/cmp_luasnip",
-        },
-        opts = function(_, opts)
-            opts.snippet = {
-                expand = function(args)
-                    require("luasnip").lsp_expand(args.body)
-                end,
-            }
-            table.insert(opts.sources, { name = "luasnip" })
         end,
     },
     {
