@@ -103,7 +103,7 @@ if vim.g.vscode then
             map("n", "<leader>uz", function()
                 vscode.action("workbench.action.toggleZenMode")
             end)
-            map("n", "<leader>uc", function ()
+            map("n", "<leader>uc", function()
                 vscode.action("workbench.action.toggleCenteredLayout")
             end)
             map("n", "<leader>us", function()
