@@ -1,23 +1,3 @@
-local vscode = require("vscode")
-local function mapMove(key, direction)
-    vim.keymap.set("n", key, function()
-        local count = vim.v.count
-        local v = 1
-        local style = "wrappedLine"
-        if count > 0 then
-            v = count
-            style = "line"
-        end
-        vscode.action("cursorMove", {
-            args = {
-                to = direction,
-                by = style,
-                value = v,
-            },
-        })
-    end)
-end
-
 if vim.g.vscode then
     -- clear vscode specific keymaps in vscode.lua
     vim.api.nvim_clear_autocmds({
@@ -25,12 +5,10 @@ if vim.g.vscode then
         pattern = "LazyVimKeymapsDefaults",
     })
     local map = vim.keymap.set
+    local vscode = require("vscode")
     vim.api.nvim_create_autocmd("User", {
         pattern = "LazyVimKeymapsDefaults",
         callback = function()
-            -- 解决跨过foll自动展开的问题
-            mapMove("j", "down")
-            mapMove("k", "up")
 
             -- Ctrl + / 切换行注释
             map("n", "<C-/>", function()
