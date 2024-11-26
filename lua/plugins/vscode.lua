@@ -9,6 +9,8 @@ if vim.g.vscode then
     vim.api.nvim_create_autocmd("User", {
         pattern = "LazyVimKeymapsDefaults",
         callback = function()
+            map("n", "j", "gj", { remap = true })
+            map("n", "k", "gk", { remap = true })
 
             -- Ctrl + / 切换行注释
             map("n", "<C-/>", function()
