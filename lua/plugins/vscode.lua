@@ -19,10 +19,10 @@ if vim.g.vscode then
             end)
 
             -- Fold 折叠
-            map("n", "[z", function ()
+            map("n", "[z", function()
                 vscode.action("editor.gotoPreviousFold")
             end)
-            map("n", "]z", function ()
+            map("n", "]z", function()
                 vscode.action("editor.gotoNextFold")
             end)
             map("n", "za", function()
@@ -86,6 +86,9 @@ if vim.g.vscode then
             end)
             map("n", "<leader>cs", function()
                 vscode.action("workbench.action.gotoSymbol")
+            end)
+            map("n", "<leader>cp", function()
+                vscode.action("markdown.showPreviewToSide")
             end)
 
             -- Debug
