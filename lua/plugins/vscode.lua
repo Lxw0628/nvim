@@ -18,8 +18,18 @@ if vim.g.vscode then
                 vscode.action("editor.action.commentLine")
             end)
 
+            -- Fold 折叠
+            map("n", "[z", function ()
+                vscode.action("editor.gotoPreviousFold")
+            end)
+            map("n", "]z", function ()
+                vscode.action("editor.gotoNextFold")
+            end)
             map("n", "za", function()
                 vscode.action("editor.toggleFold")
+            end)
+            map("n", "zA", function()
+                vscode.action("editor.toggleFoldRecursively")
             end)
             map("n", "zM", function()
                 vscode.action("editor.foldAll")
