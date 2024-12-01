@@ -68,6 +68,26 @@ if vim.g.vscode then
             map("n", "<leader>bl", function()
                 vscode.action("workbench.action.closeEditorsToTheLeft")
             end)
+            map("n", "<leader>ba", function()
+                vscode.action("workbench.action.closeAllEditors")
+            end)
+            map("n", "<leader>bp", function()
+                if vscode.eval("return vscode.window.tabGroups.activeTabGroup.activeTab.isPinned") then
+                    vscode.action("workbench.action.unpinEditor")
+                else
+                    vscode.action("workbench.action.pinEditor")
+                end
+            end)
+            map("n", "<leader>bP", function()
+                -- 关闭所有Non-Pinned的tab
+                vscode.eval([[
+                    vscode.window.tabGroups.all.forEach((tabGroup)=>{
+                        tabGroup.tabs.forEach((tab)=>{
+                            if(!tab.isPinned) vscode.window.tabGroups.close(tab);
+                        })
+                    })
+                ]])
+            end)
 
             -- Code
             map("n", "<leader>cf", function()
