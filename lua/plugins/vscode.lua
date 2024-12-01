@@ -6,6 +6,7 @@ if vim.g.vscode then
     })
     local map = vim.keymap.set
     local vscode = require("vscode")
+    vim.notify = vscode.notify
     vim.api.nvim_create_autocmd("User", {
         pattern = "LazyVimKeymapsDefaults",
         callback = function()
@@ -124,6 +125,9 @@ if vim.g.vscode then
             end)
             map("n", "<leader>us", function()
                 vscode.action("workbench.action.toggleSidebarPosition")
+            end)
+            map("n", "<leader>uD", function()
+                vscode.action("errorLens.toggle")
             end)
 
             -- Windows
