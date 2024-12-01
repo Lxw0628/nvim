@@ -104,6 +104,11 @@ if vim.g.vscode then
             -- Quit/Session
 
             -- Refactor
+            map({ "n", "x" }, "<leader>r", function()
+                vscode.with_insert(function()
+                    vscode.action("editor.action.refactor")
+                end)
+            end)
 
             -- Search
 
