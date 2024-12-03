@@ -154,6 +154,16 @@ if vim.g.vscode then
             map("n", "<leader>uD", function()
                 vscode.action("errorLens.toggle")
             end)
+            map("n", "<leader>ul", function()
+                local current_mode = vscode.get_config("editor.lineNumbers")
+                if current_mode == "off" then
+                    vscode.update_config("editor.lineNumbers", "on", "workspace")
+                elseif current_mode == "on" then
+                    vscode.update_config("editor.lineNumbers", "relative", "workspace")
+                elseif current_mode == "relative" then
+                    vscode.update_config("editor.lineNumbers", "off", "workspace")
+                end
+            end)
 
             -- Windows
 
