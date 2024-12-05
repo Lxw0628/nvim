@@ -90,6 +90,18 @@ if vim.g.vscode then
             end)
 
             -- Code
+            map("n", "]e", function ()
+                vscode.action("editor.action.marker.nextInFiles")
+            end)
+            map("n", "[e", function ()
+                vscode.action("editor.action.marker.prevInFiles")
+            end)
+            map("n", "]d", function ()
+                vscode.action("editor.action.marker.nextInFiles")
+            end)
+            map("n", "[d", function ()
+                vscode.action("editor.action.marker.prevInFiles")
+            end)
             map("n", "<leader>cf", function()
                 vscode.action("editor.action.formatDocument")
             end)
