@@ -1,3 +1,4 @@
+---@diagnostic disable: no-unknown
 if vim.g.vscode then
     -- clear vscode specific keymaps in vscode.lua
     vim.api.nvim_clear_autocmds({
@@ -90,16 +91,16 @@ if vim.g.vscode then
             end)
 
             -- Code
-            map("n", "]e", function ()
+            map("n", "]e", function()
                 vscode.action("editor.action.marker.nextInFiles")
             end)
-            map("n", "[e", function ()
+            map("n", "[e", function()
                 vscode.action("editor.action.marker.prevInFiles")
             end)
-            map("n", "]d", function ()
+            map("n", "]d", function()
                 vscode.action("editor.action.marker.nextInFiles")
             end)
-            map("n", "[d", function ()
+            map("n", "[d", function()
                 vscode.action("editor.action.marker.prevInFiles")
             end)
             map("n", "<leader>cf", function()
