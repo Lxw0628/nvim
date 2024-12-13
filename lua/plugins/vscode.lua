@@ -89,6 +89,12 @@ if vim.g.vscode then
                     })
                 ]])
             end)
+            map("n", "<leader>bl", function()
+                vscode.action("workbench.action.moveEditorRightInGroup")
+            end)
+            map("n", "<leader>bh", function()
+                vscode.action("workbench.action.moveEditorLeftInGroup")
+            end)
 
             -- Code
             map("n", "]e", function()
