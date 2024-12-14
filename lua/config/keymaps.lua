@@ -28,3 +28,7 @@ map("n", "<C-a>", "gg<S-v>G")
 
 map("t", "<C-/>", "<Nop>")
 map("t", "<C-`>", "<cmd>close<cr>", { desc = "Hide Terminal" })
+
+-- BufferLineMove
+map("n", "<leader>bj", "<Cmd>BufferLineMoveNext<CR>")
+map("n", "<leader>bk", "<Cmd>BufferLineMovePrev<CR>")
