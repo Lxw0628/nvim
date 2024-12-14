@@ -1,3 +1,5 @@
+if true then return {} end
+
 return {
     {
         "antosha417/nvim-lsp-file-operations",
