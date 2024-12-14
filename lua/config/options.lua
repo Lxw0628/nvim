@@ -14,3 +14,8 @@ vim.g.codeium_render = true
 -- vim.opt.foldmethod = "manual"
 -- 禁用所有动画
 vim.g.snacks_animate = false
+
+-- set to `true` to follow the main branch
+-- you need to have a working rust toolchain to build the plugin
+-- in this case.
+-- vim.g.lazyvim_blink_main = true

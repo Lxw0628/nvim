@@ -9,6 +9,7 @@
     "lazyvim.plugins.extras.dap.nlua",
     "lazyvim.plugins.extras.editor.aerial",
     "lazyvim.plugins.extras.editor.dial",
+    "lazyvim.plugins.extras.editor.fzf",
     "lazyvim.plugins.extras.editor.illuminate",
     "lazyvim.plugins.extras.editor.inc-rename",
     "lazyvim.plugins.extras.editor.mini-diff",
@@ -17,7 +18,6 @@
     "lazyvim.plugins.extras.editor.navic",
     "lazyvim.plugins.extras.editor.overseer",
     "lazyvim.plugins.extras.editor.refactoring",
-    "lazyvim.plugins.extras.editor.telescope",
     "lazyvim.plugins.extras.formatting.black",
     "lazyvim.plugins.extras.formatting.prettier",
     "lazyvim.plugins.extras.lang.angular",
@@ -56,7 +56,7 @@
     "lazyvim.plugins.extras.vscode"
   ],
   "news": {
-    "NEWS.md": "7429"
+    "NEWS.md": "10960"
   },
   "version": 7
 }
