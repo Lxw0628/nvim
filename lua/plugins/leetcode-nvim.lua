@@ -107,22 +107,17 @@ return {
         },
     },
     {
-        "nvimdev/dashboard-nvim",
-        optional = true,
+        "folke/snacks.nvim",
         opts = function(_, opts)
             local leetcode = {
+                icon = "",
+                key = "e",
+                desc = "LeetCode",
                 action = function()
                     vim.api.nvim_input("<Cmd>Leet<CR>")
                 end,
-                desc = " LeetCode",
-                icon = " ",
-                key = "e",
             }
-
-            leetcode.desc = leetcode.desc .. string.rep(" ", 43 - #leetcode.desc)
-            leetcode.key_format = "  %s"
-
-            table.insert(opts.config.center, 1, leetcode)
+            table.insert(opts.dashboard.preset.keys, 1, leetcode)
         end,
     },
 }
