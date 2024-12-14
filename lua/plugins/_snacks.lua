@@ -18,6 +18,16 @@ return {
                 },
             },
         },
+        keys = {
+            { "<c-/>", "<Nop>" },
+            {
+                "<c-`>",
+                function()
+                    Snacks.terminal()
+                end,
+                desc = "Toggle Terminal",
+            },
+        },
     },
 
     -- LSP-integrated file renaming with support for plugin neo-tree.nvim

@@ -25,3 +25,6 @@ map("n", "<C-a>", "gg<S-v>G")
 -- map({ "i", "n", "x" }, "<C-u>", "<C-u>zz", opts)
 -- map({ "i", "n", "x" }, "<C-i>", "<C-i>zz", opts)
 -- map({ "i", "n", "x" }, "<C-o>", "<C-o>zz", opts)
+
+map("t", "<C-/>", "<Nop>")
+map("t", "<C-`>", "<cmd>close<cr>", { desc = "Hide Terminal" })
