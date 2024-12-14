@@ -12,3 +12,5 @@ vim.g.codeium_manual = false
 -- 自动文本呈现
 vim.g.codeium_render = true
 -- vim.opt.foldmethod = "manual"
+-- 禁用所有动画
+vim.g.snacks_animate = false
