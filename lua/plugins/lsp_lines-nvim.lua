@@ -3,7 +3,7 @@ return {
     event = "LspAttach",
     dependencies = {},
     init = function()
-        vim.keymap.set("n", "<Leader>uD", function()
+        vim.keymap.set("n", "<Leader>uV", function()
             require("lsp_lines").toggle()
         end, { desc = "Toggle virtual diagnostic lines" })
     end,
