@@ -5,7 +5,7 @@ return {
             -- https://github.com/folke/snacks.nvim/blob/main/docs/indent.md
             indent = {
                 chunk = {
-                    enabled = true,
+                    enabled = false,
                     char = {
                         -- corner_top = "┌",
                         -- corner_bottom = "└",
