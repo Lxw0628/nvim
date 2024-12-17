@@ -60,6 +60,11 @@ return {
                     },
                 },
             },
+            zen = {
+                toggles = {
+                    dim = false,
+                }
+            }
         },
         keys = {
             { "<c-/>", "<Nop>" },
