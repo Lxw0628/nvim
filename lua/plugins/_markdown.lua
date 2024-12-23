@@ -5,7 +5,7 @@ return {
         opts = {
             heading = {
                 sign = true,
-                icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
+                -- icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
                 signs = { "󰫎 " },
                 width = "block",
                 position = "inline",
