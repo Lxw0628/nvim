@@ -19,3 +19,10 @@ vim.g.snacks_animate = false
 -- you need to have a working rust toolchain to build the plugin
 -- in this case.
 -- vim.g.lazyvim_blink_main = true
+
+-- markdown-preview.nvim configurations
+-- https://github.com/iamcco/markdown-preview.nvim?tab=readme-ov-file#markdownpreview-config
+vim.g.mkdp_open_to_the_world = 1
+vim.g.mkdp_browser = "wyeb"
+vim.g.mkdp_port = "8079"
+vim.g.mkdp_theme = "dark"
