@@ -4,6 +4,7 @@ vim.g.autoformat = false
 local opt = vim.opt
 opt.scrolloff = 0 -- Lines of context
 opt.title = true
+opt.jumpoptions = "stack"
 
 -- 默认禁用codeium
 vim.g.codeium_enabled = false
