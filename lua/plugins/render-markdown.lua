@@ -4,7 +4,12 @@ return {
         opts = {
             bullet = {
                 right_pad = 1,
-            }
-        }
+            },
+            html = {
+                comment = {
+                    conceal = false,
+                },
+            },
+        },
     },
 }
