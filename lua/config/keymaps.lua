@@ -32,3 +32,8 @@ map("t", "<C-`>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 -- BufferLineMove
 map("n", "<leader>bj", "<Cmd>BufferLineMoveNext<CR>")
 map("n", "<leader>bk", "<Cmd>BufferLineMovePrev<CR>")
+
+map("i", "<C-CR>", function()
+    -- 退出插入模式并插入新行
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>o", true, false, true), "n", true)
+end, { desc = "Insert a new line below", silent = true })
