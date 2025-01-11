@@ -29,9 +29,11 @@ map("n", "<C-a>", "gg<S-v>G")
 map("t", "<C-/>", "<Nop>")
 map("t", "<C-`>", "<cmd>close<cr>", { desc = "Hide Terminal" })
 
--- BufferLineMove
-map("n", "<leader>bj", "<Cmd>BufferLineMoveNext<CR>")
-map("n", "<leader>bk", "<Cmd>BufferLineMovePrev<CR>")
+if not vim.g.vscode then
+    -- BufferLineMove
+    map("n", "<leader>bj", "<Cmd>BufferLineMoveNext<CR>")
+    map("n", "<leader>bk", "<Cmd>BufferLineMovePrev<CR>")
+end
 
 map("i", "<C-CR>", function()
     -- 退出插入模式并插入新行
