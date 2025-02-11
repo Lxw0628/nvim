@@ -108,16 +108,14 @@ return {
     },
     {
         "folke/snacks.nvim",
+        optional = true,
         opts = function(_, opts)
-            local leetcode = {
+            table.insert(opts.dashboard.preset.keys, 1, {
+                action = function() vim.api.nvim_input("<Cmd>Leet<CR>") end,
+                desc = "LeetCode",
                 icon = "",
                 key = "e",
-                desc = "LeetCode",
-                action = function()
-                    vim.api.nvim_input("<Cmd>Leet<CR>")
-                end,
-            }
-            table.insert(opts.dashboard.preset.keys, 1, leetcode)
+            })
         end,
     },
 }
