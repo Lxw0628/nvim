@@ -45,8 +45,11 @@ return {
     {
         "folke/snacks.nvim",
         opts = {
-            -- https://github.com/folke/snacks.nvim/blob/main/docs/indent.md
+            notifier = {
+                top_down = false,
+            },
             indent = {
+                -- https://github.com/folke/snacks.nvim/blob/main/docs/indent.md
                 chunk = {
                     enabled = false,
                     char = {
