@@ -1,6 +1,23 @@
 {
-    "setup": {
-        "prefix": ["setup", "template"],
+    "vue2": {
+        "prefix": ["vue2"],
+        "body": [
+            "<template>",
+            "\t$1",
+            "</template>",
+            "",
+            "<script>",
+            "\t$2",
+            "</script>",
+            "",
+            "<style scoped>",
+            "\t$3",
+            "</style>",
+            ""
+        ]
+    },
+    "vue3": {
+        "prefix": ["vue3"],
         "body": [
             "<template>",
             "\t$1",
