@@ -26,6 +26,12 @@ return {
                     conceal = false,
                 },
             },
+            link = {
+                custom = {
+                    -- TODO: 寻找合适的ICON
+                    bilibili = { pattern = "bilibili%.com", icon = "B站 " },
+                },
+            },
         },
     },
 }
