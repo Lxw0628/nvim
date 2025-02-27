@@ -32,6 +32,9 @@ return {
                     bilibili = { pattern = "bilibili%.com", icon = "B站 " },
                 },
             },
+            win_options = {
+                conceallevel = { default = 0, rendered = 3 },
+            },
         },
     },
 }
