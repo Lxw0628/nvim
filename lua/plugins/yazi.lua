@@ -1,4 +1,4 @@
--- if true then return {} end
+if true then return {} end
 
 -- BUG: Failed to run `config` for snacks.nvim
 -- ...cal/share/nvim/lazy/snacks.nvim/lua/snacks/dashboard.lua:239: E565: Not allowed to change text or change window
