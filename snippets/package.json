@@ -55,6 +55,10 @@
             {
                 "language": "javascript",
                 "path": "./javascript.json"
+            },
+            {
+                "language": "typescript",
+                "path": "./typescript.json"
             }
         ]
     }
