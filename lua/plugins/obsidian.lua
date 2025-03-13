@@ -46,7 +46,7 @@ return {
 
         daily_notes = {
             -- Optional, if you keep daily notes in a separate directory.
-            folder = "09-Life/Daily-note",
+            folder = "Daily-note",
             -- Optional, if you want to change the date format for the ID of daily notes.
             date_format = nil,
             -- Optional, if you want to change the date format of the default alias of daily notes.
@@ -96,9 +96,6 @@ return {
         ---@param title string|?
         ---@return string
         note_id_func = function(title)
-            -- Create note IDs in a Zettelkasten format with a timestamp and a suffix.
-            -- In this case a note with the title 'My new note' will be given an ID that looks
-            -- like '1657296016-my-new-note', and therefore the file name '1657296016-my-new-note.md'
             local suffix = ""
             if title ~= nil then
                 -- If title is given, transform it into valid file name.
@@ -148,7 +145,7 @@ return {
 
         -- Optional, boolean or a function that takes a filename and returns a boolean.
         -- `true` indicates that you don't want obsidian.nvim to manage frontmatter.
-        disable_frontmatter = false,
+        disable_frontmatter = true,
 
         -- Optional, alternatively you can customize the frontmatter data.
         ---@return table
@@ -206,18 +203,18 @@ return {
         -- Optional, set to true to force ':ObsidianOpen' to bring the app to the foreground.
         open_app_foreground = false,
 
-        -- picker = {
-        --   -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', or 'mini.pick'.
-        --   name = "telescope.nvim",
-        --   -- Optional, configure key mappings for the picker. These are the defaults.
-        --   -- Not all pickers support all mappings.
-        --   mappings = {
-        --     -- Create a new note from your query.
-        --     new = "<C-x>",
-        --     -- Insert a link to the selected note.
-        --     insert_link = "<C-l>",
-        --   },
-        -- },
+        picker = {
+          -- Set your preferred picker. Can be one of 'telescope.nvim', 'fzf-lua', or 'mini.pick'.
+          name = "telescope.nvim",
+          -- Optional, configure key mappings for the picker. These are the defaults.
+          -- Not all pickers support all mappings.
+          mappings = {
+            -- Create a new note from your query.
+            new = "<C-x>",
+            -- Insert a link to the selected note.
+            insert_link = "<C-l>",
+          },
+        },
 
         -- Optional, sort search results by "path", "modified", "accessed", or "created".
         -- The recommend value is "modified" and `true` for `sort_reversed`, which means, for example,
