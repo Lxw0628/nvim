@@ -19,36 +19,17 @@ return {
     dependencies = {
         -- Required.
         "nvim-lua/plenary.nvim",
+
         "hrsh7th/nvim-cmp",
         "nvim-telescope/telescope.nvim",
     },
+    -- https://github.com/epwalsh/obsidian.nvim?tab=readme-ov-file#configuration-options
     opts = {
-        -- A list of workspace names, paths, and configuration overrides.
-        -- If you use the Obsidian app, the 'path' of a workspace should generally be
-        -- your vault root (where the `.obsidian` folder is located).
-        -- When obsidian.nvim is loaded by your plugin manager, it will automatically set
-        -- the workspace to the first workspace in the list whose `path` is a parent of the
-        -- current markdown file being edited.
         workspaces = {
             {
                 name = "Lxw0628",
                 path = "~/Documents/Obsidian/Lxw0628",
             },
-            -- {
-            --   name = "interview-notes",
-            --   path = "~/Documents/interview",
-            --   -- Optional, override certain settings.
-            --   overrides = {
-            --     disable_frontmatter = false,
-            --     notes_subdir = "notes",
-            --     daily_notes = {
-            --       folder = "",
-            --     },
-            --     templates = {
-            --       folder = "",
-            --     },
-            --   },
-            -- },
         },
 
         -- Alternatively - and for backwards compatibility - you can set 'dir' to a single path instead of
@@ -65,16 +46,15 @@ return {
 
         daily_notes = {
             -- Optional, if you keep daily notes in a separate directory.
-            folder = "03生活/日记",
+            folder = "09-Life/Daily-note",
             -- Optional, if you want to change the date format for the ID of daily notes.
-            date_format = "%Y-%m-%d",
+            date_format = nil,
             -- Optional, if you want to change the date format of the default alias of daily notes.
-            -- alias_format = "%B %-d, %Y",
-            alias_format = "%Y-%m-%d",
+            alias_format = nil,
             -- Optional, default tags to add to each new daily note created.
             default_tags = { "daily-notes" },
             -- Optional, if you want to automatically insert a template from your template directory like 'daily.md'
-            template = nil,
+            template = "daily.md",
         },
 
         -- Optional, completion of wiki links, local markdown links, and tags using nvim-cmp.
@@ -136,8 +116,7 @@ return {
         ---@param spec { id: string, dir: obsidian.Path, title: string|? }
         ---@return string|obsidian.Path The full path to the new note.
         note_path_func = function(spec)
-            -- This is equivalent to the default behavior.
-            local path = spec.dir / tostring(spec.id)
+            local path = spec.dir / tostring(spec.title)
             return path:with_suffix(".md")
         end,
 
@@ -157,8 +136,8 @@ return {
         end,
 
         -- Either 'wiki' or 'markdown'.
-        -- preferred_link_style = "wiki",
-        preferred_link_style = "markdown",
+        preferred_link_style = "wiki",
+        -- preferred_link_style = "markdown",
 
         -- Optional, customize the default name or prefix when pasting images via `:ObsidianPasteImg`.
         ---@return string
@@ -175,7 +154,7 @@ return {
         ---@return table
         note_frontmatter_func = function(note)
             -- Add the title of the note as an alias.
-            -- if note.title then note:add_alias(note.title) end
+            if note.title then note:add_alias(note.title) end
 
             local out = { id = note.id, aliases = note.aliases, tags = note.tags }
 
@@ -192,14 +171,22 @@ return {
 
         -- Optional, for templates (see below).
         templates = {
-            folder = "00杂项/模板",
+            folder = "Templates",
             date_format = "%Y-%m-%d",
             time_format = "%H:%M",
             -- A map for custom variables, the key should be the variable and the value a function
             substitutions = {
-                -- yesterday = function()
-                --   return os.date("%Y-%m-%d", os.time() - 86400)
-                -- end,
+                dayOfTheWeek = function ()
+                    return os.date("%A", os.time())
+                end,
+                yesterday = function()
+                    return os.date("%Y-%m-%d", os.time() - 86400)
+                end,
+                -- BUG: module doesn't work
+                weather = function()
+                    local weather = require("utils.weather")
+                    return weather.generate_weather_report()
+                end,
             },
         },
 
