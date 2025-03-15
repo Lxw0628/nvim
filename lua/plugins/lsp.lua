@@ -60,12 +60,10 @@ return {
                         --- @type "always" | "never" Defaults to `"always"`
                         showExpandedAbbreviation = "always",
                         --- @type boolean Defaults to `false`
-                        showSuggestionsAsSnippets = true,
+                        showSuggestionsAsSnippets = false,
                         --- @type table<string, any> [Emmet Docs](https://docs.emmet.io/customization/syntax-profiles/)
                         syntaxProfiles = {
-                            -- html = {
-                            --   filters = "bem"
-                            -- }
+                            html = "xhtml",
                         },
                         --- @type table<string, string> [Emmet Docs](https://docs.emmet.io/customization/snippets/#variables)
                         variables = {

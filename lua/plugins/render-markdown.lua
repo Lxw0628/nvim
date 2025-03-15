@@ -4,7 +4,7 @@ return {
         "MeanderingProgrammer/render-markdown.nvim",
         opts = {
             bullet = {
-                right_pad = 1,
+                right_pad = 0,
             },
             checkbox = {
                 -- https://github.com/MeanderingProgrammer/render-markdown.nvim/wiki/Checkboxes
