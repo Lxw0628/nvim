@@ -74,7 +74,7 @@ return {
             {
                 "<c-`>",
                 function()
-                    Snacks.terminal()
+                    Snacks.terminal(nil, { cwd = LazyVim.root() })
                 end,
                 desc = "Toggle Terminal",
             },
