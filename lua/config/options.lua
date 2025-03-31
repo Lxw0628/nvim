@@ -6,6 +6,9 @@ opt.scrolloff = 0 -- Lines of context
 opt.title = true
 opt.jumpoptions = "stack"
 
+-- wrap换行自动对齐上一行
+opt.breakindent = true
+
 -- 默认禁用codeium
 vim.g.codeium_enabled = false
 -- 手动触发
