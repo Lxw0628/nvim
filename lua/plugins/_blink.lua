@@ -9,7 +9,7 @@ return {
 
                 providers = {
                     snippets = {
-                        score_offset = 0,
+                        score_offset = 1,
                     },
                 },
             },
