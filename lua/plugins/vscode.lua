@@ -13,6 +13,14 @@ if vim.g.vscode then
         callback = function()
             map("n", "j", "gj", { remap = true })
             map("n", "k", "gk", { remap = true })
+            map("n", "gco", function()
+                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>o", true, false, true), "n", true)
+                vscode.action("editor.action.commentLine")
+            end)
+            map("n", "gcO", function()
+                vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>O", true, false, true), "n", true)
+                vscode.action("editor.action.commentLine")
+            end)
 
             -- Ctrl + / 切换行注释
             map("n", "<C-/>", function()
