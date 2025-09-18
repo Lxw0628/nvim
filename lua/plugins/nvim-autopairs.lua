@@ -90,7 +90,7 @@ return {
         -- this is equalent to setup({}) function
         specs = {
             {
-                "echasnovski/mini.pairs",
+                "nvim-mini/mini.pairs",
                 optional = true,
                 enabled = false,
             },

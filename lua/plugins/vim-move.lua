@@ -3,7 +3,7 @@ return {
     event = { "InsertEnter" },
     specs = {
         {
-            "echasnovski/mini.move",
+            "nvim-mini/mini.move",
             optional = true,
             enabled = false,
         },

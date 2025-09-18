@@ -4,7 +4,7 @@
 
 return {
     {
-        "echasnovski/mini.comment",
+        "nvim-mini/mini.comment",
         opts = {
             mappings = {
                 -- Toggle comment on current line
@@ -15,8 +15,8 @@ return {
         },
     },
     {
-        -- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-snippets.md#expand
-        "echasnovski/mini.snippets",
+        -- https://github.com/nvim-mini/mini.nvim/blob/main/readmes/mini-snippets.md#expand
+        "nvim-mini/mini.snippets",
         opts = {
             mappings = {
                 expand = "<C-'>",
@@ -26,7 +26,7 @@ return {
         },
     },
     {
-        "echasnovski/mini.snippets",
+        "nvim-mini/mini.snippets",
         opts = function(_, opts)
             -- By default, for opts.snippets, the extra for mini.snippets only adds gen_loader.from_lang()
             -- This provides a sensible quickstart, integrating with friendly-snippets
