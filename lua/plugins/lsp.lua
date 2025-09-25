@@ -155,4 +155,8 @@ return {
             keys[#keys + 1] = { "<c-k>", false, mode = "i" }
         end,
     },
+    {
+        -- for Scarpet language.
+        "automas-dev/vim-scarpet",
+    },
 }
