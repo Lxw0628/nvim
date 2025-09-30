@@ -50,6 +50,7 @@ return {
             },
             indent = {
                 -- https://github.com/folke/snacks.nvim/blob/main/docs/indent.md
+                enabled = false,
                 chunk = {
                     enabled = false,
                     char = {
