@@ -12,6 +12,10 @@ return {
                 custom = {
                     todo = { raw = "[-]", rendered = "󰥔 ", highlight = "RenderMarkdownTodo", scope_highlight = nil },
                     important = { raw = "[~]", rendered = "󰓎 ", highlight = "DiagnosticWarn" },
+                    remove = { raw = "[rm]", rendered = "󱟁 ", highlight = "Error", scope_highlight = "@markup.strikethrough" }
+                },
+                checked = {
+                    scope_highlight = "@markup.strikethrough",
                 },
             },
             heading = {
