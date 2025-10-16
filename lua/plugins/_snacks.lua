@@ -67,8 +67,9 @@ return {
             zen = {
                 toggles = {
                     dim = false,
-                }
-            }
+                },
+            },
+            image = {},
         },
         keys = {
             { "<c-/>", "<Nop>" },
