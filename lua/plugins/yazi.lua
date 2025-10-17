@@ -1,22 +1,14 @@
-if true then return {} end
-
--- BUG: Failed to run `config` for snacks.nvim
--- ...cal/share/nvim/lazy/snacks.nvim/lua/snacks/dashboard.lua:239: E565: Not allowed to change text or change window
--- # stacktrace:
---   - /snacks.nvim/lua/snacks/dashboard.lua:239 _in_ **init**
---   - /snacks.nvim/lua/snacks/dashboard.lua:227 _in_ **open**
---   - /snacks.nvim/lua/snacks/dashboard.lua:1163 _in_ **setup**
---   - /snacks.nvim/lua/snacks/init.lua:169 _in_ **load**
---   - /snacks.nvim/lua/snacks/init.lua:179 _in_ **setup**
---   - /LazyVim/lua/lazyvim/plugins/init.lua:23 _in_ **config**
---   - :lua:1
+-- if true then return {} end
 
 return {
     ---@type LazySpec
     {
         "mikavilpas/yazi.nvim",
+        version = "*", -- use the latest stable version
         event = "VeryLazy",
-        dependencies = { "folke/snacks.nvim", lazy = true },
+        dependencies = {
+            { "nvim-lua/plenary.nvim", lazy = true },
+        },
         keys = {
             -- 👇 in this section, choose your own keymappings!
             {
@@ -47,8 +39,9 @@ return {
         },
         -- 👇 if you use `open_for_directories=true`, this is recommended
         init = function()
+            -- mark netrw as loaded so it's not loaded at all.
+            --
             -- More details: https://github.com/mikavilpas/yazi.nvim/issues/802
-            -- vim.g.loaded_netrw = 1
             vim.g.loaded_netrwPlugin = 1
         end,
     },
