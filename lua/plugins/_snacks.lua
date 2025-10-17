@@ -69,7 +69,11 @@ return {
                     dim = false,
                 },
             },
-            image = {},
+            image = {
+                doc = {
+                    inline = false,
+                },
+            },
         },
         keys = {
             { "<c-/>", "<Nop>" },
