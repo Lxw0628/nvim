@@ -1,24 +1,41 @@
 {
-    "editorconfig": {
-        "prefix": "editorconfig",
-        "body": [
-            "# https://editorconfig.org",
-            "",
-            "root = true",
-            "",
-            "[*]",
-            "# 文件编码",
-            "charset = utf-8",
-            "# 换行符格式（lf 或 crlf）",
-            "end_of_line = lf",
-            "# 缩进风格（space/tab）",
-            "indent_style = space",
-            "# 缩进大小（空格数）",
-            "indent_size = 4",
-            "# 自动删除行尾空格",
-            "trim_trailing_whitespace = true",
-            "# 文件末尾自动插入空行",
-            "insert_final_newline = true"
-        ]
-    }
+  "editorconfig": {
+    "prefix": "editorconfig",
+    "body": [
+      "# EditorConfig helps developers define and maintain consistent",
+      "# coding styles between different editors and IDEs",
+      "# EditorConfig is awesome: https://EditorConfig.org",
+      "",
+      "root = true",
+      "",
+      "[*]",
+      "charset = utf-8",
+      "indent_size = 2",
+      "indent_style = space",
+      "end_of_line = lf",
+      "insert_final_newline = true",
+      "trim_trailing_whitespace = true",
+      "",
+      "# go",
+      "[*.go]",
+      "indent_style = tab",
+      "indent_size = 4",
+      "",
+      "# python",
+      "[*.{ini,py,py.tpl,rst}]",
+      "indent_size = 4",
+      "",
+      "# rust",
+      "[*.rs]",
+      "indent_size = 4",
+      "",
+      "# documentation, utils",
+      "[*.{md,mdx,diff}]",
+      "trim_trailing_whitespace = false",
+      "",
+      "# windows shell scripts",
+      "[*.{cmd,bat,ps1}]",
+      "end_of_line = crlf"
+    ]
+  }
 }
