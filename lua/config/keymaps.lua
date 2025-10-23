@@ -4,7 +4,7 @@
 
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
-map("i", "jk", "<Esc>")
+map("i", "jk", "<Esc>l")
 map("i", "<C-h>", "<Left>")
 map("i", "<C-j>", "<Down>")
 map("i", "<C-k>", "<Up>")
