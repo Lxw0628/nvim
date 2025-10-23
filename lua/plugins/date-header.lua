@@ -1,3 +1,4 @@
+if true then return {} end
 -- https://www.perfcode.com/tools/generator/ascii-art
 -- 字体：ANSI Shadow
 
