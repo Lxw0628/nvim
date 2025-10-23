@@ -1,37 +1,37 @@
 {
-    "vue2": {
-        "prefix": ["vue2"],
-        "body": [
-            "<template>",
-            "\t$1",
-            "</template>",
-            "",
-            "<script>",
-            "\t$2",
-            "</script>",
-            "",
-            "<style scoped>",
-            "\t$3",
-            "</style>",
-            ""
-        ]
-    },
-    "vue3": {
-        "prefix": ["vue3"],
-        "body": [
-            "<template>",
-            "\t$1",
-            "</template>",
-            "",
-            "<script lang=\"ts\" setup>",
-            "\t$2",
-            "</script>",
-            "",
-            "<style scoped lang=\"scss\">",
-            "\t$3",
-            "</style>",
-            ""
-        ],
-        "description": "My standard setup Vue3 + TS"
-    }
+  "vue2": {
+    "prefix": ["vue2"],
+    "body": [
+      "<template>",
+      "\t$1",
+      "</template>",
+      "",
+      "<script>",
+      "\t$2",
+      "</script>",
+      "",
+      "<style scoped>",
+      "\t$3",
+      "</style>",
+      ""
+    ]
+  },
+  "vue3": {
+    "prefix": ["vue3"],
+    "body": [
+      "<template>",
+      "\t$1",
+      "</template>",
+      "",
+      "<script lang=\"ts\" setup>",
+      "\t$2",
+      "</script>",
+      "",
+      "<style scoped lang=\"scss\">",
+      "\t$3",
+      "</style>",
+      ""
+    ],
+    "description": "My standard setup Vue3 + TS"
+  }
 }

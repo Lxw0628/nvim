@@ -1,10 +1,10 @@
 {
-    "console.log": {
-        "prefix": "clg",
-        "body": "console.log(${0})"
-    },
-    "arrow function": {
-        "prefix": "anfn",
-        "body": "(${1}) => {${0}}"
-    }
+  "console.log": {
+    "prefix": "clg",
+    "body": "console.log(${0})"
+  },
+  "arrow function": {
+    "prefix": "anfn",
+    "body": "(${1}) => {${0}}"
+  }
 }
