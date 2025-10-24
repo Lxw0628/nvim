@@ -36,7 +36,7 @@ return {
                         vim.keymap.set("n", prefix .. "s", "<Cmd>Leet submit<CR>", { desc = "submit 提交" })
                         vim.keymap.set("n", prefix .. "R", "<Cmd>Leet random<CR>", { desc = "random 打开随机问题" })
                         vim.keymap.set("n", prefix .. "d", "<Cmd>Leet daily<CR>", { desc = "daily 打开每日问题" })
-                        vim.keymap.set("n", prefix .. "l", "<Cmd>Leet list<CR>", { desc = "list 打开每日问题" })
+                        vim.keymap.set("n", prefix .. "l", "<Cmd>Leet list<CR>", { desc = "list 选择一个问题打开" })
                         vim.keymap.set("n", prefix .. "o", "<Cmd>Leet open<CR>", { desc = "open 在默认浏览器中打开此问题" })
                         vim.keymap.set("n", prefix .. "u", "<Cmd>Leet reset<CR>", { desc = "reset 重置为默认代码" })
                     end,
