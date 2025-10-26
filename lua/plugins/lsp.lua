@@ -149,14 +149,49 @@ return {
         },
     },
     {
-        "neovim/nvim-lspconfig",
-        opts = function()
-            local keys = require("lazyvim.plugins.lsp.keymaps").get()
-            keys[#keys + 1] = { "<c-k>", false, mode = "i" }
-        end,
-    },
-    {
         -- for Scarpet language.
         "automas-dev/vim-scarpet",
+    },
+
+    -- == plugins ==
+    {
+        -- https://github.com/VidocqH/lsp-lens.nvim
+        "VidocqH/lsp-lens.nvim",
+        opts = {
+            enable = true,
+            include_declaration = true, -- Reference include declaration
+            sections = { -- Enable / Disable specific request, formatter example looks 'Format Requests'
+                definition = function(count)
+                    return "定义: " .. count
+                end,
+                references = function(count)
+                    return "引用: " .. count
+                end,
+                implements = function(count)
+                    return "实现: " .. count
+                end,
+                git_authors = function(latest_author, count)
+                    return " " .. latest_author .. (count - 1 == 0 and "" or (" + " .. count - 1))
+                end,
+            },
+            ignore_filetype = {
+                "prisma",
+            },
+        },
+    },
+    {
+        "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+        event = "LspAttach",
+        dependencies = {},
+        init = function()
+            vim.keymap.set("n", "<Leader>uV", function()
+                require("lsp_lines").toggle()
+            end, { desc = "Toggle virtual diagnostic lines" })
+        end,
+        opts = function()
+            vim.diagnostic.config({
+                virtual_text = false,
+            })
+        end,
     },
 }
