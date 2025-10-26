@@ -45,8 +45,10 @@ return {
     {
         "folke/snacks.nvim",
         opts = {
-            notifier = {
-                top_down = false,
+            image = {
+                doc = {
+                    inline = false,
+                },
             },
             indent = {
                 -- https://github.com/folke/snacks.nvim/blob/main/docs/indent.md
@@ -64,14 +66,25 @@ return {
                     },
                 },
             },
+            notifier = {
+                top_down = false,
+            },
+            picker = {
+                sources = {
+                    notifications = {
+                        win = {
+                            preview = {
+                                wo = {
+                                    wrap = true,
+                                },
+                            },
+                        },
+                    },
+                },
+            },
             zen = {
                 toggles = {
                     dim = false,
-                },
-            },
-            image = {
-                doc = {
-                    inline = false,
                 },
             },
         },
