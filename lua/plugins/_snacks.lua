@@ -82,6 +82,10 @@ return {
                     },
                 },
             },
+            terminal = {
+                start_insert = false,
+                auto_insert = false,
+            },
             zen = {
                 toggles = {
                     dim = false,
