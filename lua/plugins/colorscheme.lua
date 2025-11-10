@@ -5,7 +5,20 @@ return {
     {
         "LazyVim/LazyVim",
         opts = {
-            colorscheme = "catppuccin",
+            -- colorscheme = "catppuccin",
+            -- colorscheme = "gruvbox",
+            colorscheme = "tokyonight",
+        },
+    },
+    { "ellisonleao/gruvbox.nvim" },
+    {
+        "folke/tokyonight.nvim",
+        opts = {
+            transparent = true,
+            styles = {
+                sidebars = "transparent",
+                floats = "transparent",
+            },
         },
     },
     -- {
